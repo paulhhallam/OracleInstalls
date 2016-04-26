@@ -1,7 +1,0 @@
-name 'goapp'
-maintainer 'The Authors'
-maintainer_email 'you@example.com'
-license 'all_rights'
-description 'Installs/Configures goapp'
-long_description 'Installs/Configures goapp'
-version '0.1.0'

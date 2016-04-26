@@ -1,3 +1,0 @@
-#default["nginx"]["goapp"]["nodes"] = ["server" => 'ambari1',"go1" => 'ambari3',"go2" => 'ambari4']
-#default["servers"] = { "server" => "ambari1", "robin1" => "ambari3", "robin2" => "ambari4" }
-}
