@@ -1,4 +1,4 @@
-This cookbook is here as I am using it as a template to install and configure 12c leaf node clusters on Red Hat 7 systems.
+This cookbook is here as I am using it as a template to install and configure 11g on Red Hat 7 systems.
 ===========
 
 Description
