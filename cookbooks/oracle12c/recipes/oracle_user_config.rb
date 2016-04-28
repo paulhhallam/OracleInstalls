@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: oracle
+# Cookbook Name:: oracle12c
 # Recipe:: oracle_user_config
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,18 +15,42 @@
 # limitations under the License.
 #
 #
-## Create and configure the oracle user. 
+## Create and configure the oracle users and groups. 
 #
 
-
-# Create the oracle user.
-# The argument to useradd's -g option must be an already existing
-# group, else useradd will raise an error.
-# Therefore, we must create the oinstall group before we do the oracle user.
-group 'oinstall' do
-  gid node[:oracle][:user][:gid]
+#
+# Create the oracle groups. 
+#
+node[:oracle][:user][:sup_grps].each_key do |grp|
+  group grp do
+    gid node[:oracle][:user][:sup_grps][grp]
+  end
 end
 
+#
+# Create the grid user.
+#
+user 'grid' do
+  uid node[:oracle][:grid][:uid]
+  gid node[:oracle][:grid][:gid]
+  shell node[:oracle][:grid][:shell]
+  comment 'Oracle Grid Administrator'
+  supports :manage_home => true
+end
+
+#
+# Configure the grid user groups.
+#
+node[:oracle][:grid][:sup_grps].each_key do |grp|
+  group grp do
+    members ['grid']
+    append true
+  end
+end
+
+#
+# Create the oracle user.
+#
 user 'oracle' do
   uid node[:oracle][:user][:uid]
   gid node[:oracle][:user][:gid]
@@ -37,17 +61,19 @@ end
 
 yum_package File.basename(node[:oracle][:user][:shell])
 
-# Configure the oracle user.
-# Make it a member of the appropriate supplementary groups, and
-# ensure its environment will be set up properly upon login.
+#
+# Configure the oracle user groups.
+# 
 node[:oracle][:user][:sup_grps].each_key do |grp|
   group grp do
-    gid node[:oracle][:user][:sup_grps][grp]
     members ['oracle']
     append true
   end
 end
 
+#
+# Set up the users profile
+#
 template "/home/oracle/.profile" do
   action :create_if_missing
   source 'ora_profile.erb'
@@ -56,24 +82,41 @@ template "/home/oracle/.profile" do
 end
 
 # Color setup for ls.
-execute 'gen_dir_colors' do
-  command '/usr/bin/dircolors -p > /home/oracle/.dir_colors'
-  user 'oracle'
-  group 'oinstall'
-  cwd '/home/oracle'
-  creates '/home/oracle/.dir_colors'
-  only_if {node[:oracle][:user][:shell] != '/bin/bash'}
+#execute 'gen_dir_colors' do
+#  command '/usr/bin/dircolors -p > /home/oracle/.dir_colors'
+#  user 'oracle'
+#  group 'oinstall'
+#  cwd '/home/oracle'
+#  creates '/home/oracle/.dir_colors'
+#  only_if {node[:oracle][:user][:shell] != '/bin/bash'}
+#end
+
+#
+# Set the grid user's password.
+#
+unless node[:oracle][:grid][:pw_set]
+  ora_pw = 'grid'
+  # Note that output formatter will display the password on your terminal.
+  execute 'change_grid_user_pw' do
+    command "echo grid:#{ora_pw} | /usr/sbin/chpasswd"
+  end
+  ruby_block 'set_pw_attr' do
+    block do
+      node.set[:oracle][:grid][:pw_set] = true
+    end
+    action :create
+  end
 end
-
+                                  
+#
 # Set the oracle user's password.
+#
 unless node[:oracle][:user][:pw_set]
-  ora_pw = 'Everton01'
-
+  ora_pw = 'oracle'
   # Note that output formatter will display the password on your terminal.
   execute 'change_oracle_user_pw' do
     command "echo oracle:#{ora_pw} | /usr/sbin/chpasswd"
   end
-  
   ruby_block 'set_pw_attr' do
     block do
       node.set[:oracle][:user][:pw_set] = true
@@ -83,7 +126,9 @@ unless node[:oracle][:user][:pw_set]
 end
 
 # Set resource limits for the oracle user.
-cookbook_file '/etc/security/limits.d/oracle.conf' do
-  mode '0644'
-  source 'ora_limits'
-end
+# # # # no longer required as oracle-rdbms-server-12cR1-preinstall installation covers this.
+# cookbook_file '/etc/security/limits.d/oracle.conf' do
+#  mode '0644'
+#  source 'ora_limits'
+#end
+#

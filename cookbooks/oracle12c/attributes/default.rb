@@ -15,27 +15,33 @@
 # limitations under the License.
 #
 
-## Settings specific to the Oracle user.
-default[:oracle][:user][:uid] = 201
-default[:oracle][:user][:gid] = 201
-default[:oracle][:user][:shell] = '/bin/ksh'
-default[:oracle][:user][:sup_grps] = {'dba' => 202, 'bckpdba' => 203, 'dgdba' => 204, 'kmdba' => 205}
+# General Oracle settings.
+default[:oracle][:ora_base] = '/u01/app/12.1.0/grid'
+default[:oracle][:ora_inventory] = '/u01/app/oraInventory'
+#ORACLE_BASE /u01/app/12.1.0/grid
+#ORA_CRS_HOME /u01/app/12.1.0/grid
+#INVENTORY /u01/app/oraInventory
+
+#
+# Settings specific to the Grid user.
+default[:oracle][:grid][:uid] = 591
+default[:oracle][:grid][:gid] = 501
+default[:oracle][:grid][:shell] = '/bin/bash'
+default[:oracle][:grid][:pw_set] = false
+default[:oracle][:grid][:edb] = 'oracle'
+default[:oracle][:grid][:edb_item] = 'foo'
+default[:oracle][:grid][:install_dir] = "#{node[:oracle][:ora_base]}/install_dir"
+default[:oracle][:grid][:sup_grps] = {'asmadmin' => 508, 'asmdba' => 505}
+default[:oracle][:grid][:install_files] = ['/u01/V46096-01_1of2.zip','/u01/V46096-01_2of2.zip']
+
+# Settings specific to the Oracle user.
+default[:oracle][:user][:uid] = 592
+default[:oracle][:user][:gid] = 501
+default[:oracle][:user][:shell] = '/bin/bash'
 default[:oracle][:user][:pw_set] = false
 default[:oracle][:user][:edb] = 'oracle'
 default[:oracle][:user][:edb_item] = 'foo'
-
-## Settings specific to the Oracle Client user.
-default[:oracle][:cliuser][:uid] = 301
-default[:oracle][:cliuser][:gid] = 301
-default[:oracle][:cliuser][:shell] = '/bin/ksh'
-default[:oracle][:cliuser][:sup_grps] = {'oinstall' => 201}
-default[:oracle][:cliuser][:pw_set] = false
-default[:oracle][:cliuser][:edb] = 'oracli'
-default[:oracle][:cliuser][:edb_item] = 'foo'
-
-# General Oracle settings.
-default[:oracle][:ora_base] = '/opt/oracle'
-default[:oracle][:ora_inventory] = '/opt/oraInventory'
+default[:oracle][:user][:sup_grps] = {'oinstall' => 501, 'dba' => 502, 'oper' => 503, 'backupdba' => 504, 'asmdba' => 505, 'dgdba' => 506, 'kmdba' => 507, 'asmadmin' => 508, 'asmoper' => 509}
 
 ## Settings specific to the Oracle RDBMS proper.
 default[:oracle][:rdbms][:dbbin_version] = '12c'
@@ -47,50 +53,18 @@ default[:oracle][:rdbms][:install_dir] = "#{node[:oracle][:ora_base]}/install_di
 default[:oracle][:rdbms][:response_file_url] = ''
 default[:oracle][:rdbms][:db_create_template] = 'default_template.dbt'
 
-## Settings specific to the Oracle Client proper.
-default[:oracle][:client][:ora_home] = "#{node[:oracle][:ora_base]}/11R23cli"
-default[:oracle][:client][:is_installed] = false
-default[:oracle][:client][:install_info] = {}
-default[:oracle][:client][:install_dir] = "#{node[:oracle][:ora_base]}/install_dir_client"
-default[:oracle][:client][:response_file_url] = ''
-
-# Dependencies for Oracle 11.2.
-# Source: <http://docs.oracle.com/cd/E11882_01/install.112/e24321/pre_install.htm#CIHFICFD>
-# We omit version-release info by design, as their requirements are satisfied by
-# CentOS 6.4, which is the minimum version targeted by oracle.
-default[:oracle][:rdbms][:deps] = ['binutils', 'compat-libcap1', 'compat-libstdc++-33', 'gcc', 'gcc-c++', 'glibc',
-                                   'glibc-devel', 'ksh', 'libgcc', 'libstdc++', 'libstdc++-devel', 'libaio',
-                                   'libaio-devel', 'make', 'sysstat']
-
 # Oracle dependencies for 12c
 default[:oracle][:rdbms][:deps_12c] = ['binutils', 'compat-libcap1', 'compat-libstdc++-33', 'gcc', 'gcc-c++', 'glibc',
                                    'glibc-devel', 'ksh', 'libgcc', 'libstdc++', 'libstdc++-devel', 'libaio',
                                    'libaio-devel', 'libXext', 'libXtst', 'libX11', 'libXau', 'libxcb', 'libXi', 'make', 'sysstat']
 
-# Oracle environment for 11g
-default[:oracle][:rdbms][:env] = {'ORACLE_BASE' => node[:oracle][:ora_base],
-                                  'ORACLE_HOME' => node[:oracle][:rdbms][:ora_home],
-                                  'PATH' => "/usr/kerberos/bin:/usr/local/bin:/bin:/usr/bin:/usr/sbin:#{node[:oracle][:ora_base]}/dba/bin:#{node[:oracle][:rdbms][:ora_home]}/bin:#{node[:oracle][:rdbms][:ora_home]}/OPatch"}
-
 # Oracle environment for 12c
-default[:oracle][:rdbms][:env_12c] = {'ORACLE_BASE' => node[:oracle][:ora_base],
-                                  'ORACLE_HOME' => node[:oracle][:rdbms][:ora_home_12c],
-                                  'PATH' => "/usr/kerberos/bin:/usr/local/bin:/bin:/usr/bin:/usr/sbin:#{node[:oracle][:ora_base]}/dba/bin:#{node[:oracle][:rdbms][:ora_home_12c]}/bin:#{node[:oracle][:rdbms][:ora_home_12c]}/OPatch"}
+default[:oracle][:rdbms][:env_12c] = {
+  'ORACLE_BASE' => node[:oracle][:ora_base],
+  'ORACLE_HOME' => node[:oracle][:rdbms][:ora_home_12c],
+  'PATH' => "/usr/kerberos/bin:/usr/local/bin:/bin:/usr/bin:/usr/sbin:#{node[:oracle][:ora_base]}/dba/bin:#{node[:oracle][:rdbms][:ora_home_12c]}/bin:#{node[:oracle][:rdbms][:ora_home_12c]}/OPatch"}
 
 default[:oracle][:rdbms][:install_files] = ['/home/paul/Downloads/V46095-01_1of2.zip','/home/paul/Downloads/V46095-01_2of2.zip']
-
-# Client dependencies
-default[:oracle][:client][:deps] = ['binutils', 'compat-libcap1', 'compat-libstdc++-33', 'compat-libstdc++-33.i686', 'gcc', 'gcc-c++', 'glibc', 'glibc.i686',
-                                   'glibc-devel', 'glibc-devel.i686', 'ksh', 'libgcc', 'libgcc.i686', 'libstdc++', 'libstdc++.i686', 'libstdc++-devel', 'libstdc++-devel.i686', 'libaio', 'libaio.i686', 'libaio-devel', 'libaio-devel.i686', 'make', 'sysstat']
-
-# Client environment parameters
-default[:oracle][:client][:env] = {'ORACLE_BASE' => node[:oracle][:ora_base],
-                                  'ORACLE_HOME' => node[:oracle][:client][:ora_home],
-                                  'LD_LIBRARY_PATH' => "#{node[:oracle][:client][:ora_home]}/lib",
-                                  'PATH' => "/usr/kerberos/bin:/usr/local/bin:/bin:/usr/bin:/usr/sbin:#{node[:oracle][:ora_base]}/dba/bin:#{node[:oracle][:client][:ora_home]}/bin:#{node[:oracle][:client][:ora_home]}/OPatch"}
-
-# Install media file for the Oracle Client
-default[:oracle][:client][:install_files] = ['https://https-server.example.localdomain/path/to/p10404530_112030_Linux-x86-64_4of7.zip']
 
 # Passwords set by createdb.rb for the default open database users.
 # By order of appearance, those are: SYS, SYSTEM and DBSNMP.
@@ -102,22 +76,6 @@ default[:oracle][:rdbms][:dbsnmp_pw] = 'dbsnmp_pw_goes_here'
 # Settings related to patching.
 default[:oracle][:rdbms][:opatch_update_url] = 'https://https-server.example.localdomain/path/to/p6880880_112000_Linux-x86-64.zip'
 default[:oracle][:rdbms][:latest_patch][:url] = 'https://https-server.example.localdomain/path/to/p16619892_112030_Linux-x86-64.zip'
-
-# Settings related to client patching.
-default[:oracle][:client][:opatch_update_url] = 'https://https-server.example.localdomain/path/to/p6880880_112000_Linux-x86-64.zip'
-default[:oracle][:client][:latest_patch][:url] = 'https://https-server.example.localdomain/path/to/p16619892_112030_Linux-x86-64.zip'
-
-# Typically the latest patch's expanded directory's name will match
-# the part of the latest patch's filename following the initial 'p', 
-# up until , and excluding, the first '_', but this is not guaranteed to
-# always be the case.
-default[:oracle][:rdbms][:latest_patch][:dirname] = '16619892'
-default[:oracle][:rdbms][:latest_patch][:dirname_12c] = '18031528'
-default[:oracle][:rdbms][:latest_patch][:is_installed] = false
-
-# Client patch folder
-default[:oracle][:client][:latest_patch][:dirname] = '16619892'
-default[:oracle][:client][:latest_patch][:is_installed] = false
 
 # Hash of DBs to create; the keys are the DBs' names, the values are Booleans,
 # with true indicating the DB has already been created and should be skipped
