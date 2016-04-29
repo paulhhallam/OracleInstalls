@@ -17,6 +17,17 @@
 ## Get and unzip the Oracle Grid binaries.
 #
 
+# Creating $ORACLE_BASE and the install directory.
+[node[:oracle][:ora_base], node[:oracle][:grid][:install_dir]].each do |dir|
+  directory dir do
+    owner 'grid'
+    group 'oinstall'
+    mode '0755'
+    action :create
+    recursive true
+  end
+end
+
 # We need unzip to expand the install files later on.
 yum_package 'unzip'
 
@@ -49,6 +60,34 @@ yum_package 'unzip'
 #phh#     cwd "#{node[:oracle][:grid][:install_dir]}"
 #phh#     code "rm -f V*"
 #phh#   end
+
+# This oraInst.loc specifies the standard oraInventory location.
+file "#{node[:oracle][:ora_base]}/oraInst.loc" do
+  owner "grid"
+  group 'oinstall'
+  content "inst_group=oinstall\ninventory_loc=/opt/oraInventory"
+end
+
+directory node[:oracle][:ora_inventory] do
+  owner 'grid'
+  group 'oinstall'
+  mode '0755'
+  action :create
+end
+
+# Filesystem template.
+template "#{node[:oracle][:grid][:install_dir]}/db11R23.rsp" do
+  owner 'grid'
+  group 'oinstall'
+  mode '0644'
+end
+
+# Filesystem template.
+template "#{node[:oracle][:grid][:install_dir]}/db12c.rsp" do
+  owner 'oracle'
+  group 'oinstall'
+  mode '0644'
+end
 
 #
 # Reboot the node 

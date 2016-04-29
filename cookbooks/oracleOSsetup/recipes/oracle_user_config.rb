@@ -1,5 +1,6 @@
 #
-# Cookbook Name:: oracle12c
+# Cookbook Name:: oracleOSsetup
+#
 # Recipe:: oracle_user_config
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -155,4 +156,74 @@ ruby_block "insert_grid_ulimits" do
   end
 end
 
+#
+# Set up SSH for oracle
+#
+bash "oracle-ssh-passwordless" do
+  user 'oracle'
+  cwd '/home/oracle'
+  code <<-EOH
+    ssh-keygen -q -N '' -f /home/oracle/.ssh/id_rsa
+    cd .ssh
+    cat id_rsa.pub > authorized_keys
+  EOH
+end
 
+#
+# Set up SSH for grid
+#
+bash "grid-ssh-passwordless" do
+  user 'grid'
+  cwd '/home/grid'
+  code <<-EOH
+    ssh-keygen -q -N '' -f /home/grid/.ssh/id_rsa
+    cd .ssh
+    cat id_rsa.pub > authorized_keys
+  EOH
+end
+
+#
+#Creating $ORACLE_BASE and the install directory.
+#
+[node[:oracle][:ora_base], node[:oracle][:grid][:install_dir]].each do |dir|
+  directory dir do
+    owner 'grid'
+    group 'oinstall'
+    mode '0755'
+    action :create
+    recursive true
+  end
+end
+
+#
+# This oraInst.loc specifies the standard oraInventory location.
+file "#{node[:oracle][:ora_base]}/oraInst.loc" do
+  owner "grid"
+  group 'oinstall'
+  content "inst_group=oinstall\ninventory_loc=/opt/oraInventory"
+end
+
+directory node[:oracle][:ora_inventory] do
+  owner 'grid'
+  group 'oinstall'
+  mode '0755'
+  action :create
+end
+#
+# Filesystem template.
+#
+template "#{node[:oracle][:grid][:install_dir]}/db11R23.rsp" do
+  owner 'grid'
+  group 'oinstall'
+  mode '0644'
+end
+#
+# Filesystem template.
+#
+template "#{node[:oracle][:grid][:install_dir]}/db12c.rsp" do
+  owner 'oracle'
+  group 'oinstall'
+  mode '0644'
+end
+#
+#
