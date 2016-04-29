@@ -1,0 +1,8 @@
+# Lines are commented out when the default limits are already
+# equal to, or greater than, the values recommended by Oracle.
+oracle              soft    nofile  63536
+oracle              hard    nofile  63536
+oracle              soft    nproc   16384
+oracle              hard    nproc   16384
+#oracle              soft    stack   10240
+#oracle              hard    stack   32768

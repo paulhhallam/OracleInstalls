@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: oracle
-# Recipe:: get_cli_version
+# Recipe:: get_version
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-## Set the client version attributes.
+## Set the rdbms version attributes.
 #
 
 # Word of warning: the format of the strings output by 'opatch lsinventory' may
@@ -26,12 +26,12 @@
 #  - the patch number: 14727310  in our example (use the second field; the first one isn't reliable)
 #  - the timestamp: Fri Apr 05 16:49:37 EEST 2013 in our example
 #  - the version string: 11.2.0.3.5 in our example.
-ruby_block 'set_client_version_attr' do
+ruby_block 'set_rdbms_version_attr' do
   block do
-    patch_info = %x(sudo -u oracle #{node[:oracle][:client][:ora_home]}/OPatch/opatch lsinventory -bugs_fixed | grep -E '(#{node[:oracle][:rdbms][:latest_patch][:dirname]}) {3}\\1.* DATABASE PATCH SET UPDATE'
-    node.set[:oracle][:client][:install_info][:patch_nr] = patch_info[/(?!^.+)\b\d+/]
-    node.set[:oracle][:client][:install_info][:timestamp_str] = patch_info[/[MTWFS][a-z]+ [JFMASOND][a-z]+ \d{2} \d{2}:\d{2}:\d{2} [A-Z]+ \d{4}/]
-    node.set[:oracle][:client][:install_info][:version_str] = patch_info[/(\d+\.)+\d+/]
+  	patch_info = %x(sudo -u oracle #{node[:oracle][:rdbms][:ora_home]}/OPatch/opatch lsinventory -bugs_fixed | grep -E '(#{node[:oracle][:rdbms][:latest_patch][:dirname]}) {3}\\1.* DATABASE PATCH SET UPDATE')
+    node.set[:oracle][:rdbms][:install_info][:patch_nr] = patch_info[/(?!^.+)\b\d+/]
+    node.set[:oracle][:rdbms][:install_info][:timestamp_str] = patch_info[/[MTWFS][a-z]+ [JFMASOND][a-z]+ \d{2} \d{2}:\d{2}:\d{2} [A-Z]+ \d{4}/]
+    node.set[:oracle][:rdbms][:install_info][:version_str] = patch_info[/(\d+\.)+\d+/]
   end
   action :nothing
 end

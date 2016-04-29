@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: oracle
-# Recipe:: deps_cli_install
+# Recipe:: default
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,9 +14,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-## Install Oracle Client's dependencies.
+## Install logrorate and logrotate config for oracle's alert log.
 #
 
-node[:oracle][:client][:deps].each do |dep|
-  yum_package dep
+
+
+package "logrotate"
+
+# By default, this will rotate the alert_*.log files every week
+# and will store 10400 weeks' worth of logs.
+cookbook_file "/etc/logrotate.d/oracle-alert-log" do
+  source 'oracle-alert-log'
+  owner 'root'
+  group 'root'
+  mode '0644'
 end

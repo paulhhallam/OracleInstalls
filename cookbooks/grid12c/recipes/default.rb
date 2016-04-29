@@ -15,7 +15,7 @@
 # limitations under the License.
 
 # Baseline install for Grid itself
-include_recipe 'oracle12c::getgridbin' unless node[:oracle][:grid][:is_installed]
+include_recipe 'grid12c::getgridbin' unless node[:oracle][:grid][:is_installed]
 
 ## Patching oracle binaries to the latest patch
 # Node attribute changes for 12c, if default[:oracle][:rdbms][:dbbin_version] is set to 12c

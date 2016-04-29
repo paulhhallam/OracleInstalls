@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: oracle
-# Recipe:: default
+# Recipe:: ora_os_setup
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
 # limitations under the License.
 
 # Configure Oracle user, install the RDBMS's dependencies, configure
-# kernel parameters, install the binaries and apply latest patch.
+# kernel parameters.
 
 # Set up and configure the oracle user.
 include_recipe 'oracle::oracle_user_config'
@@ -31,18 +31,3 @@ end
 
 # Setting up kernel parameters
 include_recipe 'oracle::kernel_params'
-
-# Baseline install for Oracle itself
-include_recipe 'oracle::dbbin' unless node[:oracle][:rdbms][:is_installed]
-
-## Patching oracle binaries to the latest patch
-# Node attribute changes for 12c, if default[:oracle][:rdbms][:dbbin_version] is set to 12c
-if node[:oracle][:rdbms][:dbbin_version] == "12c"
-  node.set[:oracle][:rdbms][:ora_home] = node[:oracle][:rdbms][:ora_home_12c]
-  node.set[:oracle][:rdbms][:env] = node[:oracle][:rdbms][:env_12c]
-  node.set[:oracle][:rdbms][:latest_patch][:dirname] = node[:oracle][:rdbms][:latest_patch][:dirname_12c]
-  include_recipe 'oracle::latest_dbpatch' unless node[:oracle][:rdbms][:latest_patch][:is_installed]
-else
-  include_recipe 'oracle::latest_dbpatch' unless node[:oracle][:rdbms][:latest_patch][:is_installed]
-end
-

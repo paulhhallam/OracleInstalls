@@ -25,21 +25,21 @@ yum_package 'unzip'
 # we don't really want to include that at the moment as it has passwords encoded
 # For now we'll assume the software is local
 # 
-node[:oracle][:grid][:install_files].each do |zip_file|
-  execute "fetch_oracle_media_#{zip_file}" do
-    command "cp /u01/V* ."
-    user "grid"
-    group 'oinstall'
-    cwd node[:oracle][:grid][:install_dir]
-  end
-
-  execute "unzip_oracle_media_#{zip_file}" do
-    command "unzip -o #{File.basename(zip_file)}"
-    user "grid"
-    group 'oinstall'
-    cwd node[:oracle][:grid][:install_dir]
-  end
-end
+#phh# node[:oracle][:grid][:install_files].each do |zip_file|
+#phh#   execute "fetch_oracle_media_#{zip_file}" do
+#phh#     command "cp /u01/V* ."
+#phh#     user "grid"
+#phh#     group 'oinstall'
+#phh#     cwd node[:oracle][:grid][:install_dir]
+#phh#   end
+#phh# 
+#phh#   execute "unzip_oracle_media_#{zip_file}" do
+#phh#     command "unzip -o #{File.basename(zip_file)}"
+#phh#     user "grid"
+#phh#     group 'oinstall'
+#phh#     cwd node[:oracle][:grid][:install_dir]
+#phh#   end
+#phh# end
 
 file "#{node[:oracle][:grid][:install_dir]}/V*" do 
   action :delete
@@ -48,5 +48,22 @@ end
 bash 'clean_installer' do
     cwd "#{node[:oracle][:grid][:install_dir]}"
     code "rm -f V*"
-  end
- 
+end
+
+
+execute 'test_grid_installer' do
+  user "grid"
+  group "oinstall"
+  command "/u01/app/oracle/install_dir/grid/runcluvfy.sh stage -pre crsinst -n ambari5 -fixupnoexec > /u01/app/oracle/install_dir/grid/cluvfy.log"
+  ignore_failure true
+#  returns 0
+end
+
+bash 'touch_a_a' do
+  user "grid"
+  group "oinstall"
+  cwd "#{node[:oracle][:grid][:install_dir]}"
+  code "touch a.a"
+ignore_failure true
+end
+
