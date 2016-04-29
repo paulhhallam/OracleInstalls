@@ -8,4 +8,4 @@ client_key               "#{current_dir}/paul.pem"
 validation_client_name   "moluccan-validator"
 validation_key           "#{current_dir}/moluccan-validator.pem"
 chef_server_url          "https://ambari2/organizations/moluccan"
-cookbook_path            ["~/chef-repo/cookbooks"]
+cookbook_path            ["~/Desktop/OracleInstalls/cookbooks"]

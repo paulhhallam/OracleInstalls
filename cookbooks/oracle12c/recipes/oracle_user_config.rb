@@ -19,11 +19,11 @@
 #
 
 #
-# Create the oracle groups. 
+# Create all the oracle groups. 
 #
-node[:oracle][:user][:sup_grps].each_key do |grp|
+node[:oracle][:user][:new_grps].each_key do |grp|
   group grp do
-    gid node[:oracle][:user][:sup_grps][grp]
+    gid node[:oracle][:user][:new_grps][grp]
   end
 end
 
@@ -59,8 +59,6 @@ user 'oracle' do
   supports :manage_home => true
 end
 
-yum_package File.basename(node[:oracle][:user][:shell])
-
 #
 # Configure the oracle user groups.
 # 
@@ -71,17 +69,29 @@ node[:oracle][:user][:sup_grps].each_key do |grp|
   end
 end
 
+yum_package File.basename(node[:oracle][:user][:shell])
+
 #
-# Set up the users profile
+# Set up the ORACLE users profile
 #
-template "/home/oracle/.profile" do
+template "/home/oracle/.bash_profile" do
   action :create_if_missing
   source 'ora_profile.erb'
   owner 'oracle'
   group 'oinstall'
 end
 
-# Color setup for ls.
+#
+# Set up the GRID users profile
+#
+template "/home/grid/.bash_profile" do
+  action :create_if_missing
+  source 'ora_grid_profile.erb'
+  owner 'grid'
+  group 'oinstall'
+end
+#
+#        # Color setup for ls.
 #execute 'gen_dir_colors' do
 #  command '/usr/bin/dircolors -p > /home/oracle/.dir_colors'
 #  user 'oracle'
@@ -125,10 +135,24 @@ unless node[:oracle][:user][:pw_set]
   end
 end
 
-# Set resource limits for the oracle user.
-# # # # no longer required as oracle-rdbms-server-12cR1-preinstall installation covers this.
-# cookbook_file '/etc/security/limits.d/oracle.conf' do
-#  mode '0644'
-#  source 'ora_limits'
+# Set resource limits for the oracle and grid users.
+# partially no longer required as oracle-rdbms-server-12cR1-preinstall installation covers the oracle user.
+cookbook_file '/etc/security/limits.d/99-grid.conf' do
+  mode '0644'
+  source 'grid_limits'
+end
+#
+#file '/etc/security/limits.d/20-nproc.conf' do
+#  content 'grid              hard    nofile  63536'
 #end
 #
+
+ruby_block "insert_grid_ulimits" do
+  block do
+    file = Chef::Util::FileEdit.new("/etc/security/limits.d/20-nproc.conf")
+    file.insert_line_if_no_match("grid     hard    nofile  65536", "grid     hard    nofile  65536")
+    file.write_file
+  end
+end
+
+

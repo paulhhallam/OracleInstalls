@@ -18,6 +18,14 @@
 ## Configure kernel parameters for Oracle RDBMS.
 #
 
+ruby_block "create_swapfs" do
+  block do
+    file = Chef::Util::FileEdit.new("/etc/fstab")
+    file.insert_line_if_no_match("tmpfs  /dev/shm  /tmpfs  rw,exec,size=#{node['system']['mem']}g 0 0", "tmpfs  /dev/shm  /tmpfs  rw,exec,size=#{node['system']['mem']}g 0 0")
+    file.write_file
+  end
+end
+
 bash 'sysctl_reload' do
   code 'source /etc/init.d/functions && apply_sysctl'
   action :nothing
@@ -32,3 +40,18 @@ cookbook_file '/etc/sysctl.d/ora_params' do
   notifies :run, 'bash[sysctl_reload]', :immediately
 end
 
+service 'ntpd' do
+  action [ :stop, :disable ]
+end
+execute 'move_ntp_pid' do
+  command 'mv /etc/ntp.conf /etc/ntp.conf.orig'
+  only_if { File.exists?("/etc/ntp.conf") }
+end
+execute 'remove_ntp_pid' do
+  command 'rm /var/run/ntpd.pid'
+  only_if { File.exists?("/var/run/ntpd.pid") }
+end
+
+service 'avahi-daemon' do
+  action [ :stop, :disable ]
+end
