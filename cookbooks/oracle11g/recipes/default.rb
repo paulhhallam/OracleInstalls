@@ -28,8 +28,8 @@ include_recipe 'oracle11g::deps_install'
 include_recipe 'oracle11g::kernel_params'
 
 # Baseline install for Oracle itself
-#phh include_recipe 'oracle11g::dbbin' unless node[:oracle][:rdbms][:is_installed]
+include_recipe 'oracle11g::dbbin' unless node[:oracle][:rdbms][:is_installed]
 
 ## Patching oracle binaries to the latest patch
-#phh include_recipe 'oracle11g::latest_dbpatch' unless node[:oracle][:rdbms][:latest_patch][:is_installed]
+include_recipe 'oracle11g::latest_dbpatch' unless node[:oracle][:rdbms][:latest_patch][:is_installed]
 
