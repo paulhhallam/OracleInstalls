@@ -69,7 +69,8 @@ default[:oracle][:rdbms][:env_12c] = {
   'ORACLE_HOME' => node[:oracle][:rdbms][:ora_home_12c],
   'PATH' => "/usr/kerberos/bin:/usr/local/bin:/bin:/usr/bin:/usr/sbin:#{node[:oracle][:ora_base]}/dba/bin:#{node[:oracle][:rdbms][:ora_home_12c]}/bin:#{node[:oracle][:rdbms][:ora_home_12c]}/OPatch"}
 
-default[:oracle][:rdbms][:install_files] = ['/home/paul/Downloads/V46095-01_1of2.zip','/home/paul/Downloads/V46095-01_2of2.zip']
+#default[:oracle][:rdbms][:install_files] = ['/media/sf_oracle_kist/11g/linux.x64_11gR2_database_1of2.zip','/media/sf_oracle_kist/11g/linux.x64_11gR2_database_1of2.zip']
+#default[:oracle][:rdbms][:install_files] = ['/home/paul/Downloads/V46095-01_1of2.zip','/home/paul/Downloads/V46095-01_2of2.zip']
 
 # Passwords set by createdb.rb for the default open database users.
 # By order of appearance, those are: SYS, SYSTEM and DBSNMP.
@@ -79,20 +80,20 @@ default[:oracle][:rdbms][:system_pw] = 'system_pw_goes_here'
 default[:oracle][:rdbms][:dbsnmp_pw] = 'dbsnmp_pw_goes_here'
 
 # Settings related to patching.
-default[:oracle][:rdbms][:opatch_update_url] = 'https://https-server.example.localdomain/path/to/p6880880_112000_Linux-x86-64.zip'
-default[:oracle][:rdbms][:latest_patch][:url] = 'https://https-server.example.localdomain/path/to/p16619892_112030_Linux-x86-64.zip'
+#default[:oracle][:rdbms][:opatch_update_url] = 'https://https-server.example.localdomain/path/to/p6880880_112000_Linux-x86-64.zip'
+#default[:oracle][:rdbms][:latest_patch][:url] = 'https://https-server.example.localdomain/path/to/p16619892_112030_Linux-x86-64.zip'
 
 # Hash of DBs to create; the keys are the DBs' names, the values are Booleans,
 # with true indicating the DB has already been created and should be skipped
 # by createdb.rb. We don't create any DBs by default, hence the attribute's
 # value is set to an empty Hash.
-default[:oracle][:rdbms][:dbs] = {}
+#default[:oracle][:rdbms][:dbs] = {}
 # The directory under which we install the DBs.
-default[:oracle][:rdbms][:dbs_root] = "/oradata"
+#default[:oracle][:rdbms][:dbs_root] = "/oradata"
 
 # Local emConfiguration
 # Attributes for the local database dbcontrol for all databases.
-default[:oracle][:rdbms][:dbconsole][:emconfig] = true
-default[:oracle][:rdbms][:dbconsole][:sysman_pw] = 'sysman_pw_goes_here'
-default[:oracle][:rdbms][:dbconsole][:notification_email] = 'foo@bar.inet'
-default[:oracle][:rdbms][:dbconsole][:outgoing_mail] = 'mailhost'
+#default[:oracle][:rdbms][:dbconsole][:emconfig] = true
+#default[:oracle][:rdbms][:dbconsole][:sysman_pw] = 'sysman_pw_goes_here'
+#default[:oracle][:rdbms][:dbconsole][:notification_email] = 'foo@bar.inet'
+#default[:oracle][:rdbms][:dbconsole][:outgoing_mail] = 'mailhost'

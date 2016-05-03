@@ -80,7 +80,7 @@ unless node[:oracle][:rdbms][:latest_patch][:is_installed]
   end
   
   # Set the rdbms version attribute.
-  include_recipe 'oracle::get_version'
+  include_recipe 'oracle11g::get_version'
     
   # Set flag indicating latest patch has been applied.
   ruby_block 'set_latest_patch_install_flag' do

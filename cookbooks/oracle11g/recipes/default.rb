@@ -31,5 +31,5 @@ include_recipe 'oracleOSsetup::kernel_params'
 include_recipe 'oracle11g::dbbin' unless node[:oracle][:rdbms][:is_installed]
 
 ## Patching oracle binaries to the latest patch
-include_recipe 'oracle11g::latest_dbpatch' unless node[:oracle][:rdbms][:latest_patch][:is_installed]
+#phh#include_recipe 'oracle11g::latest_dbpatch' unless node[:oracle][:rdbms][:latest_patch][:is_installed]
 
