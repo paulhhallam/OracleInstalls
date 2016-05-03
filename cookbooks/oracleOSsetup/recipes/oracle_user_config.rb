@@ -76,7 +76,7 @@ yum_package File.basename(node[:oracle][:user][:shell])
 # Set up the ORACLE users profile
 #
 template "/home/oracle/.bash_profile" do
-  action :create_if_missing
+  action :create
   source 'ora_profile.erb'
   owner 'oracle'
   group 'oinstall'
@@ -86,7 +86,7 @@ end
 # Set up the GRID users profile
 #
 template "/home/grid/.bash_profile" do
-  action :create_if_missing
+  action :create
   source 'ora_grid_profile.erb'
   owner 'grid'
   group 'oinstall'

@@ -103,6 +103,11 @@ end
     group 'oinstall'
     mode '0644'
   end
+  template "#{node[:oracle][:rdbms][:ora_home]}/network/admin/sqlnet.ora" do
+    owner 'oracle'
+    group 'oinstall'
+    mode '0644'
+  end
   # Starting listener 
   execute 'start_listener' do
     command "#{node[:oracle][:rdbms][:ora_home]}/bin/lsnrctl start"

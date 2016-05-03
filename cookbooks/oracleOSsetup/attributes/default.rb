@@ -50,7 +50,7 @@ default[:oracle][:user][:new_grps] = {'oinstall' => 501, 'dba' => 502, 'oper' =>
 
 ## Settings specific to the Oracle RDBMS proper.
 default[:oracle][:rdbms][:dbbin_version] = '12c'
-default[:oracle][:rdbms][:ora_home] = "#{node[:oracle][:ora_base]}/11R23"
+default[:oracle][:rdbms][:ora_home] = "#{node[:oracle][:ora_base]}/product/11204/dbhome_1"
 default[:oracle][:rdbms][:ora_home_12c] = "#{node[:oracle][:ora_base]}/12R1"
 default[:oracle][:rdbms][:is_installed] = false
 default[:oracle][:rdbms][:install_info] = {}
@@ -69,6 +69,13 @@ default[:oracle][:rdbms][:env_12c] = {
   'ORACLE_HOME' => node[:oracle][:rdbms][:ora_home_12c],
   'PATH' => "/usr/kerberos/bin:/usr/local/bin:/bin:/usr/bin:/usr/sbin:#{node[:oracle][:ora_base]}/dba/bin:#{node[:oracle][:rdbms][:ora_home_12c]}/bin:#{node[:oracle][:rdbms][:ora_home_12c]}/OPatch"}
 
+# Oracle environment for 11g
+default[:oracle][:rdbms][:env] = {'ORACLE_BASE' => node[:oracle][:ora_base],
+                                  'ORACLE_HOME' => node[:oracle][:rdbms][:ora_home],
+                                  'PATH' => "/usr/kerberos/bin:/usr/local/bin:/bin:/usr/bin:/usr/sbin:#{node[:oracle][:ora_base]}/dba/bin:#{node[:oracle][:rdbms][:ora_home]}/bin:#{node[:oracle][:rdbms][:ora_home]}/OPatch"}
+#
+#
+#
 #default[:oracle][:rdbms][:install_files] = ['/media/sf_oracle_kist/11g/linux.x64_11gR2_database_1of2.zip','/media/sf_oracle_kist/11g/linux.x64_11gR2_database_1of2.zip']
 #default[:oracle][:rdbms][:install_files] = ['/home/paul/Downloads/V46095-01_1of2.zip','/home/paul/Downloads/V46095-01_2of2.zip']
 
