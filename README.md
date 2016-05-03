@@ -1,9 +1,13 @@
 The set of recipes in this cookbook are here to provide a means to install various different oracle database configurations; whether it is a single node oracle 11g or a clustered 12c rac installation.
 
 The recipes will, when completee, provide :
+
 A) The scripts to complete a basic host setup in preparation for an oracle install.
+
 B) An 11g single node database install, no ASM
-c) A 12c single node install with ASM
+
+C) A 12c single node install with ASM
+
 D) A cluster installation
 
 more to follow:
