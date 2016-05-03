@@ -1,4 +1,4 @@
-/opt/oracle/diag/rdbms/*/*/trace/alert_*.log {
+/u01/app/oracle/diag/rdbms/*/*/trace/alert_*.log {
 weekly
 copytruncate
 rotate 10400

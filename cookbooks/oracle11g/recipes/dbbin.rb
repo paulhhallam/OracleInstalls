@@ -51,14 +51,14 @@ yum_package 'unzip'
 # Fetching the install media with curl and unzipping them.
 # We run two resources to avoid chef-client's runaway memory usage resulting
 # in the kernel killing it.
-#phh#node[:oracle][:rdbms][:install_files].each do |zip_file|
-#phh#  execute "unzip_oracle_media_file_#{zip_file}" do
-#phh#    command "unzip -o #{zip_file}"
-#phh#    user "oracle"
-#phh#    group 'oinstall'
-#phh#    cwd node[:oracle][:rdbms][:install_dir]
-#phh#  end
-#phh#end
+node[:oracle][:rdbms][:install_files].each do |zip_file|
+  execute "unzip_oracle_media_file_#{zip_file}" do
+    command "unzip -o #{zip_file}"
+    user "oracle"
+    group 'oinstall'
+    cwd node[:oracle][:rdbms][:install_dir]
+  end
+end
 
 # This oraInst.loc specifies the standard oraInventory location.
 file "#{node[:oracle][:ora_base]}/oraInst.loc" do
@@ -87,12 +87,12 @@ end
 # We also ignore an exit status of 6: runInstaller fails to realise that
 # prerequisites are indeed met.
 
-#phh#  bash 'run_rdbms_installer' do
-#phh#    cwd "#{node[:oracle][:rdbms][:install_dir]}/database"
-#phh#    environment (node[:oracle][:rdbms][:env])
-#phh#    code "sudo -Eu oracle ./runInstaller -silent -waitforcompletion -ignoreSysPrereqs -responseFile #{node[:oracle][:rdbms][:install_dir]}/db11R23.rsp -invPtrLoc #{node[:oracle][:ora_base]}/oraInst.loc"
-#phh#    returns [0, 6]
-#phh#  end
+  bash 'run_rdbms_installer' do
+    cwd "#{node[:oracle][:rdbms][:install_dir]}/database"
+    environment (node[:oracle][:rdbms][:env])
+    code "sudo -Eu oracle ./runInstaller -silent -waitforcompletion -ignoreSysPrereqs -responseFile #{node[:oracle][:rdbms][:install_dir]}/db11R23.rsp -invPtrLoc #{node[:oracle][:ora_base]}/oraInst.loc"
+    returns [0, 6]
+  end
 
   execute 'root.sh_rdbms' do
     command "#{node[:oracle][:rdbms][:ora_home]}/root.sh"

@@ -71,7 +71,7 @@ end
 file "#{node[:oracle][:ora_base]}/oraInst.loc" do
   owner "oracle"
   group 'oinstall'
-  content "inst_group=oinstall\ninventory_loc=/opt/oraInventory"
+  content "inst_group=oinstall\ninventory_loc=#{node[:oracle][:ora_inventory]}\n"
 end
 
 directory node[:oracle][:ora_inventory] do

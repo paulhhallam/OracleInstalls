@@ -6,7 +6,7 @@ ORACLE_BASE=<%= node[:oracle][:ora_base] %>
 ORACLE_HOME=<%= node[:oracle][:grid][:ora_home] %>
 ORACLE_SID=
 ORACLE_UNQNAME=
-ORA_ENV=<%= File.basename node[:oracle][:grid][:ora_home] %>
+ORA_ENV=<%= File.basename node[:oracle][:grid][:grid_home] %>
 ORACLE_HOSTNAME=`hostname -f`
 export EDITOR ORACLE_BASE ORACLE_HOME ORACLE_SID ORA_ENV ORACLE_HOSTNAME
 

@@ -1,4 +1,4 @@
-/opt/oracle/diag/tnslsnr/*/listener/trace/listener.log {
+/u01/app/oracle/diag/tnslsnr/*/listener/trace/listener.log {
 weekly
 copytruncate
 rotate 8
