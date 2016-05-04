@@ -35,7 +35,7 @@ default[:oracle][:grid][:edb] = 'oracle'
 default[:oracle][:grid][:edb_item] = 'foo'
 default[:oracle][:grid][:grid_home] = "#{node[:oracle][:ora_base]}/grid"
 default[:oracle][:grid][:install_dir] = "#{node[:oracle][:ora_base]}/install_dir"
-default[:oracle][:grid][:sup_grps] = {'wheel' => 10, 'asmadmin' => 508, 'asmdba' => 505, 'asmoper' => 509, 'dba' => 502}
+default[:oracle][:grid][:sup_grps] = {'wheel' => 10, 'asmadmin' => 508, 'asmdba' => 505, 'asmoper' => 509, 'dba' => 502, 'vboxsf' => 978}
 default[:oracle][:grid][:install_files] = ['/u01/V46096-01_1of2.zip','/u01/V46096-01_2of2.zip']
 
 # Settings specific to the Oracle user.
@@ -45,7 +45,7 @@ default[:oracle][:user][:shell] = '/bin/bash'
 default[:oracle][:user][:pw_set] = false
 default[:oracle][:user][:edb] = 'oracle'
 default[:oracle][:user][:edb_item] = 'foo'
-default[:oracle][:user][:sup_grps] = {'wheel' => 10, 'oinstall' => 501, 'dba' => 502, 'oper' => 503, 'backupdba' => 504, 'asmdba' => 505, 'dgdba' => 506, 'kmdba' => 507, 'asmadmin' => 508, 'asmoper' => 509}
+default[:oracle][:user][:sup_grps] = {'wheel' => 10, 'oinstall' => 501, 'dba' => 502, 'oper' => 503, 'backupdba' => 504, 'asmdba' => 505, 'dgdba' => 506, 'kmdba' => 507, 'asmadmin' => 508, 'asmoper' => 509, 'vboxsf' => 978}
 default[:oracle][:user][:new_grps] = {'oinstall' => 501, 'dba' => 502, 'oper' => 503, 'backupdba' => 504, 'asmdba' => 505, 'dgdba' => 506, 'kmdba' => 507, 'asmadmin' => 508, 'asmoper' => 509}
 
 ## Settings specific to the Oracle RDBMS proper.

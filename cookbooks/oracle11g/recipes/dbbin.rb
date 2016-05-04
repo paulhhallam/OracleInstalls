@@ -87,46 +87,46 @@ end
 # We also ignore an exit status of 6: runInstaller fails to realise that
 # prerequisites are indeed met.
 
-  bash 'run_rdbms_installer' do
+bash 'run_rdbms_installer' do
     cwd "#{node[:oracle][:rdbms][:install_dir]}/database"
     environment (node[:oracle][:rdbms][:env])
     code "sudo -Eu oracle ./runInstaller -silent -waitforcompletion -ignoreSysPrereqs -responseFile #{node[:oracle][:rdbms][:install_dir]}/db11R23.rsp -invPtrLoc #{node[:oracle][:ora_base]}/oraInst.loc"
     returns [0, 6]
-  end
+end
 
-  execute 'root.sh_rdbms' do
+execute 'root.sh_rdbms' do
     command "#{node[:oracle][:rdbms][:ora_home]}/root.sh"
-  end
+end
  
-  template "#{node[:oracle][:rdbms][:ora_home]}/network/admin/listener.ora" do
+template "#{node[:oracle][:rdbms][:ora_home]}/network/admin/listener.ora" do
     owner 'oracle'
     group 'oinstall'
     mode '0644'
-  end
-  template "#{node[:oracle][:rdbms][:ora_home]}/network/admin/sqlnet.ora" do
+end
+template "#{node[:oracle][:rdbms][:ora_home]}/network/admin/sqlnet.ora" do
     owner 'oracle'
     group 'oinstall'
     mode '0644'
-  end
+end
   # Starting listener 
-  execute 'start_listener' do
+execute 'start_listener' do
     command "#{node[:oracle][:rdbms][:ora_home]}/bin/lsnrctl start"
     user 'oracle'
     group 'oinstall'
     environment (node[:oracle][:rdbms][:env])
-  end
+end
  
   # Install sqlplus startup config file.
-  cookbook_file "#{node[:oracle][:rdbms][:ora_home]}/sqlplus/admin/glogin.sql" do
+cookbook_file "#{node[:oracle][:rdbms][:ora_home]}/sqlplus/admin/glogin.sql" do
     owner 'oracle'
     group 'oinstall'
     mode '0644'
-  end
+end
 
-  template '/etc/init.d/oracle' do
+template '/etc/init.d/oracle' do
     source 'ora_init_script.erb'
     mode '0755'
-  end
+end
 
 # Set a flag to indicate the rdbms has been successfully installed.
 ruby_block 'set_rdbms_install_flag' do

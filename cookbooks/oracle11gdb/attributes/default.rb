@@ -25,7 +25,8 @@ default[:oracle11gdb][:rdbms][:dbs11g_root] = "/oradata"
 
 # Local emConfiguration
 # Attributes for the local database dbcontrol for all databases.
-default[:oracle11gdb][:rdbms][:dbconsole][:emconfig] = true
+default[:oracle11gdb][:rdbms][:dbconsole][:emconfig] = false
+#default[:oracle11gdb][:rdbms][:dbconsole][:emconfig] = true
 default[:oracle11gdb][:rdbms][:dbconsole][:sysman_pw] = 'sysman_pw_goes_here'
 default[:oracle11gdb][:rdbms][:dbconsole][:notification_email] = 'foo@bar.inet'
 default[:oracle11gdb][:rdbms][:dbconsole][:outgoing_mail] = 'mailhost'

@@ -1,34 +1,31 @@
-This cookbook is here as I am using it as a template to install and configure 11g on Red Hat 7 systems .
-===========
 
 Description
 ===========
 
-Installs and configures the Oracle RDBMS, patches it to the latest
-version and creates databases.
+Installs and configures the Oracle 11.2.0.4 RDBMS on Red Hat 7
 
-New features on v1.2.0
+To Do
+=====
+Include a recipe to patche to the latest version.
 
-* Oracle 12c Release 1 support with DBEXPRESS
+Prerequisites
+=============
+Chef server, workstation and clients configured.
 
-(Oracle client install is still 11g R2)
+All code is configured for installation on a RedHat 7 server.
 
-Tested with an Open Source Chef Server/Chef Client combo only.
+The "oracleOSconfig" recipe has been run on the Chef client.
 
-Oracle version 11.2.0.3 was used to develop this cookbook, but the
-code should work for other versions as well, with some
-modifications.
+Any examples in these cookbooks use:
 
-At the time this cookbook was being developed the latest patch was
-Patch 14727310 - 11.2.0.3.5, but it has now been updated to the
-latest patch from Oracle 7/16/2013, Patch 16619892 - 11.2.0.3.7
-Patch Set Update.
+	Chef Workstation	Ambari1
+	Chef Server		Ambari2
+	Chef Client		Ambari5
 
-For guidelines on how to adapt the cookbook for other PSU versions,
-see `latest_dbpatch`, under `Recipes`, below.
+	All test have been performed on servers that have been configured on Oracle VM Virtualbox.
 
-Quickstart (database)
-=====================
+This recipe will
+================
 
 * Have either an open Source Chef Server or a Hosted Chef account at
   the ready.
