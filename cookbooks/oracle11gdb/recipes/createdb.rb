@@ -70,7 +70,15 @@ node[:oracle11gdb][:rdbms][:dbs11g].each do |db, there|
     code "dbca -silent -createDatabase -templateName #{node[:oracle][:rdbms][:db_create_template]} -gdbname #{db} -sid #{db} -sysPassword #{node[:oracle][:rdbms][:sys_pw]} -systemPassword #{node[:oracle][:rdbms][:system_pw]}"
   end
 
-  # Add to listener.ora a stanza describing the new DB.
+# Settingi a flag to indicate, that the database has been created.
+  ruby_block "set_#{db}_install_flag" do
+    block do
+      node.set[:oracle11gdb][:rdbms][:dbs11g][there] = true
+    end
+    action :create
+  end
+
+# Add to listener.ora a stanza describing the new DB.
   ruby_block "append_#{db}_stanza_to_lsnr_conf" do
     block do
       lsnr_conf = "#{node[:oracle][:rdbms][:ora_home]}/network/admin/listener.ora"
@@ -148,14 +156,6 @@ node[:oracle11gdb][:rdbms][:dbs11g].each do |db, there|
   end
 
 # end # of create database.
-
-  # Settingi a flag to indicate, that the database has been created.
-  ruby_block "set_#{db}_install_flag" do
-    block do
-      node.set[:oracle][:rdbms][:dbs][db] = true
-    end
-    action :create
-  end
 
   # Append to tnsnames.ora a stanza describing the new DB
   execute "append_#{db}_to_tnsnames.ora" do
