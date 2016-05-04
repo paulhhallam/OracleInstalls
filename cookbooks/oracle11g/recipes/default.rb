@@ -19,17 +19,19 @@
 # kernel parameters, install the binaries and apply latest patch.
 
 # Set up and configure the oracle user.
-include_recipe 'oracleOSsetup::oracle_user_config'
+#phh# include_recipe 'oracleOSsetup::oracle_user_config'
 
 ## Install dependencies and configure kernel parameters.
-include_recipe 'oracleOSsetup::deps_install'
+#phh# include_recipe 'oracleOSsetup::deps_install'
 
 # Setting up kernel parameters
-include_recipe 'oracleOSsetup::kernel_params'
+#phh# include_recipe 'oracleOSsetup::kernel_params'
 
 # Baseline install for Oracle itself
-include_recipe 'oracle11g::dbbin' unless node[:oracle][:rdbms][:is_installed]
+#phh# include_recipe 'oracle11g::dbbin' unless node[:oracle][:rdbms][:is_installed]
 
 ## Patching oracle binaries to the latest patch
 #phh#include_recipe 'oracle11g::latest_dbpatch' unless node[:oracle][:rdbms][:latest_patch][:is_installed]
 
+# Create the databases
+include_recipe 'oracle11g::createdb'

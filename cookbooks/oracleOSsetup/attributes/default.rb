@@ -94,9 +94,9 @@ default[:oracle][:rdbms][:dbsnmp_pw] = 'dbsnmp_pw_goes_here'
 # with true indicating the DB has already been created and should be skipped
 # by createdb.rb. We don't create any DBs by default, hence the attribute's
 # value is set to an empty Hash.
-#default[:oracle][:rdbms][:dbs] = {}
+default[:oracle][:rdbms][:dbs12c] = {}
 # The directory under which we install the DBs.
-#default[:oracle][:rdbms][:dbs_root] = "/oradata"
+default[:oracle][:rdbms][:dbs12c_root] = "/u01/app/oradata"
 
 # Local emConfiguration
 # Attributes for the local database dbcontrol for all databases.

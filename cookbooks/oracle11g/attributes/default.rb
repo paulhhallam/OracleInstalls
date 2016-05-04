@@ -26,9 +26,9 @@ default[:oracle][:rdbms][:latest_patch][:url] = 'https://https-server.example.lo
 # with true indicating the DB has already been created and should be skipped
 # by createdb.rb. We don't create any DBs by default, hence the attribute's
 # value is set to an empty Hash.
-default[:oracle][:rdbms][:dbs] = {}
+default[:oracle][:rdbms][:dbs11g] = {'db1' => false,'db2' => false}
 # The directory under which we install the DBs.
-default[:oracle][:rdbms][:dbs_root] = "/oradata"
+default[:oracle][:rdbms][:dbs11g_root] = "/oradata"
 
 # Local emConfiguration
 # Attributes for the local database dbcontrol for all databases.
