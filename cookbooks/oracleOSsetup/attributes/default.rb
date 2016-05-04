@@ -90,17 +90,3 @@ default[:oracle][:rdbms][:dbsnmp_pw] = 'dbsnmp_pw_goes_here'
 #default[:oracle][:rdbms][:opatch_update_url] = 'https://https-server.example.localdomain/path/to/p6880880_112000_Linux-x86-64.zip'
 #default[:oracle][:rdbms][:latest_patch][:url] = 'https://https-server.example.localdomain/path/to/p16619892_112030_Linux-x86-64.zip'
 
-# Hash of DBs to create; the keys are the DBs' names, the values are Booleans,
-# with true indicating the DB has already been created and should be skipped
-# by createdb.rb. We don't create any DBs by default, hence the attribute's
-# value is set to an empty Hash.
-default[:oracle][:rdbms][:dbs12c] = {}
-# The directory under which we install the DBs.
-default[:oracle][:rdbms][:dbs12c_root] = "/u01/app/oradata"
-
-# Local emConfiguration
-# Attributes for the local database dbcontrol for all databases.
-#default[:oracle][:rdbms][:dbconsole][:emconfig] = true
-#default[:oracle][:rdbms][:dbconsole][:sysman_pw] = 'sysman_pw_goes_here'
-#default[:oracle][:rdbms][:dbconsole][:notification_email] = 'foo@bar.inet'
-#default[:oracle][:rdbms][:dbconsole][:outgoing_mail] = 'mailhost'

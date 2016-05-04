@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: oracle
+# Cookbook Name:: oracle11gdb
 # Recipe:: createdb
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 ## Create Oracle databases.
 #
 
-directory node[:oracle][:rdbms][:dbs11g_root] do
+directory node[:oracle11gdb][:rdbms][:dbs11g_root] do
   owner 'oracle'
   group 'oinstall'
   mode '0755'
@@ -43,16 +43,16 @@ end
 # If :oracle[:rdbms][:dbs11g] is empty, we print a warning to STDOUT.
 ruby_block "print_empty_db_hash_warning" do
   block do
-    Chef::Log.warn(":oracle[:rdbms][:dbs11g] is empty; no database will be created.")
+    Chef::Log.warn(":oracle11gdb[:rdbms][:dbs11g] is empty; no database will be created.")
   end
   action :create
-  only_if {node[:oracle][:rdbms][:dbs11g].empty?}
+  only_if {node[:oracle11gdb][:rdbms][:dbs11g].empty?}
 end
 
 #node[:oracle][:rdbms][:dbs11g].each_key do |db|
-node[:oracle][:rdbms][:dbs11g].each do |db, there|
+node[:oracle11gdb][:rdbms][:dbs11g].each do |db, there|
 
-  if node[:oracle][:rdbms][:dbs11g][there]
+  if node[:oracle11gdb][:rdbms][:dbs11g][there]
     ruby_block "print_#{db}_skipped_msg" do
       block do
         Chef::Log.info("Database #{db} has already been created on this node- skipping it.")
@@ -91,7 +91,7 @@ node[:oracle][:rdbms][:dbs11g].each do |db, there|
   end
     
   # Configure dbcontrol.
-  if node[:oracle][:rdbms][:dbconsole][:emconfig]
+  if node[:oracle11gdb][:rdbms][:dbconsole][:emconfig]
     # Creating em.rsp file for dbcontrol.
     template "#{node[:oracle][:rdbms][:ora_home]}/em.rsp" do
       owner 'oracle'
@@ -178,7 +178,7 @@ node[:oracle][:rdbms][:dbs11g].each do |db, there|
   end
 
   # Creating a directory for EXPORTS directory object.
-  directory "#{node[:oracle][:rdbms][:dbs11g_root]}/#{db}/export" do
+  directory "#{node[:oracle11gdb][:rdbms][:dbs11g_root]}/#{db}/export" do
     owner 'oracle'
     group 'dba'
     mode '0755'
@@ -195,15 +195,15 @@ node[:oracle][:rdbms][:dbs11g].each do |db, there|
     code <<-EOH3
        export ORACLE_SID=#{db}
        sqlplus / as sysdba <<-EOL2
-       ALTER DATABASE ENABLE BLOCK CHANGE TRACKING USING FILE '#{node[:oracle][:rdbms][:dbs11g_root]}/#{db}/data1/#{db}_block_change_tracking.trk';
-       CREATE DIRECTORY "EXPORT" AS '#{node[:oracle][:rdbms][:dbs11g_root]}/#{db}/export';
+       ALTER DATABASE ENABLE BLOCK CHANGE TRACKING USING FILE '#{node[:oracle11gdb][:rdbms][:dbs11g_root]}/#{db}/data1/#{db}_block_change_tracking.trk';
+       CREATE DIRECTORY "EXPORT" AS '#{node[:oracle11gdb][:rdbms][:dbs11g_root]}/#{db}/export';
        exit
        EOL2
     EOH3
   end
 
   # Creating a directory for RMAN backups.
-  directory "#{node[:oracle][:rdbms][:dbs11g_root]}/#{db}/backup1" do
+  directory "#{node[:oracle11gdb][:rdbms][:dbs11g_root]}/#{db}/backup1" do
     owner 'oracle'
     group 'oinstall'
     mode '0755'

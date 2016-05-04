@@ -1,6 +1,7 @@
 #
-# Cookbook Name:: oracle
-# Recipe:: ora_os_setup
+#
+## Cookbook Name:: oracle11gdb
+# Recipe:: default
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,19 +16,7 @@
 # limitations under the License.
 
 # Configure Oracle user, install the RDBMS's dependencies, configure
-# kernel parameters.
+# kernel parameters, install the binaries and apply latest patch.
 
-# Set up and configure the oracle user.
-include_recipe 'oracle::oracle_user_config'
-
-## Install dependencies and configure kernel parameters.
-# Node attribute changes for 12c, if default[:oracle][:rdbms][:dbbin_version] is set to 12c
-if node[:oracle][:rdbms][:dbbin_version] == "12c"
-  node.set[:oracle][:rdbms][:deps] = node[:oracle][:rdbms][:deps_12c]
-  include_recipe 'oracle::deps_install'
-else
-  include_recipe 'oracle::deps_install'
-end
-
-# Setting up kernel parameters
-include_recipe 'oracle::kernel_params'
+# Create the databases
+include_recipe 'oracle11gdb::createdb'
