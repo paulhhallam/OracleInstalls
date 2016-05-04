@@ -2,13 +2,15 @@ The set of recipes in this cookbook are here to provide a means to install vario
 
 The recipes will, when completee, provide :
 
-A) The scripts to complete a basic host setup in preparation for an oracle install.
+A) 11g/12c - The scripts to complete a basic host setup in preparation for an oracle install.
 
-B) An 11g single node database install, no ASM
+B) 11g - A single node Database Enterprise Edition software only install.
 
-C) A 12c single node install with ASM
+C) 11g - Create one or more single node databases (For B).
 
-D) A cluster installation
+D) A 12c single node install with ASM
+
+E) A cluster installation
 
 more to follow:
 
