@@ -53,6 +53,7 @@ default[:oracle][:rdbms][:dbbin_version] = '12c'
 default[:oracle][:rdbms][:ora_home] = "#{node[:oracle][:ora_base]}/product/11204/dbhome_1"
 default[:oracle][:rdbms][:ora_home_12c] = "#{node[:oracle][:ora_base]}/12R1"
 default[:oracle][:rdbms][:is_installed] = false
+default[:oracle][:rdbms][:os_installed] = false
 default[:oracle][:rdbms][:install_info] = {}
 default[:oracle][:rdbms][:install_dir] = "#{node[:oracle][:ora_base]}/install_dir"
 default[:oracle][:rdbms][:response_file_url] = ''

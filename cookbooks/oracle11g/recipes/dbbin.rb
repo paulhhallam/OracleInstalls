@@ -131,7 +131,7 @@ end
 # Set a flag to indicate the rdbms has been successfully installed.
 ruby_block 'set_rdbms_install_flag' do
   block do
-    node.set[:oracle][:rdbms][:is_installed] = true
+    node.set[:oracle][:rdbms][:os_installed] = true
   end
   action :create
 end

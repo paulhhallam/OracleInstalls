@@ -62,13 +62,13 @@ node[:oracle11gdb][:rdbms][:dbs11g].each do |db, there|
     next
   end
 
-#phh#  # 11g
-#phh#  bash "dbca_11g_createdb_#{db}" do
-#phh#    user "oracle"
-#phh#    group "oinstall"
-#phh#    environment (node[:oracle][:rdbms][:env])
-#phh#    code "dbca -silent -createDatabase -templateName #{node[:oracle][:rdbms][:db_create_template]} -gdbname #{db} -sid #{db} -sysPassword #{node[:oracle][:rdbms][:sys_pw]} -systemPassword #{node[:oracle][:rdbms][:system_pw]}"
-#phh#  end
+  # 11g
+  bash "dbca_11g_createdb_#{db}" do
+    user "oracle"
+    group "oinstall"
+    environment (node[:oracle][:rdbms][:env])
+    code "dbca -silent -createDatabase -templateName #{node[:oracle][:rdbms][:db_create_template]} -gdbname #{db} -sid #{db} -sysPassword #{node[:oracle][:rdbms][:sys_pw]} -systemPassword #{node[:oracle][:rdbms][:system_pw]}"
+  end
 
   # Add to listener.ora a stanza describing the new DB.
   ruby_block "append_#{db}_stanza_to_lsnr_conf" do
@@ -132,19 +132,19 @@ node[:oracle11gdb][:rdbms][:dbs11g].each do |db, there|
         group 'oinstall'
         environment (node[:oracle][:rdbms][:env])
     end
-  end
     
-  # Making sure shred is available
-  yum_package "coreutils" do
-    action :install
-    arch 'x86_64'
-  end
+    # Making sure shred is available
+    yum_package "coreutils" do
+      action :install
+      arch 'x86_64'
+    end
 
-  # Shreding the em.rsp to get rid of the passwords.
-  execute "shred_em_rsp_#{db}" do
-    command "/usr/bin/shred -zu #{node[:oracle][:rdbms][:ora_home]}/em.rsp"
-    user 'root'
-    group 'root'
+    # Shreding the em.rsp to get rid of the passwords.
+    execute "shred_em_rsp_#{db}" do
+      command "/usr/bin/shred -zu #{node[:oracle][:rdbms][:ora_home]}/em.rsp"
+      user 'root'
+      group 'root'
+    end
   end
 
 # end # of create database.
@@ -211,7 +211,7 @@ node[:oracle11gdb][:rdbms][:dbs11g].each do |db, there|
 
   # Set the ORACLE_SID correctly in oracle's .profile.
   execute "set_oracle_sid_to_oracle_profile_#{db}" do
-    command "sed -i 's/ORACLE_SID=.*/ORACLE_SID=#{db}/g' /home/oracle/.profile"
+    command "sed -i 's/ORACLE_SID=.*/ORACLE_SID=#{db}/g' /home/oracle/.bash_profile"
     user 'oracle'
     group 'oinstall'
     environment (node[:oracle][:rdbms][:env])
@@ -219,7 +219,7 @@ node[:oracle11gdb][:rdbms][:dbs11g].each do |db, there|
 
   # Set the ORACLE_UNQNAME correctly in oracle's .profile.
   execute "set_oracle_unqname_to_oracle_profile_#{db}" do
-    command "sed -i 's/ORACLE_UNQNAME=.*/ORACLE_UNQNAME=#{db}/g' /home/oracle/.profile"
+    command "sed -i 's/ORACLE_UNQNAME=.*/ORACLE_UNQNAME=#{db}/g' /home/oracle/.bash_profile"
     user 'oracle'
     group 'oinstall'
     environment (node[:oracle][:rdbms][:env])
