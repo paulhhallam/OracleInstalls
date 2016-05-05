@@ -4,7 +4,7 @@ ORACLE_HOSTNAME=<%= node[:fqdn] %>
 UNIX_GROUP_NAME=oinstall
 INVENTORY_LOCATION=/opt/oraInventory
 SELECTED_LANGUAGES=en
-ORACLE_HOME=<%= node[:oracle][:rdbms][:ora_home] %>
+ORACLE_HOME=<%= node[:oracle][:rdbms11g][:ora_home] %>
 ORACLE_BASE=<%= node[:oracle][:ora_base] %>
 oracle.install.db.InstallEdition=EE
 oracle.install.db.EEOptionsSelection=false

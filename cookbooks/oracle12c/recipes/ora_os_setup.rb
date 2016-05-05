@@ -21,9 +21,9 @@
 include_recipe 'oracle::oracle_user_config'
 
 ## Install dependencies and configure kernel parameters.
-# Node attribute changes for 12c, if default[:oracle][:rdbms][:dbbin_version] is set to 12c
-if node[:oracle][:rdbms][:dbbin_version] == "12c"
-  node.set[:oracle][:rdbms][:deps] = node[:oracle][:rdbms][:deps_12c]
+# Node attribute changes for 12c, if default[:oracle][:rdbms12c][:dbbin_version] is set to 12c
+if node[:oracle][:rdbms12c][:dbbin_version] == "12c"
+  node.set[:oracle][:rdbms12c][:deps] = node[:oracle][:rdbms12c][:deps]
   include_recipe 'oracle::deps_install'
 else
   include_recipe 'oracle::deps_install'

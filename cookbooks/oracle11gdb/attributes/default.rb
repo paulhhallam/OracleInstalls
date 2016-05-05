@@ -19,14 +19,14 @@
 # with true indicating the DB has already been created and should be skipped
 # by createdb.rb. We don't create any DBs by default, hence the attribute's
 # value is set to an empty Hash.
-default[:oracle11gdb][:rdbms][:dbs11g] = {'db1' => false,'db2' => false}
+default[:oracle][:rdbms11g][:dbs] = {'db1' => false}
 # The directory under which we install the DBs.
-default[:oracle11gdb][:rdbms][:dbs11g_root] = "/oradata"
+default[:oracle][:rdbms11g][:dbs_root] = "/oradata"
 
 # Local emConfiguration
 # Attributes for the local database dbcontrol for all databases.
-default[:oracle11gdb][:rdbms][:dbconsole][:emconfig] = false
-#default[:oracle11gdb][:rdbms][:dbconsole][:emconfig] = true
-default[:oracle11gdb][:rdbms][:dbconsole][:sysman_pw] = 'sysman_pw_goes_here'
-default[:oracle11gdb][:rdbms][:dbconsole][:notification_email] = 'foo@bar.inet'
-default[:oracle11gdb][:rdbms][:dbconsole][:outgoing_mail] = 'mailhost'
+default[:oracle][:rdbms11g][:dbconsole][:emconfig] = false
+#default[:oracle][:rdbms11g][:dbconsole][:emconfig] = true
+default[:oracle][:rdbms11g][:dbconsole][:sysman_pw] = 'sysman_pw_goes_here'
+default[:oracle][:rdbms11g][:dbconsole][:notification_email] = 'foo@bar.inet'
+default[:oracle][:rdbms11g][:dbconsole][:outgoing_mail] = 'mailhost'

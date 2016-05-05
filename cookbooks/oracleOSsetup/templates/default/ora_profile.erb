@@ -3,10 +3,10 @@ ulimit -S -c unlimited > /dev/null 2>&1
 
 EDITOR=/bin/vi
 ORACLE_BASE=<%= node[:oracle][:ora_base] %>
-ORACLE_HOME=<%= node[:oracle][:rdbms][:ora_home] %>
+ORACLE_HOME=<%= node[:oracle][:rdbms11g][:ora_home] %>
 ORACLE_SID=
 ORACLE_UNQNAME=
-ORA_ENV=<%= File.basename node[:oracle][:rdbms][:ora_home] %>
+ORA_ENV=<%= File.basename node[:oracle][:rdbms11g][:ora_home] %>
 ORACLE_HOSTNAME=`hostname -f`
 export EDITOR ORACLE_BASE ORACLE_HOME ORACLE_SID ORA_ENV ORACLE_HOSTNAME
 

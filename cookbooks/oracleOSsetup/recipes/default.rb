@@ -29,12 +29,5 @@ include_recipe 'oracleOSsetup::deps_install'
 include_recipe 'oracleOSsetup::kernel_params'
 
 # Baseline install for Oracle itself
-include_recipe 'oracleOSsetup::getgridbin' unless node[:oracle][:grid][:is_installed]
-
-## Patching oracle binaries to the latest patch
-# Node attribute changes for 12c, if default[:oracle][:rdbms][:dbbin_version] is set to 12c
-#phh  node.set[:oracle][:rdbms][:ora_home] = node[:oracle][:rdbms][:ora_home_12c]
-#phh  node.set[:oracle][:rdbms][:env] = node[:oracle][:rdbms][:env_12c]
-#phh  node.set[:oracle][:rdbms][:latest_patch][:dirname] = node[:oracle][:rdbms][:latest_patch][:dirname_12c]
-#phh  include_recipe 'oracleOSsetup::latest_dbpatch' unless node[:oracle][:rdbms][:latest_patch][:is_installed]
+#include_recipe 'oracleOSsetup::getgridbin' unless node[:oracle][:grid][:is_installed]
 

@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ENV['ORACLE_HOME'] = node[:oracle][:rdbms][:ora_home]
+ENV['ORACLE_HOME'] = node[:oracle][:rdbms12c][:ora_home]
 
 gem_package 'ruby-oci8' do
   gem_binary('/opt/chef/embedded/bin/gem') if File.exists?('/opt/chef/embedded/bin/gem')

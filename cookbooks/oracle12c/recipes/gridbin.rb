@@ -36,7 +36,7 @@ execute "chown_back_to_oinstall" do
 end
 
 # Creating $ORACLE_BASE and the install directory.
-[node[:oracle][:ora_base], node[:oracle][:rdbms][:install_dir]].each do |dir|
+[node[:oracle][:ora_base], node[:oracle][:rdbms12c][:install_dir]].each do |dir|
   directory dir do
     owner 'oracle'
     group 'oinstall'
@@ -51,19 +51,19 @@ yum_package 'unzip'
 # Fetching the install media with curl and unzipping them.
 # We run two resources to avoid chef-client's runaway memory usage resulting
 # in the kernel killing it.
-node[:oracle][:rdbms][:install_files].each do |zip_file|
+node[:oracle][:rdbms12c][:install_files].each do |zip_file|
   execute "fetch_oracle_media_#{zip_file}" do
     command "cp /opt/oracle/V* ."
     user "oracle"
     group 'oinstall'
-    cwd node[:oracle][:rdbms][:install_dir]
+    cwd node[:oracle][:rdbms12c][:install_dir]
   end
 
   execute "unzip_oracle_media_#{zip_file}" do
     command "unzip #{File.basename(zip_file)}"
     user "oracle"
     group 'oinstall'
-    cwd node[:oracle][:rdbms][:install_dir]
+    cwd node[:oracle][:rdbms12c][:install_dir]
   end
 end
 
@@ -82,14 +82,14 @@ directory node[:oracle][:ora_inventory] do
 end
 
 # Filesystem template.
-template "#{node[:oracle][:rdbms][:install_dir]}/db11R23.rsp" do
+template "#{node[:oracle][:rdbms12c][:install_dir]}/db11R23.rsp" do
   owner 'oracle'
   group 'oinstall'
   mode '0644'
 end
 
 # Filesystem template.
-template "#{node[:oracle][:rdbms][:install_dir]}/db12c.rsp" do
+template "#{node[:oracle][:rdbms12c][:install_dir]}/db12c.rsp" do
   owner 'oracle'
   group 'oinstall'
   mode '0644'
@@ -101,34 +101,34 @@ end
 # We also ignore an exit status of 6: runInstaller fails to realise that
 # prerequisites are indeed met on CentOS 6.4.
 
-if node[:oracle][:rdbms][:dbbin_version] == "11g"
+if node[:oracle][:rdbms12c][:dbbin_version] == "11g"
  
-  bash 'run_rdbms_installer' do
-    cwd "#{node[:oracle][:rdbms][:install_dir]}/database"
-    environment (node[:oracle][:rdbms][:env])
-    code "sudo -Eu oracle ./runInstaller -showProgress -silent -waitforcompletion -ignoreSysPrereqs -responseFile #{node[:oracle][:rdbms][:install_dir]}/db11R23.rsp -invPtrLoc #{node[:oracle][:ora_base]}/oraInst.loc"
+  bash 'run_rdbms12c_installer' do
+    cwd "#{node[:oracle][:rdbms12c][:install_dir]}/database"
+    environment (node[:oracle][:rdbms12c][:env])
+    code "sudo -Eu oracle ./runInstaller -showProgress -silent -waitforcompletion -ignoreSysPrereqs -responseFile #{node[:oracle][:rdbms12c][:install_dir]}/db11R23.rsp -invPtrLoc #{node[:oracle][:ora_base]}/oraInst.loc"
     returns [0, 6]
   end
 
-  execute 'root.sh_rdbms' do
-    command "#{node[:oracle][:rdbms][:ora_home]}/root.sh"
+  execute 'root.sh_rdbms12c' do
+    command "#{node[:oracle][:rdbms12c][:ora_home]}/root.sh"
   end
  
-  template "#{node[:oracle][:rdbms][:ora_home]}/network/admin/listener.ora" do
+  template "#{node[:oracle][:rdbms12c][:ora_home]}/network/admin/listener.ora" do
     owner 'oracle'
     group 'oinstall'
     mode '0644'
   end
   # Starting listener 
   execute 'start_listener' do
-    command "#{node[:oracle][:rdbms][:ora_home]}/bin/lsnrctl start"
+    command "#{node[:oracle][:rdbms12c][:ora_home]}/bin/lsnrctl start"
     user 'oracle'
     group 'oinstall'
-    environment (node[:oracle][:rdbms][:env])
+    environment (node[:oracle][:rdbms12c][:env])
   end
  
   # Install sqlplus startup config file.
-  cookbook_file "#{node[:oracle][:rdbms][:ora_home]}/sqlplus/admin/glogin.sql" do
+  cookbook_file "#{node[:oracle][:rdbms12c][:ora_home]}/sqlplus/admin/glogin.sql" do
     owner 'oracle'
     group 'oinstall'
     mode '0644'
@@ -141,33 +141,33 @@ if node[:oracle][:rdbms][:dbbin_version] == "11g"
 
 else
  
-  bash 'run_rdbms_installer' do
-    cwd "#{node[:oracle][:rdbms][:install_dir]}/database"
-    environment (node[:oracle][:rdbms][:env_12c])
-    code "sudo -Eu oracle ./runInstaller -showProgress -silent -waitforcompletion -ignoreSysPrereqs -responseFile #{node[:oracle][:rdbms][:install_dir]}/db12c.rsp -invPtrLoc #{node[:oracle][:ora_base]}/oraInst.loc"
+  bash 'run_rdbms12c_installer' do
+    cwd "#{node[:oracle][:rdbms12c][:install_dir]}/database"
+    environment (node[:oracle][:rdbms12c][:env_12c])
+    code "sudo -Eu oracle ./runInstaller -showProgress -silent -waitforcompletion -ignoreSysPrereqs -responseFile #{node[:oracle][:rdbms12c][:install_dir]}/db12c.rsp -invPtrLoc #{node[:oracle][:ora_base]}/oraInst.loc"
     returns [0, 6]
   end
  
-  execute 'root.sh_rdbms' do
-    command "#{node[:oracle][:rdbms][:ora_home_12c]}/root.sh"
+  execute 'root.sh_rdbms12c' do
+    command "#{node[:oracle][:rdbms12c][:ora_home_12c]}/root.sh"
   end
  
   # Commented out to get DBEXPRESS work out of the box
-  #template "#{node[:oracle][:rdbms][:ora_home_12c]}/network/admin/listener.ora" do
+  #template "#{node[:oracle][:rdbms12c][:ora_home_12c]}/network/admin/listener.ora" do
   #  owner 'oracle'
   #  group 'oinstall'
   #  mode '0644'
   #end
  
   execute 'start_listener' do
-    command "#{node[:oracle][:rdbms][:ora_home_12c]}/bin/lsnrctl start"
+    command "#{node[:oracle][:rdbms12c][:ora_home_12c]}/bin/lsnrctl start"
     user 'oracle'
     group 'oinstall'
-    environment (node[:oracle][:rdbms][:env_12c])
+    environment (node[:oracle][:rdbms12c][:env_12c])
   end
  
   # Install sqlplus startup config file.
-  cookbook_file "#{node[:oracle][:rdbms][:ora_home_12c]}/sqlplus/admin/glogin.sql" do
+  cookbook_file "#{node[:oracle][:rdbms12c][:ora_home_12c]}/sqlplus/admin/glogin.sql" do
     owner 'oracle'
     group 'oinstall'
     mode '0644'
@@ -181,17 +181,17 @@ else
 end
 
 execute 'install_dir_cleanup' do
-  command "rm -rf #{node[:oracle][:rdbms][:install_dir]}/*"
+  command "rm -rf #{node[:oracle][:rdbms12c][:install_dir]}/*"
 end
 
 service 'oracle' do
   action :enable
 end
 
-# Set a flag to indicate the rdbms has been successfully installed.
-ruby_block 'set_rdbms_install_flag' do
+# Set a flag to indicate the rdbms12c has been successfully installed.
+ruby_block 'set_rdbms12c_install_flag' do
   block do
-    node.set[:oracle][:rdbms][:is_installed] = true
+    node.set[:oracle][:rdbms12c][:is_installed] = true
   end
   action :create
 end

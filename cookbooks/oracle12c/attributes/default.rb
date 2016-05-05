@@ -16,6 +16,8 @@
 #
 
 default[:oracle][:rdbms12c][:install_files] = ['/media/sf_oracle_kits/12c/28092015/V46095-01_1of2_Database_12_1_0_2_0.zip','/media/sf_oracle_kits/12c/28092015/V46095-01_2of2_Database_12_1_0_2_0.zip']
+default[:oracle][:rdbms12c][:install_dir] = "/media/sf_oracle_kits/12c/28092015/"
+#default[:oracle][:rdbms12c][:install_dir] = "#{node[:oracle][:ora_base]}/install_dir"
 
 # Settings related to patching.
 default[:oracle][:rdbms12c][:opatch_update_url] = 'https://https-server.example.localdomain/path/to/p6880880_112000_Linux-x86-64.zip'

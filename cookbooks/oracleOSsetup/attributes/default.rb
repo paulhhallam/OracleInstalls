@@ -35,7 +35,7 @@ default[:oracle][:grid][:edb] = 'oracle'
 default[:oracle][:grid][:edb_item] = 'foo'
 default[:oracle][:grid][:grid_home] = "#{node[:oracle][:ora_base]}/grid"
 default[:oracle][:grid][:install_dir] = "#{node[:oracle][:ora_base]}/install_dir"
-default[:oracle][:grid][:sup_grps] = {'wheel' => 10, 'asmadmin' => 508, 'asmdba' => 505, 'asmoper' => 509, 'dba' => 502, 'vboxsf' => 978}
+default[:oracle][:grid][:sup_grps] = {'wheel' => 10, 'asmadmin' => 508, 'asmdba' => 505, 'asmoper' => 509, 'dba' => 502, 'bckpdba' => 504, 'vboxsf' => 978}
 default[:oracle][:grid][:install_files] = ['/u01/V46096-01_1of2.zip','/u01/V46096-01_2of2.zip']
 
 # Settings specific to the Oracle user.
@@ -45,24 +45,24 @@ default[:oracle][:user][:shell] = '/bin/bash'
 default[:oracle][:user][:pw_set] = false
 default[:oracle][:user][:edb] = 'oracle'
 default[:oracle][:user][:edb_item] = 'foo'
-default[:oracle][:user][:sup_grps] = {'wheel' => 10, 'oinstall' => 501, 'dba' => 502, 'oper' => 503, 'backupdba' => 504, 'asmdba' => 505, 'dgdba' => 506, 'kmdba' => 507, 'asmadmin' => 508, 'asmoper' => 509, 'vboxsf' => 978}
-default[:oracle][:user][:new_grps] = {'oinstall' => 501, 'dba' => 502, 'oper' => 503, 'backupdba' => 504, 'asmdba' => 505, 'dgdba' => 506, 'kmdba' => 507, 'asmadmin' => 508, 'asmoper' => 509}
+default[:oracle][:user][:sup_grps] = {'wheel' => 10, 'oinstall' => 501, 'dba' => 502, 'oper' => 503, 'bckpdba' => 504, 'asmdba' => 505, 'dgdba' => 506, 'kmdba' => 507, 'asmadmin' => 508, 'asmoper' => 509, 'vboxsf' => 978}
+#default[:oracle][:user][:new_grps] = {'oinstall' => 501, 'dba' => 502, 'oper' => 503, 'backupdba' => 504, 'asmdba' => 505, 'dgdba' => 506, 'kmdba' => 507, 'asmadmin' => 508, 'asmoper' => 509}
+default[:oracle][:user][:new_grps] = {'oinstall' => 501, 'dba' => 502, 'oper' => 503, 'bckpdba' => 504, 'asmdba' => 505, 'dgdba' => 506, 'kmdba' => 507, 'asmadmin' => 508, 'asmoper' => 509}
 
 ## Settings specific to the Oracle 11g RDBMS.
-default[:oracle][:rdbms][:dbbin_version] = '11g'
-default[:oracle][:rdbms][:ora_home] = "#{node[:oracle][:ora_base]}/product/11204/dbhome_1"
-default[:oracle][:rdbms][:is_installed] = false
-default[:oracle][:rdbms][:os_installed] = false
-default[:oracle][:rdbms][:install_info] = {}
-default[:oracle][:rdbms][:install_dir] = "#{node[:oracle][:ora_base]}/install_dir"
-default[:oracle][:rdbms][:response_file_url] = ''
-default[:oracle][:rdbms][:db_create_template] = 'default_template.dbt'
+default[:oracle][:rdbms11g][:dbbin_version] = '11g'
+default[:oracle][:rdbms11g][:ora_home] = "#{node[:oracle][:ora_base]}/product/11204/dbhome_1"
+default[:oracle][:rdbms11g][:is_installed] = false
+default[:oracle][:rdbms11g][:os_installed] = false
+default[:oracle][:rdbms11g][:install_info] = {}
+default[:oracle][:rdbms11g][:response_file_url] = ''
+default[:oracle][:rdbms11g][:db_create_template] = 'default_template.dbt'
 
 # Oracle environment for 11g
-default[:oracle][:rdbms][:env] = {
+default[:oracle][:rdbms11g][:env] = {
   'ORACLE_BASE' => node[:oracle][:ora_base],
-  'ORACLE_HOME' => node[:oracle][:rdbms][:ora_home],
-  'PATH' => "/usr/kerberos/bin:/usr/local/bin:/bin:/usr/bin:/usr/sbin:#{node[:oracle][:ora_base]}/dba/bin:#{node[:oracle][:rdbms][:ora_home]}/bin:#{node[:oracle][:rdbms][:ora_home]}/OPatch"}
+  'ORACLE_HOME' => node[:oracle][:rdbms11g][:ora_home],
+  'PATH' => "/usr/kerberos/bin:/usr/local/bin:/bin:/usr/bin:/usr/sbin:#{node[:oracle][:ora_base]}/dba/bin:#{node[:oracle][:rdbms11g][:ora_home]}/bin:#{node[:oracle][:rdbms11g][:ora_home]}/OPatch"}
 
 
 # Settings specific to the Oracle 12c RDBMS.
@@ -71,7 +71,7 @@ default[:oracle][:rdbms12c][:ora_home] = "#{node[:oracle][:ora_base]}/product/12
 default[:oracle][:rdbms12c][:is_installed] = false
 default[:oracle][:rdbms12c][:os_installed] = false
 default[:oracle][:rdbms12c][:install_info] = {}
-default[:oracle][:rdbms12c][:install_dir] = "#{node[:oracle][:ora_base]}/install_dir"
+#default[:oracle][:rdbms12c][:install_dir] = "#{node[:oracle][:ora_base]}/install_dir"
 default[:oracle][:rdbms12c][:response_file_url] = ''
 default[:oracle][:rdbms12c][:db_create_template] = 'default_template.dbt'
 
@@ -89,9 +89,12 @@ default[:oracle][:rdbms12c][:env] = {
 # Passwords set by createdb.rb for the default open database users.
 # By order of appearance, those are: SYS, SYSTEM and DBSNMP.
 # The latter is for the OEM agent.
-default[:oracle][:rdbms][:sys_pw] = 'changeme'
-default[:oracle][:rdbms][:system_pw] = 'changeme'
-default[:oracle][:rdbms][:dbsnmp_pw] = 'changeme'
+default[:oracle][:rdbms11g][:sys_pw] = 'changeme'
+default[:oracle][:rdbms11g][:system_pw] = 'changeme'
+default[:oracle][:rdbms11g][:dbsnmp_pw] = 'changeme'
+default[:oracle][:rdbms12c][:sys_pw] = 'changeme'
+default[:oracle][:rdbms12c][:system_pw] = 'changeme'
+default[:oracle][:rdbms12c][:dbsnmp_pw] = 'changeme'
 
 # Settings related to patching.
 #default[:oracle][:rdbms][:opatch_update_url] = 'https://https-server.example.localdomain/path/to/p6880880_112000_Linux-x86-64.zip'

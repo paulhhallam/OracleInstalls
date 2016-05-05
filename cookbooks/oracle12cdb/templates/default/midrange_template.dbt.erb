@@ -3,18 +3,18 @@
       <option name="OMS" value="false"/>
       <option name="JSERVER" value="true"/>
       <option name="SPATIAL" value="false"/>
-      <option name="IMEDIA" value="false"/>
+      <option name="IMEDIA" value="true"/>
       <option name="XDB_PROTOCOLS" value="true">
          <tablespace id="SYSAUX"/>
       </option>
-      <option name="ORACLE_TEXT" value="false">
+      <option name="ORACLE_TEXT" value="true">
          <tablespace id="SYSAUX"/>
       </option>
-      <option name="SAMPLE_SCHEMA" value="false"/>
+      <option name="SAMPLE_SCHEMA" value="true"/>
       <option name="CWMLITE" value="false"/>
       <option name="EM_REPOSITORY" value="false"/>
       <option name="APEX" value="false"/>
-      <option name="OWB" value="false"/>
+      <option name="OWB" value="true"/>
       <option name="DV" value="false"/>
    </CommonAttributes>
    <Variables/>
@@ -26,13 +26,13 @@
          <initParam name="audit_file_dest" value="{ORACLE_BASE}/admin/{DB_UNIQUE_NAME}/adump"/>
          <initParam name="compatible" value="11.2.0.0.0"/>
          <initParam name="remote_login_passwordfile" value="EXCLUSIVE"/>
-         <initParam name="log_archive_dest_2" value="'LOCATION=<%= node[:oracle][:rdbms][:dbs_root] %>/{DB_UNIQUE_NAME}/arch2'"/>
-         <initParam name="log_archive_dest_1" value="'LOCATION=<%= node[:oracle][:rdbms][:dbs_root] %>/{DB_UNIQUE_NAME}/arch1'"/>
+         <initParam name="log_archive_dest_2" value="'LOCATION=<%= node[:oracle][:rdbms12c][:dbs_root] %>/{DB_UNIQUE_NAME}/arch2'"/>
+         <initParam name="log_archive_dest_1" value="'LOCATION=<%= node[:oracle][:rdbms12c][:dbs_root] %>/{DB_UNIQUE_NAME}/arch1'"/>
          <initParam name="processes" value="999"/>
          <initParam name="undo_tablespace" value="UNDOTBS1"/>
-         <initParam name="control_files" value="(&quot;<%= node[:oracle][:rdbms][:dbs_root] %>/{DB_UNIQUE_NAME}/control01.ctl&quot;, &quot;/oracle/{DB_UNIQUE_NAME}/redo1/control02.ctl&quot;)"/>
+         <initParam name="control_files" value="(&quot;<%= node[:oracle][:rdbms12c][:dbs_root] %>/{DB_UNIQUE_NAME}/control01.ctl&quot;, &quot;/oracle/{DB_UNIQUE_NAME}/redo1/control02.ctl&quot;)"/>
          <initParam name="diagnostic_dest" value="<%= node[:oracle][:ora_base] %>"/>
-         <initParam name="db_recovery_file_dest" value="<%= node[:oracle][:rdbms][:dbs_root] %>/{DB_UNIQUE_NAME}/flash_recovery_area"/>
+         <initParam name="db_recovery_file_dest" value="<%= node[:oracle][:rdbms12c][:dbs_root] %>/{DB_UNIQUE_NAME}/flash_recovery_area"/>
          <initParam name="audit_trail" value="DB"/>
          <initParam name="log_archive_format" value="{SID}_%t_%s_%r.arc"/>
          <initParam name="memory_target" value="1157627904"/>
@@ -56,10 +56,10 @@
          <maxLogMembers>3</maxLogMembers>
          <maxLogHistory>1</maxLogHistory>
          <maxInstances>8</maxInstances>
-         <image name="control01.ctl" filepath="<%= node[:oracle][:rdbms][:dbs_root] %>/{DB_UNIQUE_NAME}/data1/"/>
-         <image name="control02.ctl" filepath="<%= node[:oracle][:rdbms][:dbs_root] %>/{DB_UNIQUE_NAME}/redo1/"/>
+         <image name="control01.ctl" filepath="<%= node[:oracle][:rdbms12c][:dbs_root] %>/{DB_UNIQUE_NAME}/data1/"/>
+         <image name="control02.ctl" filepath="<%= node[:oracle][:rdbms12c][:dbs_root] %>/{DB_UNIQUE_NAME}/redo1/"/>
       </ControlfileAttributes>
-      <DatafileAttributes id="<%= node[:oracle][:rdbms][:dbs_root] %>/{DB_UNIQUE_NAME}/data1/sysaux01.dbf">
+      <DatafileAttributes id="<%= node[:oracle][:rdbms12c][:dbs_root] %>/{DB_UNIQUE_NAME}/data1/sysaux01.dbf">
          <tablespace>SYSAUX</tablespace>
          <temporary>false</temporary>
          <online>true</online>
@@ -70,7 +70,7 @@
          <increment unit="KB">10240</increment>
          <maxSize unit="MB">32767</maxSize>
       </DatafileAttributes>
-      <DatafileAttributes id="<%= node[:oracle][:rdbms][:dbs_root] %>/{DB_UNIQUE_NAME}/data1/system01.dbf">
+      <DatafileAttributes id="<%= node[:oracle][:rdbms12c][:dbs_root] %>/{DB_UNIQUE_NAME}/data1/system01.dbf">
          <tablespace>SYSTEM</tablespace>
          <temporary>false</temporary>
          <online>true</online>
@@ -81,7 +81,7 @@
          <increment unit="KB">10240</increment>
          <maxSize unit="MB">32767</maxSize>
       </DatafileAttributes>
-      <DatafileAttributes id="<%= node[:oracle][:rdbms][:dbs_root] %>/{DB_UNIQUE_NAME}/data1/data01.dbf">
+      <DatafileAttributes id="<%= node[:oracle][:rdbms12c][:dbs_root] %>/{DB_UNIQUE_NAME}/data1/data01.dbf">
          <tablespace>DATA</tablespace>
          <temporary>false</temporary>
          <online>true</online>
@@ -92,7 +92,7 @@
          <increment unit="MB">500</increment>
          <maxSize unit="MB">20000</maxSize>
       </DatafileAttributes>
-      <DatafileAttributes id="<%= node[:oracle][:rdbms][:dbs_root] %>/{DB_UNIQUE_NAME}/index1/index01.dbf">
+      <DatafileAttributes id="<%= node[:oracle][:rdbms12c][:dbs_root] %>/{DB_UNIQUE_NAME}/index1/index01.dbf">
          <tablespace>INDEX</tablespace>
          <temporary>false</temporary>
          <online>true</online>
@@ -103,7 +103,7 @@
          <increment unit="MB">500</increment>
          <maxSize unit="MB">20000</maxSize>
       </DatafileAttributes>
-      <DatafileAttributes id="<%= node[:oracle][:rdbms][:dbs_root] %>/{DB_UNIQUE_NAME}/temp1/temp01.dbf">
+      <DatafileAttributes id="<%= node[:oracle][:rdbms12c][:dbs_root] %>/{DB_UNIQUE_NAME}/temp1/temp01.dbf">
          <tablespace>TEMP</tablespace>
          <temporary>true</temporary>
          <online>true</online>
@@ -114,7 +114,7 @@
          <increment unit="KB">640</increment>
          <maxSize unit="MB">32767</maxSize>
       </DatafileAttributes>
-      <DatafileAttributes id="<%= node[:oracle][:rdbms][:dbs_root] %>/{DB_UNIQUE_NAME}/undo1/undotbs01.dbf">
+      <DatafileAttributes id="<%= node[:oracle][:rdbms12c][:dbs_root] %>/{DB_UNIQUE_NAME}/undo1/undotbs01.dbf">
          <tablespace>UNDOTBS1</tablespace>
          <temporary>false</temporary>
          <online>true</online>
@@ -125,7 +125,7 @@
          <increment unit="KB">5120</increment>
          <maxSize unit="MB">32767</maxSize>
       </DatafileAttributes>
-      <DatafileAttributes id="<%= node[:oracle][:rdbms][:dbs_root] %>/{DB_UNIQUE_NAME}/data1/users01.dbf">
+      <DatafileAttributes id="<%= node[:oracle][:rdbms12c][:dbs_root] %>/{DB_UNIQUE_NAME}/data1/users01.dbf">
          <tablespace>USERS</tablespace>
          <temporary>false</temporary>
          <online>true</online>
@@ -159,7 +159,7 @@
          <autoSegmentMgmt>true</autoSegmentMgmt>
          <bigfile>false</bigfile>
          <datafilesList>
-            <TablespaceDatafileAttributes id="<%= node[:oracle][:rdbms][:dbs_root] %>/{DB_UNIQUE_NAME}/data1/sysaux01.dbf">
+            <TablespaceDatafileAttributes id="<%= node[:oracle][:rdbms12c][:dbs_root] %>/{DB_UNIQUE_NAME}/data1/sysaux01.dbf">
                <id>-1</id>
             </TablespaceDatafileAttributes>
          </datafilesList>
@@ -187,7 +187,7 @@
          <autoSegmentMgmt>false</autoSegmentMgmt>
          <bigfile>false</bigfile>
          <datafilesList>
-            <TablespaceDatafileAttributes id="<%= node[:oracle][:rdbms][:dbs_root] %>/{DB_UNIQUE_NAME}/data1/system01.dbf">
+            <TablespaceDatafileAttributes id="<%= node[:oracle][:rdbms12c][:dbs_root] %>/{DB_UNIQUE_NAME}/data1/system01.dbf">
                <id>-1</id>
             </TablespaceDatafileAttributes>
          </datafilesList>
@@ -215,7 +215,7 @@
          <autoSegmentMgmt>true</autoSegmentMgmt>
          <bigfile>false</bigfile>
          <datafilesList>
-            <TablespaceDatafileAttributes id="<%= node[:oracle][:rdbms][:dbs_root] %>/{DB_UNIQUE_NAME}/data1/data01.dbf">
+            <TablespaceDatafileAttributes id="<%= node[:oracle][:rdbms12c][:dbs_root] %>/{DB_UNIQUE_NAME}/data1/data01.dbf">
                <id>-1</id>
             </TablespaceDatafileAttributes>
          </datafilesList>
@@ -243,7 +243,7 @@
          <autoSegmentMgmt>true</autoSegmentMgmt>
          <bigfile>false</bigfile>
          <datafilesList>
-            <TablespaceDatafileAttributes id="<%= node[:oracle][:rdbms][:dbs_root] %>/{DB_UNIQUE_NAME}/index1/index01.dbf">
+            <TablespaceDatafileAttributes id="<%= node[:oracle][:rdbms12c][:dbs_root] %>/{DB_UNIQUE_NAME}/index1/index01.dbf">
                <id>-1</id>
             </TablespaceDatafileAttributes>
          </datafilesList>
@@ -271,7 +271,7 @@
          <autoSegmentMgmt>false</autoSegmentMgmt>
          <bigfile>false</bigfile>
          <datafilesList>
-            <TablespaceDatafileAttributes id="<%= node[:oracle][:rdbms][:dbs_root] %>/{DB_UNIQUE_NAME}/temp1/temp01.dbf">
+            <TablespaceDatafileAttributes id="<%= node[:oracle][:rdbms12c][:dbs_root] %>/{DB_UNIQUE_NAME}/temp1/temp01.dbf">
                <id>-1</id>
             </TablespaceDatafileAttributes>
          </datafilesList>
@@ -299,7 +299,7 @@
          <autoSegmentMgmt>false</autoSegmentMgmt>
          <bigfile>false</bigfile>
          <datafilesList>
-            <TablespaceDatafileAttributes id="<%= node[:oracle][:rdbms][:dbs_root] %>/{DB_UNIQUE_NAME}/undo1/undotbs01.dbf">
+            <TablespaceDatafileAttributes id="<%= node[:oracle][:rdbms12c][:dbs_root] %>/{DB_UNIQUE_NAME}/undo1/undotbs01.dbf">
                <id>-1</id>
             </TablespaceDatafileAttributes>
          </datafilesList>
@@ -327,7 +327,7 @@
          <autoSegmentMgmt>true</autoSegmentMgmt>
          <bigfile>false</bigfile>
          <datafilesList>
-            <TablespaceDatafileAttributes id="<%= node[:oracle][:rdbms][:dbs_root] %>/{DB_UNIQUE_NAME}/data1/users01.dbf">
+            <TablespaceDatafileAttributes id="<%= node[:oracle][:rdbms12c][:dbs_root] %>/{DB_UNIQUE_NAME}/data1/users01.dbf">
                <id>-1</id>
             </TablespaceDatafileAttributes>
          </datafilesList>
@@ -336,57 +336,57 @@
          <reuse>false</reuse>
          <fileSize unit="KB">204800</fileSize>
          <Thread>1</Thread>
-         <member ordinal="0" memberName="redo01_1.rdo" filepath="<%= node[:oracle][:rdbms][:dbs_root] %>/{DB_UNIQUE_NAME}/redo1/"/>
-         <member ordinal="1" memberName="redo01_2.rdo" filepath="<%= node[:oracle][:rdbms][:dbs_root] %>/{DB_UNIQUE_NAME}/redo2/"/>
+         <member ordinal="0" memberName="redo01_1.rdo" filepath="<%= node[:oracle][:rdbms12c][:dbs_root] %>/{DB_UNIQUE_NAME}/redo1/"/>
+         <member ordinal="1" memberName="redo01_2.rdo" filepath="<%= node[:oracle][:rdbms12c][:dbs_root] %>/{DB_UNIQUE_NAME}/redo2/"/>
       </RedoLogGroupAttributes>
       <RedoLogGroupAttributes id="2">
          <reuse>false</reuse>
          <fileSize unit="KB">204800</fileSize>
          <Thread>1</Thread>
-         <member ordinal="0" memberName="redo02_1.rdo" filepath="<%= node[:oracle][:rdbms][:dbs_root] %>/{DB_UNIQUE_NAME}/redo1/"/>
-         <member ordinal="1" memberName="redo02_2.rdo" filepath="<%= node[:oracle][:rdbms][:dbs_root] %>/{DB_UNIQUE_NAME}/redo2/"/>
+         <member ordinal="0" memberName="redo02_1.rdo" filepath="<%= node[:oracle][:rdbms12c][:dbs_root] %>/{DB_UNIQUE_NAME}/redo1/"/>
+         <member ordinal="1" memberName="redo02_2.rdo" filepath="<%= node[:oracle][:rdbms12c][:dbs_root] %>/{DB_UNIQUE_NAME}/redo2/"/>
       </RedoLogGroupAttributes>
       <RedoLogGroupAttributes id="3">
          <reuse>false</reuse>
          <fileSize unit="KB">204800</fileSize>
          <Thread>1</Thread>
-         <member ordinal="0" memberName="redo03_1.rdo" filepath="<%= node[:oracle][:rdbms][:dbs_root] %>/{DB_UNIQUE_NAME}/redo1/"/>
-         <member ordinal="1" memberName="redo03_2.rdo" filepath="<%= node[:oracle][:rdbms][:dbs_root] %>/{DB_UNIQUE_NAME}/redo2/"/>
+         <member ordinal="0" memberName="redo03_1.rdo" filepath="<%= node[:oracle][:rdbms12c][:dbs_root] %>/{DB_UNIQUE_NAME}/redo1/"/>
+         <member ordinal="1" memberName="redo03_2.rdo" filepath="<%= node[:oracle][:rdbms12c][:dbs_root] %>/{DB_UNIQUE_NAME}/redo2/"/>
       </RedoLogGroupAttributes>
       <RedoLogGroupAttributes id="4">
          <reuse>false</reuse>
          <fileSize unit="KB">204800</fileSize>
          <Thread>1</Thread>
-         <member ordinal="0" memberName="redo04_1.rdo" filepath="<%= node[:oracle][:rdbms][:dbs_root] %>/{DB_UNIQUE_NAME}/redo1/"/>
-         <member ordinal="1" memberName="redo04_2.rdo" filepath="<%= node[:oracle][:rdbms][:dbs_root] %>/{DB_UNIQUE_NAME}/redo2/"/>
+         <member ordinal="0" memberName="redo04_1.rdo" filepath="<%= node[:oracle][:rdbms12c][:dbs_root] %>/{DB_UNIQUE_NAME}/redo1/"/>
+         <member ordinal="1" memberName="redo04_2.rdo" filepath="<%= node[:oracle][:rdbms12c][:dbs_root] %>/{DB_UNIQUE_NAME}/redo2/"/>
       </RedoLogGroupAttributes>
       <RedoLogGroupAttributes id="5">
          <reuse>false</reuse>
          <fileSize unit="KB">204800</fileSize>
          <Thread>1</Thread>
-         <member ordinal="0" memberName="redo05_1.rdo" filepath="<%= node[:oracle][:rdbms][:dbs_root] %>/{DB_UNIQUE_NAME}/redo1/"/>
-         <member ordinal="1" memberName="redo05_2.rdo" filepath="<%= node[:oracle][:rdbms][:dbs_root] %>/{DB_UNIQUE_NAME}/redo2/"/>
+         <member ordinal="0" memberName="redo05_1.rdo" filepath="<%= node[:oracle][:rdbms12c][:dbs_root] %>/{DB_UNIQUE_NAME}/redo1/"/>
+         <member ordinal="1" memberName="redo05_2.rdo" filepath="<%= node[:oracle][:rdbms12c][:dbs_root] %>/{DB_UNIQUE_NAME}/redo2/"/>
       </RedoLogGroupAttributes>
       <RedoLogGroupAttributes id="6">
          <reuse>false</reuse>
          <fileSize unit="KB">204800</fileSize>
          <Thread>1</Thread>
-         <member ordinal="0" memberName="redo06_1.rdo" filepath="<%= node[:oracle][:rdbms][:dbs_root] %>/{DB_UNIQUE_NAME}/redo1/"/>
-         <member ordinal="1" memberName="redo06_2.rdo" filepath="<%= node[:oracle][:rdbms][:dbs_root] %>/{DB_UNIQUE_NAME}/redo2/"/>
+         <member ordinal="0" memberName="redo06_1.rdo" filepath="<%= node[:oracle][:rdbms12c][:dbs_root] %>/{DB_UNIQUE_NAME}/redo1/"/>
+         <member ordinal="1" memberName="redo06_2.rdo" filepath="<%= node[:oracle][:rdbms12c][:dbs_root] %>/{DB_UNIQUE_NAME}/redo2/"/>
       </RedoLogGroupAttributes>
       <RedoLogGroupAttributes id="7">
          <reuse>false</reuse>
          <fileSize unit="KB">204800</fileSize>
          <Thread>1</Thread>
-         <member ordinal="0" memberName="redo07_1.rdo" filepath="<%= node[:oracle][:rdbms][:dbs_root] %>/{DB_UNIQUE_NAME}/redo1/"/>
-         <member ordinal="1" memberName="redo07_2.rdo" filepath="<%= node[:oracle][:rdbms][:dbs_root] %>/{DB_UNIQUE_NAME}/redo2/"/>
+         <member ordinal="0" memberName="redo07_1.rdo" filepath="<%= node[:oracle][:rdbms12c][:dbs_root] %>/{DB_UNIQUE_NAME}/redo1/"/>
+         <member ordinal="1" memberName="redo07_2.rdo" filepath="<%= node[:oracle][:rdbms12c][:dbs_root] %>/{DB_UNIQUE_NAME}/redo2/"/>
       </RedoLogGroupAttributes>
       <RedoLogGroupAttributes id="8">
          <reuse>false</reuse>
          <fileSize unit="KB">204800</fileSize>
          <Thread>1</Thread>
-         <member ordinal="0" memberName="redo08_1.rdo" filepath="<%= node[:oracle][:rdbms][:dbs_root] %>/{DB_UNIQUE_NAME}/redo1/"/>
-         <member ordinal="1" memberName="redo08_2.rdo" filepath="<%= node[:oracle][:rdbms][:dbs_root] %>/{DB_UNIQUE_NAME}/redo2/"/>
+         <member ordinal="0" memberName="redo08_1.rdo" filepath="<%= node[:oracle][:rdbms12c][:dbs_root] %>/{DB_UNIQUE_NAME}/redo1/"/>
+         <member ordinal="1" memberName="redo08_2.rdo" filepath="<%= node[:oracle][:rdbms12c][:dbs_root] %>/{DB_UNIQUE_NAME}/redo2/"/>
       </RedoLogGroupAttributes>
    </StorageAttributes>
 </DatabaseTemplate>

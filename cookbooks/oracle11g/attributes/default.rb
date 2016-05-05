@@ -15,9 +15,11 @@
 # limitations under the License.
 #
 
-default[:oracle][:rdbms][:install_files] = ['/media/sf_oracle_kits/11g/11204/p13390677_112040_Linux-x86-64_1of7.zip','/media/sf_oracle_kits/11g/11204/p13390677_112040_Linux-x86-64_2of7.zip']
+default[:oracle][:rdbms11g][:install_files] = ['/media/sf_oracle_kits/11g/11204/p13390677_112040_Linux-x86-64_1of7.zip','/media/sf_oracle_kits/11g/11204/p13390677_112040_Linux-x86-64_2of7.zip']
+#default[:oracle][:rdbms][:install_dir] = "#{node[:oracle][:ora_base]}/install_dir"
+default[:oracle][:rdbms11g][:install_dir] = "/media/sf_oracle_kits/11g/11204/"
 
 # Settings related to patching.
-default[:oracle][:rdbms][:opatch_update_url] = 'https://https-server.example.localdomain/path/to/p6880880_112000_Linux-x86-64.zip'
-default[:oracle][:rdbms][:latest_patch][:url] = 'https://https-server.example.localdomain/path/to/p16619892_112030_Linux-x86-64.zip'
+default[:oracle][:rdbms11g][:opatch_update_url] = 'https://https-server.example.localdomain/path/to/p6880880_112000_Linux-x86-64.zip'
+default[:oracle][:rdbms11g][:latest_patch][:url] = 'https://https-server.example.localdomain/path/to/p16619892_112030_Linux-x86-64.zip'
 

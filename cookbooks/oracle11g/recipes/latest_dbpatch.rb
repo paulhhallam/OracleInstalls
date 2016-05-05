@@ -17,7 +17,7 @@
 ## Install latest patch for Oracle RDBMS.
 #
 
-unless node[:oracle][:rdbms][:latest_patch][:is_installed]
+unless node[:oracle][:rdbms11g][:latest_patch][:is_installed]
   # Stopping the DBs. We invoke the oracle init script using an execute resource
   # because the init script doesn't implement a status command, which in turn causes
   # issues for Chef owing to CHEF-2345: <http://tickets.opscode.com/browse/CHEF-2345>.
@@ -31,11 +31,11 @@ unless node[:oracle][:rdbms][:latest_patch][:is_installed]
   bash 'fetch_latest_patch_media' do
     user "oracle"
     group 'oinstall'
-    cwd node[:oracle][:rdbms][:install_dir]
+    cwd node[:oracle][:rdbms11g][:install_dir]
     code <<-EOH
-    curl -kO #{node[:oracle][:rdbms][:latest_patch][:url]}
-    curl -kO #{node[:oracle][:rdbms][:opatch_update_url]}
-    unzip #{File.basename(node[:oracle][:rdbms][:latest_patch][:url])}
+    curl -kO #{node[:oracle][:rdbms11g][:latest_patch][:url]}
+    curl -kO #{node[:oracle][:rdbms11g][:opatch_update_url]}
+    unzip #{File.basename(node[:oracle][:rdbms11g][:latest_patch][:url])}
     EOH
   end
 
@@ -43,28 +43,28 @@ unless node[:oracle][:rdbms][:latest_patch][:is_installed]
   bash 'patch_rdbms_opatch' do
     user 'oracle'
     group 'oinstall'
-    cwd node[:oracle][:rdbms][:ora_home]
+    cwd node[:oracle][:rdbms11g][:ora_home]
     code <<-EOH3
     rm -rf OPatch.OLD
     mv OPatch OPatch.OLD
-    unzip #{node[:oracle][:rdbms][:install_dir]}/#{File.basename(node[:oracle][:rdbms][:opatch_update_url])}
+    unzip #{node[:oracle][:rdbms11g][:install_dir]}/#{File.basename(node[:oracle][:rdbms11g][:opatch_update_url])}
     EOH3
   end
   
   # Making sure ocm.rsp response file is present.
-  if !node[:oracle][:rdbms][:response_file_url].empty?
+  if !node[:oracle][:rdbms11g][:response_file_url].empty?
     execute "fetch_response_file" do
-      command "curl -kO #{node[:oracle][:rdbms][:response_file_url]}"
+      command "curl -kO #{node[:oracle][:rdbms11g][:response_file_url]}"
       user "oracle"
       group 'oinstall'
-      cwd node[:oracle][:rdbms][:install_dir]
+      cwd node[:oracle][:rdbms11g][:install_dir]
     end
   else
     execute 'gen_response_file' do
       command "echo | ./OPatch/ocm/bin/emocmrsp -output ./ocm.rsp foo bar && chmod 0644 ./ocm.rsp"
       user "oracle"
       group 'oinstall'
-      cwd node[:oracle][:rdbms][:ora_home]
+      cwd node[:oracle][:rdbms11g][:ora_home]
     end
   end
 
@@ -72,9 +72,9 @@ unless node[:oracle][:rdbms][:latest_patch][:is_installed]
   bash 'apply_latest_patch_rdbms' do
     user "oracle"
     group 'oinstall'
-    cwd "#{node[:oracle][:rdbms][:install_dir]}/#{node[:oracle][:rdbms][:latest_patch][:dirname]}"
-    environment (node[:oracle][:rdbms][:env])
-    code "#{node[:oracle][:rdbms][:ora_home]}/OPatch/opatch apply -silent -ocmrf #{node[:oracle][:rdbms][:ora_home]}/ocm.rsp"
+    cwd "#{node[:oracle][:rdbms11g][:install_dir]}/#{node[:oracle][:rdbms11g][:latest_patch][:dirname]}"
+    environment (node[:oracle][:rdbms11g][:env])
+    code "#{node[:oracle][:rdbms11g][:ora_home]}/OPatch/opatch apply -silent -ocmrf #{node[:oracle][:rdbms11g][:ora_home]}/ocm.rsp"
     notifies :create, "ruby_block[set_latest_patch_install_flag]", :immediately
     notifies :create, "ruby_block[set_rdbms_version_attr]", :immediately
   end
@@ -85,7 +85,7 @@ unless node[:oracle][:rdbms][:latest_patch][:is_installed]
   # Set flag indicating latest patch has been applied.
   ruby_block 'set_latest_patch_install_flag' do
     block do
-      node.set[:oracle][:rdbms][:latest_patch][:is_installed] = true
+      node.set[:oracle][:rdbms11g][:latest_patch][:is_installed] = true
     end
     action :nothing
   end
@@ -99,6 +99,6 @@ unless node[:oracle][:rdbms][:latest_patch][:is_installed]
 
   # Cleaning up the downloaded latest patch files
   execute 'install_dir_cleanup_lp' do
-    command "rm -rf #{node[:oracle][:rdbms][:install_dir]}/*"
+    command "rm -rf #{node[:oracle][:rdbms11g][:install_dir]}/*"
   end
 end 

@@ -75,7 +75,7 @@ directory node[:oracle][:ora_inventory] do
 end
 
 # Filesystem template.
-template "#{node[:oracle][:rdbms12c][:install_dir]}/db12c.rsp" do
+template "#{node[:oracle][:grid][:install_dir]}/db12c.rsp" do
   owner 'oracle'
   group 'oinstall'
   mode '0644'
@@ -90,7 +90,7 @@ end
 bash 'run_rdbms12c_installer' do
     cwd "#{node[:oracle][:rdbms12c][:install_dir]}/database"
     environment (node[:oracle][:rdbms12c][:env])
-    code "sudo -Eu oracle ./runInstaller -silent -waitforcompletion -ignoreSysPrereqs -responseFile #{node[:oracle][:rdbms12c][:install_dir]}/db12c.rsp -invPtrLoc #{node[:oracle][:ora_base]}/oraInst.loc"
+    code "sudo -Eu oracle ./runInstaller -silent -waitforcompletion -ignoreSysPrereqs -responseFile #{node[:oracle][:grid][:install_dir]}/db12c.rsp -invPtrLoc #{node[:oracle][:ora_base]}/oraInst.loc"
     returns [0, 6]
 end
 
