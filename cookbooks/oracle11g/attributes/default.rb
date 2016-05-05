@@ -16,7 +16,6 @@
 #
 
 default[:oracle][:rdbms][:install_files] = ['/media/sf_oracle_kits/11g/11204/p13390677_112040_Linux-x86-64_1of7.zip','/media/sf_oracle_kits/11g/11204/p13390677_112040_Linux-x86-64_2of7.zip']
-#default[:oracle][:rdbms][:install_files] = ['/home/paul/Downloads/V46095-01_1of2.zip','/home/paul/Downloads/V46095-01_2of2.zip']
 
 # Settings related to patching.
 default[:oracle][:rdbms][:opatch_update_url] = 'https://https-server.example.localdomain/path/to/p6880880_112000_Linux-x86-64.zip'

@@ -1,5 +1,6 @@
 #
-# Cookbook Name:: oracle
+#
+## Cookbook Name:: oracle12c
 # Recipe:: default
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,13 +15,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Baseline install for Grid itself
-include_recipe 'oracle12c::getgridbin' unless node[:oracle][:grid][:is_installed]
+# Configure Oracle user, install the RDBMS's dependencies, configure
+# kernel parameters, install the binaries and apply latest patch.
+
+# Set up and configure the oracle user.
+include_recipe 'oracleOSsetup::oracle_user_config'
+
+## Install dependencies and configure kernel parameters.
+include_recipe 'oracleOSsetup::deps_install'
+
+# Setting up kernel parameters
+include_recipe 'oracleOSsetup::kernel_params'
+
+# Baseline install for Oracle itself
+include_recipe 'oracle12c::dbbin' unless node[:oracle][:rdbms12c][:is_installed]
 
 ## Patching oracle binaries to the latest patch
-# Node attribute changes for 12c, if default[:oracle][:rdbms][:dbbin_version] is set to 12c
-#phh  node.set[:oracle][:rdbms][:ora_home] = node[:oracle][:rdbms][:ora_home_12c]
-#phh  node.set[:oracle][:rdbms][:env] = node[:oracle][:rdbms][:env_12c]
-#phh  node.set[:oracle][:rdbms][:latest_patch][:dirname] = node[:oracle][:rdbms][:latest_patch][:dirname_12c]
-#phh  include_recipe 'oracle12c::latest_dbpatch' unless node[:oracle][:rdbms][:latest_patch][:is_installed]
+#phh# include_recipe 'oracle12c::latest_dbpatch' unless node[:oracle][:rdbms12c][:latest_patch][:is_installed]
 

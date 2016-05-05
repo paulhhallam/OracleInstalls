@@ -106,7 +106,7 @@ end
 # Set the grid user's password.
 #
 unless node[:oracle][:grid][:pw_set]
-  ora_pw = 'grid'
+  ora_pw = 'changeme'
   # Note that output formatter will display the password on your terminal.
   execute 'change_grid_user_pw' do
     command "echo grid:#{ora_pw} | /usr/sbin/chpasswd"
@@ -123,7 +123,7 @@ end
 # Set the oracle user's password.
 #
 unless node[:oracle][:user][:pw_set]
-  ora_pw = 'oracle'
+  ora_pw = 'changeme'
   # Note that output formatter will display the password on your terminal.
   execute 'change_oracle_user_pw' do
     command "echo oracle:#{ora_pw} | /usr/sbin/chpasswd"
