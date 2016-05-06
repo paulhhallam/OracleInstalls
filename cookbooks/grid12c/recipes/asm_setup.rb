@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: oracle
-# Recipe:: getgridbin
+# Recipe:: asm_setup
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,26 +17,40 @@
 ## Get and unzip the Oracle Grid binaries.
 #
 
-# We need unzip to expand the install files later on.
-yum_package 'unzip'
-
 #
-node[:oracle][:grid][:install_files].each do |zip_file|
-  execute "unzip_oracle_media_file_#{zip_file}" do
-    command "unzip -o #{zip_file}"
-    user "grid"
-    group 'oinstall'
-    cwd node[:oracle][:grid][:install_dir]
+# Configure ASM driver
+bash "configure_asm" do
+  code <<-EOH2
+    /etc/init.d/oracleasm configure << EOF
+grid
+asmdba
+y
+y
+EOF
+    /usr/sbin/oracleasm init
+    /etc/init.d/oracleasm scandisks
+    /etc/init.d/oracleasm listdisks
+  EOH2
+end
+
+ruby_block "get sd devices" do
+  block do
+    Dir.glob('/dev/sd*').select{ |e| File.file? e }
   end
 end
 
-execute 'test_grid_installer' do
-  user "grid"
-  group "oinstall"
-  command "#{node[:oracle][:grid][:install_dir]}/grid/runcluvfy.sh stage -pre crsinst -n $HOSTNAME -fixupnoexec > #{node[:oracle][:grid][:install_dir]}/grid/cluvfy.log"
-  ignore_failure true
-#  returns 0
+ruby_block "more get sd devices" do
+  block do
+    files1 = Dir["/dev/sd?"]
+    files1.each do |file_name|
+      puts "\n"
+      if Dir.glob("#{file_name}?").empty?
+        puts "Need to fdisk #{file_name}"
+      end
+    end
+  end
 end
+
 
 bash 'touch_a_a' do
   user "grid"
