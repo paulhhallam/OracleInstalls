@@ -38,6 +38,13 @@ default[:oracle][:grid][:install_dir] = "#{node[:oracle][:ora_base]}/install_dir
 default[:oracle][:grid][:sup_grps] = {'wheel' => 10, 'asmadmin' => 508, 'asmdba' => 505, 'asmoper' => 509, 'dba' => 502, 'bckpdba' => 504, 'vboxsf' => 978}
 default[:oracle][:grid][:install_files] = ['/u01/V46096-01_1of2.zip','/u01/V46096-01_2of2.zip']
 
+# Settings specific to ASM setup
+default[:oracle][:grid][:asm_installed] = false
+default[:oracle][:grid][:discover_disks] = true
+default[:oracle][:grid][:add_disks] = {}
+# default[:oracle][:grid][:sd_volumes] = {'sdb1','sdc1','sdd1'}
+default[:oracle][:grid][:sd_volumes] = {}
+
 # Settings specific to the Oracle user.
 default[:oracle][:user][:uid] = 592
 default[:oracle][:user][:gid] = 501
