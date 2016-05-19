@@ -19,7 +19,10 @@
 
 #
 # Configure ASM
+#
 include_recipe 'grid12c::asm_setup'
+#
+#include_recipe 'grid12c::asm_fdisk'
 
 # Patching oracle binaries to the latest patch
 # Node attribute changes for 12c, if default[:oracle][:rdbms][:dbbin_version] is set to 12c

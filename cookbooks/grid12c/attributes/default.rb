@@ -15,7 +15,15 @@
 # limitations under the License.
 #
 
-default[:oracle][:grid][:install_files] = ['/media/sf_oracle_kits/12c/28092015/V46096-01_1of2_GRID.zip','/media/sf_oracle_kits/12c/28092015/V46096-01_2of2_GRID.zip']
+# Settings specific to ASM setup
+default[:oracle][:grid][:asm_installed] = false
+default[:oracle][:grid][:discover_disks] = true
+default[:oracle][:grid][:add_disks] = {}
+#default[:oracle][:grid][:sd_volumes] = {0 => '',1 => '',2 => '',3 => '',4 => ''}
+default[:oracle][:grid][:sd_volumes] = []
+default[:oracle][:grid][:sdn_volumes] = ['/dev/sdb','/dev/sdc','/dev/sdd','/dev/sde']
+
+# default[:oracle][:grid][:install_files] = ['/media/sf_oracle_kits/12c/28092015/V46096-01_1of2_GRID.zip','/media/sf_oracle_kits/12c/28092015/V46096-01_2of2_GRID.zip']
 default[:oracle][:grid][:install_dir] = "/media/sf_oracle_kits/12c/28092015/"
 
 # Settings related to patching.
