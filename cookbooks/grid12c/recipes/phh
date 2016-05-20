@@ -1,0 +1,8972 @@
+Node Name:   ambari5
+Environment: _default
+FQDN:        ambari5
+IP:          192.168.0.38
+Run List:    recipe[grid12c]
+Roles:       
+Recipes:     grid12c, grid12c::default, grid12c::asm_setup
+Platform:    oracle 7.2
+Tags:        
+Attributes:
+oracle:
+  grid:
+    pw_set:     true
+    sd_volumes:
+      /dev/sdd
+      /dev/sdc
+      /dev/sde
+      /dev/sdb
+  user:
+    pw_set: true
+tags:
+
+Default Attributes:
+oracle:
+  grid:
+    add_disks:
+    asm_installed:     true
+    discover_disks:    true
+    install_dir:       /media/sf_oracle_kits/12c/28092015/
+    latest_patch:
+      url: https://https-server.example.localdomain/path/to/p16619892_112030_Linux-x86-64.zip
+    opatch_update_url: https://https-server.example.localdomain/path/to/p6880880_112000_Linux-x86-64.zip
+    sd_volumes:
+    sdn_volumes:
+      /dev/sdb
+      /dev/sdc
+      /dev/sdd
+      /dev/sde
+
+Override Attributes:
+
+Automatic Attributes (Ohai Data):
+block_device:
+  dm-0:
+    removable:  0
+    rotational: 1
+    size:       44179456
+  dm-1:
+    removable:  0
+    rotational: 1
+    size:       5038080
+  loop0:
+    removable:  0
+    rotational: 1
+    size:       0
+  loop1:
+    removable:  0
+    rotational: 1
+    size:       0
+  loop2:
+    removable:  0
+    rotational: 1
+    size:       0
+  loop3:
+    removable:  0
+    rotational: 1
+    size:       0
+  loop4:
+    removable:  0
+    rotational: 1
+    size:       0
+  loop5:
+    removable:  0
+    rotational: 1
+    size:       0
+  loop6:
+    removable:  0
+    rotational: 1
+    size:       0
+  loop7:
+    removable:  0
+    rotational: 1
+    size:       0
+  ram0:
+    removable:  0
+    rotational: 1
+    size:       32768
+  ram1:
+    removable:  0
+    rotational: 1
+    size:       32768
+  ram10:
+    removable:  0
+    rotational: 1
+    size:       32768
+  ram11:
+    removable:  0
+    rotational: 1
+    size:       32768
+  ram12:
+    removable:  0
+    rotational: 1
+    size:       32768
+  ram13:
+    removable:  0
+    rotational: 1
+    size:       32768
+  ram14:
+    removable:  0
+    rotational: 1
+    size:       32768
+  ram15:
+    removable:  0
+    rotational: 1
+    size:       32768
+  ram2:
+    removable:  0
+    rotational: 1
+    size:       32768
+  ram3:
+    removable:  0
+    rotational: 1
+    size:       32768
+  ram4:
+    removable:  0
+    rotational: 1
+    size:       32768
+  ram5:
+    removable:  0
+    rotational: 1
+    size:       32768
+  ram6:
+    removable:  0
+    rotational: 1
+    size:       32768
+  ram7:
+    removable:  0
+    rotational: 1
+    size:       32768
+  ram8:
+    removable:  0
+    rotational: 1
+    size:       32768
+  ram9:
+    removable:  0
+    rotational: 1
+    size:       32768
+  sda:
+    model:       VBOX HARDDISK
+    queue_depth: 31
+    removable:   0
+    rev:         1.0
+    rotational:  1
+    size:        104857600
+    state:       running
+    timeout:     30
+    vendor:      ATA
+  sdb:
+    model:       VBOX HARDDISK
+    queue_depth: 31
+    removable:   0
+    rev:         1.0
+    rotational:  1
+    size:        25165824
+    state:       running
+    timeout:     30
+    vendor:      ATA
+  sdc:
+    model:       VBOX HARDDISK
+    queue_depth: 31
+    removable:   0
+    rev:         1.0
+    rotational:  1
+    size:        25165824
+    state:       running
+    timeout:     30
+    vendor:      ATA
+  sdd:
+    model:       VBOX HARDDISK
+    queue_depth: 31
+    removable:   0
+    rev:         1.0
+    rotational:  1
+    size:        25165824
+    state:       running
+    timeout:     30
+    vendor:      ATA
+  sde:
+    model:       VBOX HARDDISK
+    queue_depth: 31
+    removable:   0
+    rev:         1.0
+    rotational:  1
+    size:        25165824
+    state:       running
+    timeout:     30
+    vendor:      ATA
+  sr0:
+    model:       CD-ROM
+    queue_depth: 1
+    removable:   1
+    rev:         1.0
+    rotational:  1
+    size:        113588
+    state:       running
+    timeout:     30
+    vendor:      VBOX
+  zram0:
+    removable:  0
+    rotational: 1
+    size:       0
+chef_packages:
+  chef:
+    chef_root: /opt/chef/embedded/lib/ruby/gems/2.1.0/gems/chef-12.9.41/lib
+    version:   12.9.41
+  ohai:
+    ohai_root: /opt/chef/embedded/lib/ruby/gems/2.1.0/gems/ohai-8.14.0/lib/ohai
+    version:   8.14.0
+cloud_v2:          
+command:
+  ps: ps -ef
+cookbooks:
+  grid12c:
+    version: 1.2.2
+counters:
+  network:
+    interfaces:
+      enp0s3:
+        rx:
+          bytes:   147397
+          drop:    0
+          errors:  0
+          overrun: 0
+          packets: 2095
+        tx:
+          bytes:      21709
+          carrier:    0
+          collisions: 0
+          drop:       0
+          errors:     0
+          packets:    259
+          queuelen:   1000
+      enp0s8:
+        rx:
+          bytes:   0
+          drop:    0
+          errors:  0
+          overrun: 0
+          packets: 0
+        tx:
+          bytes:      0
+          carrier:    0
+          collisions: 0
+          drop:       0
+          errors:     0
+          packets:    0
+          queuelen:   1000
+      lo:
+        rx:
+          bytes:   0
+          drop:    0
+          errors:  0
+          overrun: 0
+          packets: 0
+        tx:
+          bytes:      0
+          carrier:    0
+          collisions: 0
+          drop:       0
+          errors:     0
+          packets:    0
+      virbr0:
+        rx:
+          bytes:   0
+          drop:    0
+          errors:  0
+          overrun: 0
+          packets: 0
+        tx:
+          bytes:      0
+          carrier:    0
+          collisions: 0
+          drop:       0
+          errors:     0
+          packets:    0
+      virbr0-nic:
+        rx:
+          bytes:   0
+          drop:    0
+          errors:  0
+          overrun: 0
+          packets: 0
+        tx:
+          bytes:      0
+          carrier:    0
+          collisions: 0
+          drop:       0
+          errors:     0
+          packets:    0
+          queuelen:   500
+cpu:
+  0:
+    cache_size:  8192 KB
+    core_id:     0
+    cores:       3
+    family:      6
+    flags:
+      fpu
+      vme
+      de
+      pse
+      tsc
+      msr
+      pae
+      mce
+      cx8
+      apic
+      sep
+      mtrr
+      pge
+      mca
+      cmov
+      pat
+      pse36
+      clflush
+      mmx
+      fxsr
+      sse
+      sse2
+      ht
+      syscall
+      nx
+      rdtscp
+      lm
+      constant_tsc
+      rep_good
+      nopl
+      xtopology
+      nonstop_tsc
+      pni
+      ssse3
+      sse4_1
+      sse4_2
+      hypervisor
+      lahf_lm
+    mhz:         3103.574
+    model:       26
+    model_name:  Intel(R) Core(TM) i7 CPU         950  @ 3.07GHz
+    physical_id: 0
+    stepping:    5
+    vendor_id:   GenuineIntel
+  1:
+    cache_size:  8192 KB
+    core_id:     1
+    cores:       3
+    family:      6
+    flags:
+      fpu
+      vme
+      de
+      pse
+      tsc
+      msr
+      pae
+      mce
+      cx8
+      apic
+      sep
+      mtrr
+      pge
+      mca
+      cmov
+      pat
+      pse36
+      clflush
+      mmx
+      fxsr
+      sse
+      sse2
+      ht
+      syscall
+      nx
+      rdtscp
+      lm
+      constant_tsc
+      rep_good
+      nopl
+      xtopology
+      nonstop_tsc
+      pni
+      ssse3
+      sse4_1
+      sse4_2
+      hypervisor
+      lahf_lm
+    mhz:         3103.574
+    model:       26
+    model_name:  Intel(R) Core(TM) i7 CPU         950  @ 3.07GHz
+    physical_id: 0
+    stepping:    5
+    vendor_id:   GenuineIntel
+  2:
+    cache_size:  8192 KB
+    core_id:     2
+    cores:       3
+    family:      6
+    flags:
+      fpu
+      vme
+      de
+      pse
+      tsc
+      msr
+      pae
+      mce
+      cx8
+      apic
+      sep
+      mtrr
+      pge
+      mca
+      cmov
+      pat
+      pse36
+      clflush
+      mmx
+      fxsr
+      sse
+      sse2
+      ht
+      syscall
+      nx
+      rdtscp
+      lm
+      constant_tsc
+      rep_good
+      nopl
+      xtopology
+      nonstop_tsc
+      pni
+      ssse3
+      sse4_1
+      sse4_2
+      hypervisor
+      lahf_lm
+    mhz:         3103.574
+    model:       26
+    model_name:  Intel(R) Core(TM) i7 CPU         950  @ 3.07GHz
+    physical_id: 0
+    stepping:    5
+    vendor_id:   GenuineIntel
+  cores: 3
+  real:  1
+  total: 3
+current_user:      root
+dmi:
+  base_board:
+    all_records:
+      Asset Tag:                Not Specified
+      Chassis Handle:           0x0003
+      Contained Object Handles: 0
+      Features:
+        Board is a hosting board: 
+      Location In Chassis:      Not Specified
+      Manufacturer:             Oracle Corporation
+      Product Name:             VirtualBox
+      Serial Number:            0
+      Type:                     Motherboard
+      Version:                  1.2
+      application_identifier:   Base Board Information
+      record_id:                0x0008
+      size:                     2
+    asset_tag:                Not Specified
+    chassis_handle:           0x0003
+    contained_object_handles: 0
+    location_in_chassis:      Not Specified
+    manufacturer:             Oracle Corporation
+    product_name:             VirtualBox
+    serial_number:            0
+    type:                     Motherboard
+    version:                  1.2
+  bios:
+    address:      0xE0000
+    all_records:
+      Address:                0xE0000
+      Characteristics:
+        8042 keyboard services are supported (int 9h):   
+        ACPI is supported:                               
+        Boot from CD is supported:                       
+        CGA/mono video services are supported (int 10h): 
+        ISA is supported:                                
+        PCI is supported:                                
+        Selectable boot is supported:                    
+      ROM Size:               128 kB
+      Release Date:           12/01/2006
+      Runtime Size:           128 kB
+      Vendor:                 innotek GmbH
+      Version:                VirtualBox
+      application_identifier: BIOS Information
+      record_id:              0x0000
+      size:                   0
+    release_date: 12/01/2006
+    rom_size:     128 kB
+    runtime_size: 128 kB
+    vendor:       innotek GmbH
+    version:      VirtualBox
+  chassis:
+    all_records:
+      Asset Tag:              Not Specified
+      Boot-up State:          Safe
+      Lock:                   Not Present
+      Manufacturer:           Oracle Corporation
+      Power Supply State:     Safe
+      Security Status:        None
+      Serial Number:          Not Specified
+      Thermal State:          Safe
+      Type:                   Other
+      Version:                Not Specified
+      application_identifier: Chassis Information
+      record_id:              0x0003
+      size:                   3
+    asset_tag:          Not Specified
+    boot_up_state:      Safe
+    lock:               Not Present
+    manufacturer:       Oracle Corporation
+    power_supply_state: Safe
+    security_status:    None
+    serial_number:      Not Specified
+    thermal_state:      Safe
+    type:               Other
+    version:            Not Specified
+  dmidecode_version: 2.12
+  oem_strings:
+    all_records:
+      String 1:               vboxVer_5.0.20
+      String 2:               vboxRev_106931
+      application_identifier: OEM Strings
+      record_id:              0x0002
+      size:                   11
+    string_1:    vboxVer_5.0.20
+    string_2:    vboxRev_106931
+  smbios_version:    2.5
+  structures:
+    count: 10
+    size:  450
+  system:
+    all_records:
+      Family:                 Virtual Machine
+      Manufacturer:           innotek GmbH
+      Product Name:           VirtualBox
+      SKU Number:             Not Specified
+      Serial Number:          0
+      UUID:                   A7BB810B-38CF-438B-8356-04DC683A999F
+      Version:                1.2
+      Wake-up Type:           Power Switch
+      application_identifier: System Information
+      record_id:              0x0001
+      size:                   1
+    family:        Virtual Machine
+    manufacturer:  innotek GmbH
+    product_name:  VirtualBox
+    serial_number: 0
+    sku_number:    Not Specified
+    uuid:          A7BB810B-38CF-438B-8356-04DC683A999F
+    version:       1.2
+    wake_up_type:  Power Switch
+  table_location:    0x000E1000
+domain:            
+etc:
+  group:
+    abrt:
+      gid:     173
+      members:
+    adm:
+      gid:     4
+      members:
+    apache:
+      gid:     48
+      members:
+    asmadmin:
+      gid:     508
+      members:
+        grid
+        oracle
+    asmdba:
+      gid:     505
+      members:
+        grid
+        oracle
+    asmoper:
+      gid:     509
+      members:
+        grid
+        oracle
+    audio:
+      gid:     63
+      members:
+    avahi:
+      gid:     70
+      members:
+    avahi-autoipd:
+      gid:     170
+      members:
+    bckpdba:
+      gid:     504
+      members:
+        grid
+        oracle
+    bin:
+      gid:     1
+      members:
+    cdrom:
+      gid:     11
+      members:
+    cgred:
+      gid:     991
+      members:
+    chrony:
+      gid:     984
+      members:
+    colord:
+      gid:     992
+      members:
+    daemon:
+      gid:     2
+      members:
+    dba:
+      gid:     502
+      members:
+        grid
+        oracle
+    dbus:
+      gid:     81
+      members:
+    dgdba:
+      gid:     506
+      members: oracle
+    dialout:
+      gid:     18
+      members:
+    dip:
+      gid:     40
+      members:
+    disk:
+      gid:     6
+      members:
+    dovecot:
+      gid:     97
+      members:
+    dovenull:
+      gid:     979
+      members:
+    floppy:
+      gid:     19
+      members:
+    ftp:
+      gid:     50
+      members:
+    games:
+      gid:     20
+      members:
+    gdm:
+      gid:     42
+      members:
+    geoclue:
+      gid:     987
+      members:
+    gnome-initial-setup:
+      gid:     980
+      members:
+    hsqldb:
+      gid:     96
+      members:
+    input:
+      gid:     997
+      members:
+    kmdba:
+      gid:     507
+      members: oracle
+    kmem:
+      gid:     9
+      members:
+    kvm:
+      gid:     36
+      members: qemu
+    libstoragemgmt:
+      gid:     988
+      members:
+    libvirt:
+      gid:     989
+      members:
+    lock:
+      gid:     54
+      members:
+    lp:
+      gid:     7
+      members:
+    mail:
+      gid:     12
+      members: postfix
+    man:
+      gid:     15
+      members:
+    mem:
+      gid:     8
+      members:
+    memcached:
+      gid:     986
+      members:
+    mysql:
+      gid:     27
+      members:
+    named:
+      gid:     25
+      members:
+    nfsnobody:
+      gid:     65534
+      members:
+    nobody:
+      gid:     99
+      members:
+    ntp:
+      gid:     38
+      members:
+    ods:
+      gid:     998
+      members:
+    oinstall:
+      gid:     501
+      members: oracle
+    oper:
+      gid:     503
+      members: oracle
+    oprofile:
+      gid:     16
+      members:
+    paul:
+      gid:     1000
+      members:
+        root
+        paul
+    pcp:
+      gid:     983
+      members:
+    pegasus:
+      gid:     65
+      members:
+    pkiuser:
+      gid:     17
+      members:
+    polkitd:
+      gid:     994
+      members:
+    postdrop:
+      gid:     90
+      members:
+    postfix:
+      gid:     89
+      members:
+    postgres:
+      gid:     26
+      members:
+    pulse:
+      gid:     171
+      members:
+    pulse-access:
+      gid:     982
+      members:
+    pulse-rt:
+      gid:     981
+      members:
+    qemu:
+      gid:     107
+      members:
+    radvd:
+      gid:     75
+      members:
+    root:
+      gid:     0
+      members:
+    rpc:
+      gid:     32
+      members:
+    rpcuser:
+      gid:     29
+      members:
+    rtkit:
+      gid:     172
+      members:
+    saslauth:
+      gid:     76
+      members:
+    setroubleshoot:
+      gid:     985
+      members:
+    slocate:
+      gid:     21
+      members:
+    ssh_keys:
+      gid:     999
+      members:
+    sshd:
+      gid:     74
+      members:
+    sssd:
+      gid:     993
+      members:
+    stapdev:
+      gid:     158
+      members:
+    stapsys:
+      gid:     157
+      members:
+    stapusr:
+      gid:     156
+      members:
+    sys:
+      gid:     3
+      members:
+    systemd-bus-proxy:
+      gid:     996
+      members:
+    systemd-journal:
+      gid:     190
+      members:
+    systemd-network:
+      gid:     995
+      members:
+    tape:
+      gid:     30
+      members: amandabackup
+    tcpdump:
+      gid:     72
+      members:
+    tomcat:
+      gid:     91
+      members:
+    tss:
+      gid:     59
+      members:
+    tty:
+      gid:     5
+      members:
+    unbound:
+      gid:     990
+      members:
+    usbmuxd:
+      gid:     113
+      members:
+    users:
+      gid:     100
+      members:
+    utempter:
+      gid:     35
+      members:
+    utmp:
+      gid:     22
+      members:
+    vboxsf:
+      gid:     978
+      members:
+        root
+        paul
+        grid
+        oracle
+    video:
+      gid:     39
+      members:
+    wheel:
+      gid:     10
+      members:
+        paul
+        grid
+        oracle
+  passwd:
+    abrt:
+      dir:   /etc/abrt
+      gecos: 
+      gid:   173
+      shell: /sbin/nologin
+      uid:   173
+    adm:
+      dir:   /var/adm
+      gecos: adm
+      gid:   4
+      shell: /sbin/nologin
+      uid:   3
+    amandabackup:
+      dir:   /var/lib/amanda
+      gecos: Amanda user
+      gid:   6
+      shell: /bin/bash
+      uid:   33
+    apache:
+      dir:   /usr/share/httpd
+      gecos: Apache
+      gid:   48
+      shell: /sbin/nologin
+      uid:   48
+    avahi:
+      dir:   /var/run/avahi-daemon
+      gecos: Avahi mDNS/DNS-SD Stack
+      gid:   70
+      shell: /sbin/nologin
+      uid:   70
+    avahi-autoipd:
+      dir:   /var/lib/avahi-autoipd
+      gecos: Avahi IPv4LL Stack
+      gid:   170
+      shell: /sbin/nologin
+      uid:   170
+    bin:
+      dir:   /bin
+      gecos: bin
+      gid:   1
+      shell: /sbin/nologin
+      uid:   1
+    chrony:
+      dir:   /var/lib/chrony
+      gecos: 
+      gid:   984
+      shell: /sbin/nologin
+      uid:   987
+    colord:
+      dir:   /var/lib/colord
+      gecos: User for colord
+      gid:   992
+      shell: /sbin/nologin
+      uid:   994
+    daemon:
+      dir:   /sbin
+      gecos: daemon
+      gid:   2
+      shell: /sbin/nologin
+      uid:   2
+    dbus:
+      dir:   /
+      gecos: System message bus
+      gid:   81
+      shell: /sbin/nologin
+      uid:   81
+    dovecot:
+      dir:   /usr/libexec/dovecot
+      gecos: Dovecot IMAP server
+      gid:   97
+      shell: /sbin/nologin
+      uid:   97
+    dovenull:
+      dir:   /usr/libexec/dovecot
+      gecos: Dovecot's unauthorized user
+      gid:   979
+      shell: /sbin/nologin
+      uid:   984
+    ftp:
+      dir:   /var/ftp
+      gecos: FTP User
+      gid:   50
+      shell: /sbin/nologin
+      uid:   14
+    games:
+      dir:   /usr/games
+      gecos: games
+      gid:   100
+      shell: /sbin/nologin
+      uid:   12
+    gdm:
+      dir:   /var/lib/gdm
+      gecos: 
+      gid:   42
+      shell: /sbin/nologin
+      uid:   42
+    geoclue:
+      dir:   /var/lib/geoclue
+      gecos: User for geoclue
+      gid:   987
+      shell: /sbin/nologin
+      uid:   990
+    gnome-initial-setup:
+      dir:   /run/gnome-initial-setup/
+      gecos: 
+      gid:   980
+      shell: /sbin/nologin
+      uid:   985
+    grid:
+      dir:   /home/grid
+      gecos: Oracle Grid Administrator
+      gid:   501
+      shell: /bin/bash
+      uid:   591
+    halt:
+      dir:   /sbin
+      gecos: halt
+      gid:   0
+      shell: /sbin/halt
+      uid:   7
+    hsqldb:
+      dir:   /var/lib/hsqldb
+      gecos: 
+      gid:   96
+      shell: /sbin/nologin
+      uid:   96
+    libstoragemgmt:
+      dir:   /var/run/lsm
+      gecos: daemon account for libstoragemgmt
+      gid:   988
+      shell: /sbin/nologin
+      uid:   991
+    lp:
+      dir:   /var/spool/lpd
+      gecos: lp
+      gid:   7
+      shell: /sbin/nologin
+      uid:   4
+    mail:
+      dir:   /var/spool/mail
+      gecos: mail
+      gid:   12
+      shell: /sbin/nologin
+      uid:   8
+    memcached:
+      dir:   /run/memcached
+      gecos: Memcached daemon
+      gid:   986
+      shell: /sbin/nologin
+      uid:   989
+    mysql:
+      dir:   /var/lib/mysql
+      gecos: MySQL Server
+      gid:   27
+      shell: /bin/bash
+      uid:   27
+    named:
+      dir:   /var/named
+      gecos: Named
+      gid:   25
+      shell: /sbin/nologin
+      uid:   25
+    nfsnobody:
+      dir:   /var/lib/nfs
+      gecos: Anonymous NFS User
+      gid:   65534
+      shell: /sbin/nologin
+      uid:   65534
+    nobody:
+      dir:   /
+      gecos: Nobody
+      gid:   99
+      shell: /sbin/nologin
+      uid:   99
+    ntp:
+      dir:   /etc/ntp
+      gecos: 
+      gid:   38
+      shell: /sbin/nologin
+      uid:   38
+    ods:
+      dir:   //var/lib/softhsm
+      gecos: softhsm private keys owner
+      gid:   998
+      shell: /sbin/nologin
+      uid:   999
+    operator:
+      dir:   /root
+      gecos: operator
+      gid:   0
+      shell: /sbin/nologin
+      uid:   11
+    oprofile:
+      dir:   /var/lib/oprofile
+      gecos: Special user account to be used by OProfile
+      gid:   16
+      shell: /sbin/nologin
+      uid:   16
+    oracle:
+      dir:   /home/oracle
+      gecos: Oracle Administrator
+      gid:   501
+      shell: /bin/bash
+      uid:   592
+    paul:
+      dir:   /home/paul
+      gecos: paul
+      gid:   1000
+      shell: /bin/bash
+      uid:   1000
+    pcp:
+      dir:   /var/lib/pcp
+      gecos: Performance Co-Pilot
+      gid:   983
+      shell: /sbin/nologin
+      uid:   986
+    pegasus:
+      dir:   /var/lib/Pegasus
+      gecos: tog-pegasus OpenPegasus WBEM/CIM services
+      gid:   65
+      shell: /sbin/nologin
+      uid:   66
+    pkiuser:
+      dir:   /usr/share/pki
+      gecos: Certificate System
+      gid:   17
+      shell: /sbin/nologin
+      uid:   17
+    polkitd:
+      dir:   /
+      gecos: User for polkitd
+      gid:   994
+      shell: /sbin/nologin
+      uid:   996
+    postfix:
+      dir:   /var/spool/postfix
+      gecos: 
+      gid:   89
+      shell: /sbin/nologin
+      uid:   89
+    postgres:
+      dir:   /var/lib/pgsql
+      gecos: PostgreSQL Server
+      gid:   26
+      shell: /bin/bash
+      uid:   26
+    pulse:
+      dir:   /var/run/pulse
+      gecos: PulseAudio System Daemon
+      gid:   171
+      shell: /sbin/nologin
+      uid:   171
+    qemu:
+      dir:   /
+      gecos: qemu user
+      gid:   107
+      shell: /sbin/nologin
+      uid:   107
+    radvd:
+      dir:   /
+      gecos: radvd user
+      gid:   75
+      shell: /sbin/nologin
+      uid:   75
+    root:
+      dir:   /root
+      gecos: root
+      gid:   0
+      shell: /bin/bash
+      uid:   0
+    rpc:
+      dir:   /var/lib/rpcbind
+      gecos: Rpcbind Daemon
+      gid:   32
+      shell: /sbin/nologin
+      uid:   32
+    rpcuser:
+      dir:   /var/lib/nfs
+      gecos: RPC Service User
+      gid:   29
+      shell: /sbin/nologin
+      uid:   29
+    rtkit:
+      dir:   /proc
+      gecos: RealtimeKit
+      gid:   172
+      shell: /sbin/nologin
+      uid:   172
+    saslauth:
+      dir:   /run/saslauthd
+      gecos: Saslauthd user
+      gid:   76
+      shell: /sbin/nologin
+      uid:   992
+    setroubleshoot:
+      dir:   /var/lib/setroubleshoot
+      gecos: 
+      gid:   985
+      shell: /sbin/nologin
+      uid:   988
+    shutdown:
+      dir:   /sbin
+      gecos: shutdown
+      gid:   0
+      shell: /sbin/shutdown
+      uid:   6
+    sshd:
+      dir:   /var/empty/sshd
+      gecos: Privilege-separated SSH
+      gid:   74
+      shell: /sbin/nologin
+      uid:   74
+    sssd:
+      dir:   /
+      gecos: User for sssd
+      gid:   993
+      shell: /sbin/nologin
+      uid:   995
+    sync:
+      dir:   /sbin
+      gecos: sync
+      gid:   0
+      shell: /bin/sync
+      uid:   5
+    systemd-bus-proxy:
+      dir:   /
+      gecos: systemd Bus Proxy
+      gid:   996
+      shell: /sbin/nologin
+      uid:   998
+    systemd-network:
+      dir:   /
+      gecos: systemd Network Management
+      gid:   995
+      shell: /sbin/nologin
+      uid:   997
+    tcpdump:
+      dir:   /
+      gecos: 
+      gid:   72
+      shell: /sbin/nologin
+      uid:   72
+    tomcat:
+      dir:   /usr/share/tomcat
+      gecos: Apache Tomcat
+      gid:   91
+      shell: /bin/nologin
+      uid:   91
+    tss:
+      dir:   /dev/null
+      gecos: Account used by the trousers package to sandbox the tcsd daemon
+      gid:   59
+      shell: /sbin/nologin
+      uid:   59
+    unbound:
+      dir:   /etc/unbound
+      gecos: Unbound DNS resolver
+      gid:   990
+      shell: /sbin/nologin
+      uid:   993
+    usbmuxd:
+      dir:   /
+      gecos: usbmuxd user
+      gid:   113
+      shell: /sbin/nologin
+      uid:   113
+    vboxadd:
+      dir:   /var/run/vboxadd
+      gecos: 
+      gid:   1
+      shell: /bin/false
+      uid:   983
+expanded_run_list: grid12c::default
+filesystem:
+  /dev/mapper/ol-root:
+    fs_type:             xfs
+    inodes_available:    21790141
+    inodes_percent_used: 2%
+    inodes_used:         299587
+    kb_available:        12957908
+    kb_size:             22078944
+    kb_used:             9121036
+    mount:               /
+    mount_options:
+      rw
+      relatime
+      attr2
+      inode64
+      noquota
+    percent_used:        42%
+    total_inodes:        22089728
+    uuid:                35724c2f-94e1-4bbf-b60a-f7008683770d
+  /dev/mapper/ol-swap:
+    fs_type: swap
+    uuid:    1fc2cd6d-d79b-464a-8d66-f990408c9e79
+  /dev/sda1:
+    fs_type:             xfs
+    inodes_available:    438250
+    inodes_percent_used: 1%
+    inodes_used:         406
+    kb_available:        109520
+    kb_size:             508588
+    kb_used:             399068
+    mount:               /boot
+    mount_options:
+      rw
+      relatime
+      attr2
+      inode64
+      noquota
+    percent_used:        79%
+    total_inodes:        438656
+    uuid:                bb7431f0-56a8-4026-8855-d36972ca84d7
+  /dev/sda2:
+    fs_type: LVM2_member
+    uuid:    yzrzdH-nUZY-C1mf-HPsx-LlCP-V18Q-eLc8O2
+  /dev/sda3:
+    fs_type:             ext4
+    inodes_available:    1703919
+    inodes_percent_used: 1%
+    inodes_used:         17
+    kb_available:        25278440
+    kb_size:             26703012
+    kb_used:             45092
+    label:               U01
+    mount:               /u01
+    mount_options:
+      rw
+      nosuid
+      nodev
+      relatime
+      data=ordered
+    percent_used:        1%
+    total_inodes:        1703936
+    uuid:                494b7e17-ab3a-4f75-839a-f24c7833981e
+  /dev/sr0:
+    fs_type:       iso9660
+    kb_available:  0
+    kb_size:       56794
+    kb_used:       56794
+    label:         VBOXADDITIONS_5.0.20_106931
+    mount:         /run/media/grid/VBOXADDITIONS_5.0.20_106931
+    mount_options:
+      ro
+      nosuid
+      nodev
+      relatime
+      uid=591
+      gid=501
+      iocharset=utf8
+      mode=0400
+      dmode=0500
+      uhelper=udisks2
+    percent_used:  100%
+    uuid:          2016-04-28-14-28-44-00
+  binfmt_misc:
+    fs_type:       binfmt_misc
+    mount:         /proc/sys/fs/binfmt_misc
+    mount_options:
+      rw
+      relatime
+  cgroup:
+    fs_type:       cgroup
+    mount:         /sys/fs/cgroup/memory
+    mount_options:
+      rw
+      nosuid
+      nodev
+      noexec
+      relatime
+      memory
+  debugfs:
+    fs_type:       debugfs
+    mount:         /sys/kernel/debug
+    mount_options:
+      rw
+      relatime
+  devpts:
+    fs_type:       devpts
+    mount:         /dev/pts
+    mount_options:
+      rw
+      nosuid
+      noexec
+      relatime
+      gid=5
+      mode=620
+      ptmxmode=000
+  devtmpfs:
+    fs_type:             devtmpfs
+    inodes_available:    468877
+    inodes_percent_used: 1%
+    inodes_used:         451
+    kb_available:        1877312
+    kb_size:             1877312
+    kb_used:             0
+    mount:               /dev
+    mount_options:
+      rw
+      nosuid
+      size=1877312k
+      nr_inodes=469328
+      mode=755
+    percent_used:        0%
+    total_inodes:        469328
+  fusectl:
+    fs_type:       fusectl
+    mount:         /sys/fs/fuse/connections
+    mount_options:
+      rw
+      relatime
+  gvfsd-fuse:
+    fs_type:       fuse.gvfsd-fuse
+    mount:         /run/user/591/gvfs
+    mount_options:
+      rw
+      nosuid
+      nodev
+      relatime
+      user_id=591
+      group_id=501
+  hugetlbfs:
+    fs_type:       hugetlbfs
+    mount:         /dev/hugepages
+    mount_options:
+      rw
+      relatime
+  kits:
+    fs_type:             vboxsf
+    inodes_available:    1000
+    inodes_percent_used: 0%
+    inodes_used:         0
+    kb_available:        67626940
+    kb_size:             976759804
+    kb_used:             909132864
+    mount:               /media/sf_kits
+    mount_options:
+      rw
+      nodev
+      relatime
+    percent_used:        94%
+    total_inodes:        1000
+  mqueue:
+    fs_type:       mqueue
+    mount:         /dev/mqueue
+    mount_options:
+      rw
+      relatime
+  nfsd:
+    fs_type:       nfsd
+    mount:         /proc/fs/nfsd
+    mount_options:
+      rw
+      relatime
+  oracle_kits:
+    fs_type:             vboxsf
+    inodes_available:    1000
+    inodes_percent_used: 0%
+    inodes_used:         0
+    kb_available:        67626940
+    kb_size:             976759804
+    kb_used:             909132864
+    mount:               /media/sf_oracle_kits
+    mount_options:
+      rw
+      nodev
+      relatime
+    percent_used:        94%
+    total_inodes:        1000
+  oracleasmfs:
+    fs_type:       oracleasmfs
+    mount:         /dev/oracleasm
+    mount_options:
+      rw
+      relatime
+  proc:
+    fs_type:       proc
+    mount:         /proc
+    mount_options:
+      rw
+      nosuid
+      nodev
+      noexec
+      relatime
+  rootfs:
+    fs_type:       rootfs
+    mount:         /
+    mount_options: rw
+  securityfs:
+    fs_type:       securityfs
+    mount:         /sys/kernel/security
+    mount_options:
+      rw
+      nosuid
+      nodev
+      noexec
+      relatime
+  sunrpc:
+    fs_type:       rpc_pipefs
+    mount:         /var/lib/nfs/rpc_pipefs
+    mount_options:
+      rw
+      relatime
+  sysfs:
+    fs_type:       sysfs
+    mount:         /sys
+    mount_options:
+      rw
+      nosuid
+      nodev
+      noexec
+      relatime
+  systemd-1:
+    fs_type:       autofs
+    mount:         /proc/sys/fs/binfmt_misc
+    mount_options:
+      rw
+      relatime
+      fd=24
+      pgrp=1
+      timeout=300
+      minproto=5
+      maxproto=5
+      direct
+  tmpfs:
+    fs_type:             tmpfs
+    inodes_available:    473173
+    inodes_percent_used: 1%
+    inodes_used:         1
+    kb_available:        378540
+    kb_size:             378540
+    kb_used:             0
+    mount:               /run/user/1000
+    mount_options:
+      rw
+      nosuid
+      nodev
+      relatime
+      size=378540k
+      mode=700
+      uid=1000
+      gid=1000
+    percent_used:        0%
+    total_inodes:        473174
+filesystem2:
+  by_device:
+    /dev/mapper/ol-root:
+      fs_type:             xfs
+      inodes_available:    21790141
+      inodes_percent_used: 2%
+      inodes_used:         299587
+      kb_available:        12957908
+      kb_size:             22078944
+      kb_used:             9121036
+      mount_options:
+        rw
+        relatime
+        attr2
+        inode64
+        noquota
+      mounts:              /
+      percent_used:        42%
+      total_inodes:        22089728
+      uuid:                35724c2f-94e1-4bbf-b60a-f7008683770d
+    /dev/mapper/ol-swap:
+      fs_type: swap
+      mounts:
+      uuid:    1fc2cd6d-d79b-464a-8d66-f990408c9e79
+    /dev/sda:
+      mounts:
+    /dev/sda1:
+      fs_type:             xfs
+      inodes_available:    438250
+      inodes_percent_used: 1%
+      inodes_used:         406
+      kb_available:        109520
+      kb_size:             508588
+      kb_used:             399068
+      mount_options:
+        rw
+        relatime
+        attr2
+        inode64
+        noquota
+      mounts:              /boot
+      percent_used:        79%
+      total_inodes:        438656
+      uuid:                bb7431f0-56a8-4026-8855-d36972ca84d7
+    /dev/sda2:
+      fs_type: LVM2_member
+      mounts:
+      uuid:    yzrzdH-nUZY-C1mf-HPsx-LlCP-V18Q-eLc8O2
+    /dev/sda3:
+      fs_type:             ext4
+      inodes_available:    1703919
+      inodes_percent_used: 1%
+      inodes_used:         17
+      kb_available:        25278440
+      kb_size:             26703012
+      kb_used:             45092
+      label:               U01
+      mount_options:
+        rw
+        nosuid
+        nodev
+        relatime
+        data=ordered
+      mounts:              /u01
+      percent_used:        1%
+      total_inodes:        1703936
+      uuid:                494b7e17-ab3a-4f75-839a-f24c7833981e
+    /dev/sdb:
+      mounts:
+    /dev/sdc:
+      mounts:
+    /dev/sdd:
+      mounts:
+    /dev/sde:
+      mounts:
+    /dev/sr0:
+      fs_type:       iso9660
+      kb_available:  0
+      kb_size:       56794
+      kb_used:       56794
+      label:         VBOXADDITIONS_5.0.20_106931
+      mount_options:
+        ro
+        nosuid
+        nodev
+        relatime
+        uid=591
+        gid=501
+        iocharset=utf8
+        mode=0400
+        dmode=0500
+        uhelper=udisks2
+      mounts:        /run/media/grid/VBOXADDITIONS_5.0.20_106931
+      percent_used:  100%
+      uuid:          2016-04-28-14-28-44-00
+    binfmt_misc:
+      fs_type:       binfmt_misc
+      mount_options:
+        rw
+        relatime
+      mounts:        /proc/sys/fs/binfmt_misc
+    cgroup:
+      fs_type:       cgroup
+      mount_options:
+        rw
+        nosuid
+        nodev
+        noexec
+        relatime
+        memory
+      mounts:
+        /sys/fs/cgroup/systemd
+        /sys/fs/cgroup/freezer
+        /sys/fs/cgroup/cpuset
+        /sys/fs/cgroup/devices
+        /sys/fs/cgroup/net_cls
+        /sys/fs/cgroup/hugetlb
+        /sys/fs/cgroup/blkio
+        /sys/fs/cgroup/perf_event
+        /sys/fs/cgroup/cpu,cpuacct
+        /sys/fs/cgroup/memory
+    debugfs:
+      fs_type:       debugfs
+      mount_options:
+        rw
+        relatime
+      mounts:        /sys/kernel/debug
+    devpts:
+      fs_type:       devpts
+      mount_options:
+        rw
+        nosuid
+        noexec
+        relatime
+        gid=5
+        mode=620
+        ptmxmode=000
+      mounts:        /dev/pts
+    devtmpfs:
+      fs_type:             devtmpfs
+      inodes_available:    468877
+      inodes_percent_used: 1%
+      inodes_used:         451
+      kb_available:        1877312
+      kb_size:             1877312
+      kb_used:             0
+      mount_options:
+        rw
+        nosuid
+        size=1877312k
+        nr_inodes=469328
+        mode=755
+      mounts:              /dev
+      percent_used:        0%
+      total_inodes:        469328
+    fusectl:
+      fs_type:       fusectl
+      mount_options:
+        rw
+        relatime
+      mounts:        /sys/fs/fuse/connections
+    gvfsd-fuse:
+      fs_type:       fuse.gvfsd-fuse
+      mount_options:
+        rw
+        nosuid
+        nodev
+        relatime
+        user_id=591
+        group_id=501
+      mounts:        /run/user/591/gvfs
+    hugetlbfs:
+      fs_type:       hugetlbfs
+      mount_options:
+        rw
+        relatime
+      mounts:        /dev/hugepages
+    kits:
+      fs_type:             vboxsf
+      inodes_available:    1000
+      inodes_percent_used: 0%
+      inodes_used:         0
+      kb_available:        67626940
+      kb_size:             976759804
+      kb_used:             909132864
+      mount_options:
+        rw
+        nodev
+        relatime
+      mounts:              /media/sf_kits
+      percent_used:        94%
+      total_inodes:        1000
+    mqueue:
+      fs_type:       mqueue
+      mount_options:
+        rw
+        relatime
+      mounts:        /dev/mqueue
+    nfsd:
+      fs_type:       nfsd
+      mount_options:
+        rw
+        relatime
+      mounts:        /proc/fs/nfsd
+    oracle_kits:
+      fs_type:             vboxsf
+      inodes_available:    1000
+      inodes_percent_used: 0%
+      inodes_used:         0
+      kb_available:        67626940
+      kb_size:             976759804
+      kb_used:             909132864
+      mount_options:
+        rw
+        nodev
+        relatime
+      mounts:              /media/sf_oracle_kits
+      percent_used:        94%
+      total_inodes:        1000
+    oracleasmfs:
+      fs_type:       oracleasmfs
+      mount_options:
+        rw
+        relatime
+      mounts:        /dev/oracleasm
+    proc:
+      fs_type:       proc
+      mount_options:
+        rw
+        nosuid
+        nodev
+        noexec
+        relatime
+      mounts:        /proc
+    rootfs:
+      fs_type:       rootfs
+      mount_options: rw
+      mounts:        /
+    securityfs:
+      fs_type:       securityfs
+      mount_options:
+        rw
+        nosuid
+        nodev
+        noexec
+        relatime
+      mounts:        /sys/kernel/security
+    sunrpc:
+      fs_type:       rpc_pipefs
+      mount_options:
+        rw
+        relatime
+      mounts:        /var/lib/nfs/rpc_pipefs
+    sysfs:
+      fs_type:       sysfs
+      mount_options:
+        rw
+        nosuid
+        nodev
+        noexec
+        relatime
+      mounts:        /sys
+    systemd-1:
+      fs_type:       autofs
+      mount_options:
+        rw
+        relatime
+        fd=24
+        pgrp=1
+        timeout=300
+        minproto=5
+        maxproto=5
+        direct
+      mounts:        /proc/sys/fs/binfmt_misc
+    tmpfs:
+      fs_type:             tmpfs
+      inodes_available:    473173
+      inodes_percent_used: 1%
+      inodes_used:         1
+      kb_available:        378540
+      kb_size:             378540
+      kb_used:             0
+      mount_options:
+        rw
+        nosuid
+        nodev
+        relatime
+        size=378540k
+        mode=700
+        uid=1000
+        gid=1000
+      mounts:
+        /dev/shm
+        /run
+        /sys/fs/cgroup
+        /run/user/42
+        /run/user/591
+        /run/user/1000
+      percent_used:        0%
+      total_inodes:        473174
+  by_mountpoint:
+    /:
+      devices:
+        /dev/mapper/ol-root
+        rootfs
+      fs_type:             rootfs
+      inodes_available:    21790141
+      inodes_percent_used: 2%
+      inodes_used:         299587
+      kb_available:        12957908
+      kb_size:             22078944
+      kb_used:             9121036
+      mount_options:       rw
+      percent_used:        42%
+      total_inodes:        22089728
+      uuid:                35724c2f-94e1-4bbf-b60a-f7008683770d
+    /boot:
+      devices:             /dev/sda1
+      fs_type:             xfs
+      inodes_available:    438250
+      inodes_percent_used: 1%
+      inodes_used:         406
+      kb_available:        109520
+      kb_size:             508588
+      kb_used:             399068
+      mount_options:
+        rw
+        relatime
+        attr2
+        inode64
+        noquota
+      percent_used:        79%
+      total_inodes:        438656
+      uuid:                bb7431f0-56a8-4026-8855-d36972ca84d7
+    /dev:
+      devices:             devtmpfs
+      fs_type:             devtmpfs
+      inodes_available:    468877
+      inodes_percent_used: 1%
+      inodes_used:         451
+      kb_available:        1877312
+      kb_size:             1877312
+      kb_used:             0
+      mount_options:
+        rw
+        nosuid
+        size=1877312k
+        nr_inodes=469328
+        mode=755
+      percent_used:        0%
+      total_inodes:        469328
+    /dev/hugepages:
+      devices:       hugetlbfs
+      fs_type:       hugetlbfs
+      mount_options:
+        rw
+        relatime
+    /dev/mqueue:
+      devices:       mqueue
+      fs_type:       mqueue
+      mount_options:
+        rw
+        relatime
+    /dev/oracleasm:
+      devices:       oracleasmfs
+      fs_type:       oracleasmfs
+      mount_options:
+        rw
+        relatime
+    /dev/pts:
+      devices:       devpts
+      fs_type:       devpts
+      mount_options:
+        rw
+        nosuid
+        noexec
+        relatime
+        gid=5
+        mode=620
+        ptmxmode=000
+    /dev/shm:
+      devices:             tmpfs
+      fs_type:             tmpfs
+      inodes_available:    473165
+      inodes_percent_used: 1%
+      inodes_used:         9
+      kb_available:        4194208
+      kb_size:             4194304
+      kb_used:             96
+      mount_options:
+        rw
+        size=4194304k
+      percent_used:        1%
+      total_inodes:        473174
+    /media/sf_kits:
+      devices:             kits
+      fs_type:             vboxsf
+      inodes_available:    1000
+      inodes_percent_used: 0%
+      inodes_used:         0
+      kb_available:        67626940
+      kb_size:             976759804
+      kb_used:             909132864
+      mount_options:
+        rw
+        nodev
+        relatime
+      percent_used:        94%
+      total_inodes:        1000
+    /media/sf_oracle_kits:
+      devices:             oracle_kits
+      fs_type:             vboxsf
+      inodes_available:    1000
+      inodes_percent_used: 0%
+      inodes_used:         0
+      kb_available:        67626940
+      kb_size:             976759804
+      kb_used:             909132864
+      mount_options:
+        rw
+        nodev
+        relatime
+      percent_used:        94%
+      total_inodes:        1000
+    /proc:
+      devices:       proc
+      fs_type:       proc
+      mount_options:
+        rw
+        nosuid
+        nodev
+        noexec
+        relatime
+    /proc/fs/nfsd:
+      devices:       nfsd
+      fs_type:       nfsd
+      mount_options:
+        rw
+        relatime
+    /proc/sys/fs/binfmt_misc:
+      devices:
+        systemd-1
+        binfmt_misc
+      fs_type:       binfmt_misc
+      mount_options:
+        rw
+        relatime
+    /run:
+      devices:             tmpfs
+      fs_type:             tmpfs
+      inodes_available:    472557
+      inodes_percent_used: 1%
+      inodes_used:         617
+      kb_available:        1883592
+      kb_size:             1892696
+      kb_used:             9104
+      mount_options:
+        rw
+        nosuid
+        nodev
+        mode=755
+      percent_used:        1%
+      total_inodes:        473174
+    /run/media/grid/VBOXADDITIONS_5.0.20_106931:
+      devices:       /dev/sr0
+      fs_type:       iso9660
+      kb_available:  0
+      kb_size:       56794
+      kb_used:       56794
+      label:         VBOXADDITIONS_5.0.20_106931
+      mount_options:
+        ro
+        nosuid
+        nodev
+        relatime
+        uid=591
+        gid=501
+        iocharset=utf8
+        mode=0400
+        dmode=0500
+        uhelper=udisks2
+      percent_used:  100%
+      uuid:          2016-04-28-14-28-44-00
+    /run/user/1000:
+      devices:             tmpfs
+      fs_type:             tmpfs
+      inodes_available:    473173
+      inodes_percent_used: 1%
+      inodes_used:         1
+      kb_available:        378540
+      kb_size:             378540
+      kb_used:             0
+      mount_options:
+        rw
+        nosuid
+        nodev
+        relatime
+        size=378540k
+        mode=700
+        uid=1000
+        gid=1000
+      percent_used:        0%
+      total_inodes:        473174
+    /run/user/42:
+      devices:             tmpfs
+      fs_type:             tmpfs
+      inodes_available:    473160
+      inodes_percent_used: 1%
+      inodes_used:         14
+      kb_available:        378532
+      kb_size:             378540
+      kb_used:             8
+      mount_options:
+        rw
+        nosuid
+        nodev
+        relatime
+        size=378540k
+        mode=700
+        uid=42
+        gid=42
+      percent_used:        1%
+      total_inodes:        473174
+    /run/user/591:
+      devices:             tmpfs
+      fs_type:             tmpfs
+      inodes_available:    473149
+      inodes_percent_used: 1%
+      inodes_used:         25
+      kb_available:        378528
+      kb_size:             378540
+      kb_used:             12
+      mount_options:
+        rw
+        nosuid
+        nodev
+        relatime
+        size=378540k
+        mode=700
+        uid=591
+        gid=501
+      percent_used:        1%
+      total_inodes:        473174
+    /run/user/591/gvfs:
+      devices:       gvfsd-fuse
+      fs_type:       fuse.gvfsd-fuse
+      mount_options:
+        rw
+        nosuid
+        nodev
+        relatime
+        user_id=591
+        group_id=501
+    /sys:
+      devices:       sysfs
+      fs_type:       sysfs
+      mount_options:
+        rw
+        nosuid
+        nodev
+        noexec
+        relatime
+    /sys/fs/cgroup:
+      devices:             tmpfs
+      fs_type:             tmpfs
+      inodes_available:    473161
+      inodes_percent_used: 1%
+      inodes_used:         13
+      kb_available:        1892696
+      kb_size:             1892696
+      kb_used:             0
+      mount_options:
+        ro
+        nosuid
+        nodev
+        noexec
+        mode=755
+      percent_used:        0%
+      total_inodes:        473174
+    /sys/fs/cgroup/blkio:
+      devices:       cgroup
+      fs_type:       cgroup
+      mount_options:
+        rw
+        nosuid
+        nodev
+        noexec
+        relatime
+        blkio
+    /sys/fs/cgroup/cpu,cpuacct:
+      devices:       cgroup
+      fs_type:       cgroup
+      mount_options:
+        rw
+        nosuid
+        nodev
+        noexec
+        relatime
+        cpuacct
+        cpu
+    /sys/fs/cgroup/cpuset:
+      devices:       cgroup
+      fs_type:       cgroup
+      mount_options:
+        rw
+        nosuid
+        nodev
+        noexec
+        relatime
+        cpuset
+    /sys/fs/cgroup/devices:
+      devices:       cgroup
+      fs_type:       cgroup
+      mount_options:
+        rw
+        nosuid
+        nodev
+        noexec
+        relatime
+        devices
+    /sys/fs/cgroup/freezer:
+      devices:       cgroup
+      fs_type:       cgroup
+      mount_options:
+        rw
+        nosuid
+        nodev
+        noexec
+        relatime
+        freezer
+    /sys/fs/cgroup/hugetlb:
+      devices:       cgroup
+      fs_type:       cgroup
+      mount_options:
+        rw
+        nosuid
+        nodev
+        noexec
+        relatime
+        hugetlb
+    /sys/fs/cgroup/memory:
+      devices:       cgroup
+      fs_type:       cgroup
+      mount_options:
+        rw
+        nosuid
+        nodev
+        noexec
+        relatime
+        memory
+    /sys/fs/cgroup/net_cls:
+      devices:       cgroup
+      fs_type:       cgroup
+      mount_options:
+        rw
+        nosuid
+        nodev
+        noexec
+        relatime
+        net_cls
+    /sys/fs/cgroup/perf_event:
+      devices:       cgroup
+      fs_type:       cgroup
+      mount_options:
+        rw
+        nosuid
+        nodev
+        noexec
+        relatime
+        perf_event
+    /sys/fs/cgroup/systemd:
+      devices:       cgroup
+      fs_type:       cgroup
+      mount_options:
+        rw
+        nosuid
+        nodev
+        noexec
+        relatime
+        xattr
+        release_agent=/usr/lib/systemd/systemd-cgroups-agent
+        name=systemd
+    /sys/fs/fuse/connections:
+      devices:       fusectl
+      fs_type:       fusectl
+      mount_options:
+        rw
+        relatime
+    /sys/kernel/debug:
+      devices:       debugfs
+      fs_type:       debugfs
+      mount_options:
+        rw
+        relatime
+    /sys/kernel/security:
+      devices:       securityfs
+      fs_type:       securityfs
+      mount_options:
+        rw
+        nosuid
+        nodev
+        noexec
+        relatime
+    /u01:
+      devices:             /dev/sda3
+      fs_type:             ext4
+      inodes_available:    1703919
+      inodes_percent_used: 1%
+      inodes_used:         17
+      kb_available:        25278440
+      kb_size:             26703012
+      kb_used:             45092
+      label:               U01
+      mount_options:
+        rw
+        nosuid
+        nodev
+        relatime
+        data=ordered
+      percent_used:        1%
+      total_inodes:        1703936
+      uuid:                494b7e17-ab3a-4f75-839a-f24c7833981e
+    /var/lib/nfs/rpc_pipefs:
+      devices:       sunrpc
+      fs_type:       rpc_pipefs
+      mount_options:
+        rw
+        relatime
+  by_pair:
+    /dev/mapper/ol-root,/:
+      device:              /dev/mapper/ol-root
+      fs_type:             xfs
+      inodes_available:    21790141
+      inodes_percent_used: 2%
+      inodes_used:         299587
+      kb_available:        12957908
+      kb_size:             22078944
+      kb_used:             9121036
+      mount:               /
+      mount_options:
+        rw
+        relatime
+        attr2
+        inode64
+        noquota
+      percent_used:        42%
+      total_inodes:        22089728
+      uuid:                35724c2f-94e1-4bbf-b60a-f7008683770d
+    /dev/mapper/ol-swap,:
+      device:  /dev/mapper/ol-swap
+      fs_type: swap
+      uuid:    1fc2cd6d-d79b-464a-8d66-f990408c9e79
+    /dev/sda,:
+      device: /dev/sda
+    /dev/sda1,/boot:
+      device:              /dev/sda1
+      fs_type:             xfs
+      inodes_available:    438250
+      inodes_percent_used: 1%
+      inodes_used:         406
+      kb_available:        109520
+      kb_size:             508588
+      kb_used:             399068
+      mount:               /boot
+      mount_options:
+        rw
+        relatime
+        attr2
+        inode64
+        noquota
+      percent_used:        79%
+      total_inodes:        438656
+      uuid:                bb7431f0-56a8-4026-8855-d36972ca84d7
+    /dev/sda2,:
+      device:  /dev/sda2
+      fs_type: LVM2_member
+      uuid:    yzrzdH-nUZY-C1mf-HPsx-LlCP-V18Q-eLc8O2
+    /dev/sda3,/u01:
+      device:              /dev/sda3
+      fs_type:             ext4
+      inodes_available:    1703919
+      inodes_percent_used: 1%
+      inodes_used:         17
+      kb_available:        25278440
+      kb_size:             26703012
+      kb_used:             45092
+      label:               U01
+      mount:               /u01
+      mount_options:
+        rw
+        nosuid
+        nodev
+        relatime
+        data=ordered
+      percent_used:        1%
+      total_inodes:        1703936
+      uuid:                494b7e17-ab3a-4f75-839a-f24c7833981e
+    /dev/sdb,:
+      device: /dev/sdb
+    /dev/sdc,:
+      device: /dev/sdc
+    /dev/sdd,:
+      device: /dev/sdd
+    /dev/sde,:
+      device: /dev/sde
+    /dev/sr0,/run/media/grid/VBOXADDITIONS_5.0.20_106931:
+      device:        /dev/sr0
+      fs_type:       iso9660
+      kb_available:  0
+      kb_size:       56794
+      kb_used:       56794
+      label:         VBOXADDITIONS_5.0.20_106931
+      mount:         /run/media/grid/VBOXADDITIONS_5.0.20_106931
+      mount_options:
+        ro
+        nosuid
+        nodev
+        relatime
+        uid=591
+        gid=501
+        iocharset=utf8
+        mode=0400
+        dmode=0500
+        uhelper=udisks2
+      percent_used:  100%
+      uuid:          2016-04-28-14-28-44-00
+    binfmt_misc,/proc/sys/fs/binfmt_misc:
+      device:        binfmt_misc
+      fs_type:       binfmt_misc
+      mount:         /proc/sys/fs/binfmt_misc
+      mount_options:
+        rw
+        relatime
+    cgroup,/sys/fs/cgroup/blkio:
+      device:        cgroup
+      fs_type:       cgroup
+      mount:         /sys/fs/cgroup/blkio
+      mount_options:
+        rw
+        nosuid
+        nodev
+        noexec
+        relatime
+        blkio
+    cgroup,/sys/fs/cgroup/cpu,cpuacct:
+      device:        cgroup
+      fs_type:       cgroup
+      mount:         /sys/fs/cgroup/cpu,cpuacct
+      mount_options:
+        rw
+        nosuid
+        nodev
+        noexec
+        relatime
+        cpuacct
+        cpu
+    cgroup,/sys/fs/cgroup/cpuset:
+      device:        cgroup
+      fs_type:       cgroup
+      mount:         /sys/fs/cgroup/cpuset
+      mount_options:
+        rw
+        nosuid
+        nodev
+        noexec
+        relatime
+        cpuset
+    cgroup,/sys/fs/cgroup/devices:
+      device:        cgroup
+      fs_type:       cgroup
+      mount:         /sys/fs/cgroup/devices
+      mount_options:
+        rw
+        nosuid
+        nodev
+        noexec
+        relatime
+        devices
+    cgroup,/sys/fs/cgroup/freezer:
+      device:        cgroup
+      fs_type:       cgroup
+      mount:         /sys/fs/cgroup/freezer
+      mount_options:
+        rw
+        nosuid
+        nodev
+        noexec
+        relatime
+        freezer
+    cgroup,/sys/fs/cgroup/hugetlb:
+      device:        cgroup
+      fs_type:       cgroup
+      mount:         /sys/fs/cgroup/hugetlb
+      mount_options:
+        rw
+        nosuid
+        nodev
+        noexec
+        relatime
+        hugetlb
+    cgroup,/sys/fs/cgroup/memory:
+      device:        cgroup
+      fs_type:       cgroup
+      mount:         /sys/fs/cgroup/memory
+      mount_options:
+        rw
+        nosuid
+        nodev
+        noexec
+        relatime
+        memory
+    cgroup,/sys/fs/cgroup/net_cls:
+      device:        cgroup
+      fs_type:       cgroup
+      mount:         /sys/fs/cgroup/net_cls
+      mount_options:
+        rw
+        nosuid
+        nodev
+        noexec
+        relatime
+        net_cls
+    cgroup,/sys/fs/cgroup/perf_event:
+      device:        cgroup
+      fs_type:       cgroup
+      mount:         /sys/fs/cgroup/perf_event
+      mount_options:
+        rw
+        nosuid
+        nodev
+        noexec
+        relatime
+        perf_event
+    cgroup,/sys/fs/cgroup/systemd:
+      device:        cgroup
+      fs_type:       cgroup
+      mount:         /sys/fs/cgroup/systemd
+      mount_options:
+        rw
+        nosuid
+        nodev
+        noexec
+        relatime
+        xattr
+        release_agent=/usr/lib/systemd/systemd-cgroups-agent
+        name=systemd
+    debugfs,/sys/kernel/debug:
+      device:        debugfs
+      fs_type:       debugfs
+      mount:         /sys/kernel/debug
+      mount_options:
+        rw
+        relatime
+    devpts,/dev/pts:
+      device:        devpts
+      fs_type:       devpts
+      mount:         /dev/pts
+      mount_options:
+        rw
+        nosuid
+        noexec
+        relatime
+        gid=5
+        mode=620
+        ptmxmode=000
+    devtmpfs,/dev:
+      device:              devtmpfs
+      fs_type:             devtmpfs
+      inodes_available:    468877
+      inodes_percent_used: 1%
+      inodes_used:         451
+      kb_available:        1877312
+      kb_size:             1877312
+      kb_used:             0
+      mount:               /dev
+      mount_options:
+        rw
+        nosuid
+        size=1877312k
+        nr_inodes=469328
+        mode=755
+      percent_used:        0%
+      total_inodes:        469328
+    fusectl,/sys/fs/fuse/connections:
+      device:        fusectl
+      fs_type:       fusectl
+      mount:         /sys/fs/fuse/connections
+      mount_options:
+        rw
+        relatime
+    gvfsd-fuse,/run/user/591/gvfs:
+      device:        gvfsd-fuse
+      fs_type:       fuse.gvfsd-fuse
+      mount:         /run/user/591/gvfs
+      mount_options:
+        rw
+        nosuid
+        nodev
+        relatime
+        user_id=591
+        group_id=501
+    hugetlbfs,/dev/hugepages:
+      device:        hugetlbfs
+      fs_type:       hugetlbfs
+      mount:         /dev/hugepages
+      mount_options:
+        rw
+        relatime
+    kits,/media/sf_kits:
+      device:              kits
+      fs_type:             vboxsf
+      inodes_available:    1000
+      inodes_percent_used: 0%
+      inodes_used:         0
+      kb_available:        67626940
+      kb_size:             976759804
+      kb_used:             909132864
+      mount:               /media/sf_kits
+      mount_options:
+        rw
+        nodev
+        relatime
+      percent_used:        94%
+      total_inodes:        1000
+    mqueue,/dev/mqueue:
+      device:        mqueue
+      fs_type:       mqueue
+      mount:         /dev/mqueue
+      mount_options:
+        rw
+        relatime
+    nfsd,/proc/fs/nfsd:
+      device:        nfsd
+      fs_type:       nfsd
+      mount:         /proc/fs/nfsd
+      mount_options:
+        rw
+        relatime
+    oracle_kits,/media/sf_oracle_kits:
+      device:              oracle_kits
+      fs_type:             vboxsf
+      inodes_available:    1000
+      inodes_percent_used: 0%
+      inodes_used:         0
+      kb_available:        67626940
+      kb_size:             976759804
+      kb_used:             909132864
+      mount:               /media/sf_oracle_kits
+      mount_options:
+        rw
+        nodev
+        relatime
+      percent_used:        94%
+      total_inodes:        1000
+    oracleasmfs,/dev/oracleasm:
+      device:        oracleasmfs
+      fs_type:       oracleasmfs
+      mount:         /dev/oracleasm
+      mount_options:
+        rw
+        relatime
+    proc,/proc:
+      device:        proc
+      fs_type:       proc
+      mount:         /proc
+      mount_options:
+        rw
+        nosuid
+        nodev
+        noexec
+        relatime
+    rootfs,/:
+      device:        rootfs
+      fs_type:       rootfs
+      mount:         /
+      mount_options: rw
+    securityfs,/sys/kernel/security:
+      device:        securityfs
+      fs_type:       securityfs
+      mount:         /sys/kernel/security
+      mount_options:
+        rw
+        nosuid
+        nodev
+        noexec
+        relatime
+    sunrpc,/var/lib/nfs/rpc_pipefs:
+      device:        sunrpc
+      fs_type:       rpc_pipefs
+      mount:         /var/lib/nfs/rpc_pipefs
+      mount_options:
+        rw
+        relatime
+    sysfs,/sys:
+      device:        sysfs
+      fs_type:       sysfs
+      mount:         /sys
+      mount_options:
+        rw
+        nosuid
+        nodev
+        noexec
+        relatime
+    systemd-1,/proc/sys/fs/binfmt_misc:
+      device:        systemd-1
+      fs_type:       autofs
+      mount:         /proc/sys/fs/binfmt_misc
+      mount_options:
+        rw
+        relatime
+        fd=24
+        pgrp=1
+        timeout=300
+        minproto=5
+        maxproto=5
+        direct
+    tmpfs,/dev/shm:
+      device:              tmpfs
+      fs_type:             tmpfs
+      inodes_available:    473165
+      inodes_percent_used: 1%
+      inodes_used:         9
+      kb_available:        4194208
+      kb_size:             4194304
+      kb_used:             96
+      mount:               /dev/shm
+      mount_options:
+        rw
+        size=4194304k
+      percent_used:        1%
+      total_inodes:        473174
+    tmpfs,/run:
+      device:              tmpfs
+      fs_type:             tmpfs
+      inodes_available:    472557
+      inodes_percent_used: 1%
+      inodes_used:         617
+      kb_available:        1883592
+      kb_size:             1892696
+      kb_used:             9104
+      mount:               /run
+      mount_options:
+        rw
+        nosuid
+        nodev
+        mode=755
+      percent_used:        1%
+      total_inodes:        473174
+    tmpfs,/run/user/1000:
+      device:              tmpfs
+      fs_type:             tmpfs
+      inodes_available:    473173
+      inodes_percent_used: 1%
+      inodes_used:         1
+      kb_available:        378540
+      kb_size:             378540
+      kb_used:             0
+      mount:               /run/user/1000
+      mount_options:
+        rw
+        nosuid
+        nodev
+        relatime
+        size=378540k
+        mode=700
+        uid=1000
+        gid=1000
+      percent_used:        0%
+      total_inodes:        473174
+    tmpfs,/run/user/42:
+      device:              tmpfs
+      fs_type:             tmpfs
+      inodes_available:    473160
+      inodes_percent_used: 1%
+      inodes_used:         14
+      kb_available:        378532
+      kb_size:             378540
+      kb_used:             8
+      mount:               /run/user/42
+      mount_options:
+        rw
+        nosuid
+        nodev
+        relatime
+        size=378540k
+        mode=700
+        uid=42
+        gid=42
+      percent_used:        1%
+      total_inodes:        473174
+    tmpfs,/run/user/591:
+      device:              tmpfs
+      fs_type:             tmpfs
+      inodes_available:    473149
+      inodes_percent_used: 1%
+      inodes_used:         25
+      kb_available:        378528
+      kb_size:             378540
+      kb_used:             12
+      mount:               /run/user/591
+      mount_options:
+        rw
+        nosuid
+        nodev
+        relatime
+        size=378540k
+        mode=700
+        uid=591
+        gid=501
+      percent_used:        1%
+      total_inodes:        473174
+    tmpfs,/sys/fs/cgroup:
+      device:              tmpfs
+      fs_type:             tmpfs
+      inodes_available:    473161
+      inodes_percent_used: 1%
+      inodes_used:         13
+      kb_available:        1892696
+      kb_size:             1892696
+      kb_used:             0
+      mount:               /sys/fs/cgroup
+      mount_options:
+        ro
+        nosuid
+        nodev
+        noexec
+        mode=755
+      percent_used:        0%
+      total_inodes:        473174
+fqdn:              ambari5
+hostname:          ambari5
+idletime:          2 hours 19 minutes 29 seconds
+idletime_seconds:  8369
+init_package:      systemd
+ip6address:        fdbb:a83d:4d9d:0:a00:27ff:febe:c183
+ipaddress:         192.168.0.38
+kernel:
+  machine:   x86_64
+  modules:
+    ac97_bus:
+      refcount: 1
+      size:     1462
+    ahci:
+      refcount: 3
+      size:     22787
+    ata_generic:
+      refcount: 0
+      size:     3790
+    ata_piix:
+      refcount: 1
+      size:     26174
+    auth_rpcgss:
+      refcount: 1
+      size:     38456
+    autofs4:
+      refcount: 2
+      size:     33017
+    bluetooth:
+      refcount: 5
+      size:     350500
+    bnep:
+      refcount: 2
+      size:     15888
+    bridge:
+      refcount: 0
+      size:     90934
+    cdrom:
+      refcount: 1
+      size:     38364
+    crc32c_intel:
+      refcount: 1
+      size:     14455
+    crc_t10dif:
+      refcount: 1
+      size:     1547
+    dm_log:
+      refcount: 2
+      size:     9451
+    dm_mirror:
+      refcount: 0
+      size:     13539
+    dm_mod:
+      refcount: 8
+      size:     81143
+    dm_region_hash:
+      refcount: 1
+      size:     10821
+    e1000:
+      refcount: 0
+      size:     141771
+    ebtable_filter:
+      refcount: 0
+      size:     2067
+    ebtables:
+      refcount: 1
+      size:     25401
+    ext4:
+      refcount: 1
+      size:     520166
+    fuse:
+      refcount: 3
+      size:     75318
+    i2c_core:
+      refcount: 1
+      size:     30824
+    i2c_piix4:
+      refcount: 0
+      size:     11538
+    ip6_tables:
+      refcount: 1
+      size:     18441
+    ip6table_filter:
+      refcount: 0
+      size:     1703
+    ip_tables:
+      refcount: 3
+      size:     18959
+    ipt_MASQUERADE:
+      refcount: 3
+      size:     2472
+    ipt_REJECT:
+      refcount: 2
+      size:     2421
+    iptable_filter:
+      refcount: 1
+      size:     1762
+    iptable_mangle:
+      refcount: 1
+      size:     1743
+    iptable_nat:
+      refcount: 1
+      size:     3723
+    ipv6:
+      refcount: 37
+      size:     333689
+    jbd2:
+      refcount: 1
+      size:     98906
+    libahci:
+      refcount: 1
+      size:     24911
+    libcrc32c:
+      refcount: 1
+      size:     1220
+    llc:
+      refcount: 2
+      size:     5472
+    lockd:
+      refcount: 1
+      size:     83744
+    mbcache:
+      refcount: 1
+      size:     7566
+    microcode:
+      refcount: 0
+      size:     115090
+    nf_conntrack:
+      refcount: 6
+      size:     82409
+    nf_conntrack_ipv4:
+      refcount: 2
+      size:     10054
+    nf_defrag_ipv4:
+      refcount: 1
+      size:     1521
+    nf_nat:
+      refcount: 3
+      size:     19307
+    nf_nat_ipv4:
+      refcount: 1
+      size:     3919
+    nfs_acl:
+      refcount: 1
+      size:     2653
+    nfsd:
+      refcount: 1
+      size:     268773
+    nls_utf8:
+      refcount: 1
+      size:     1421
+    oracleasm:
+      refcount: 1
+      size:     53069
+    pata_acpi:
+      refcount: 0
+      size:     3654
+    pcspkr:
+      refcount: 0
+      size:     2150
+    rfkill:
+      refcount: 2
+      size:     18918
+    sd_mod:
+      refcount: 4
+      size:     39695
+    serio_raw:
+      refcount: 0
+      size:     5567
+    sg:
+      refcount: 0
+      size:     30573
+    snd:
+      refcount: 12
+      size:     78045
+    snd_ac97_codec:
+      refcount: 1
+      size:     124412
+    snd_intel8x0:
+      refcount: 3
+      size:     32336
+    snd_page_alloc:
+      refcount: 2
+      size:     8734
+    snd_pcm:
+      refcount: 2
+      size:     98945
+    snd_seq:
+      refcount: 0
+      size:     58512
+    snd_seq_device:
+      refcount: 1
+      size:     6673
+    snd_timer:
+      refcount: 2
+      size:     22839
+    soundcore:
+      refcount: 1
+      size:     7567
+    sr_mod:
+      refcount: 1
+      size:     15263
+    stp:
+      refcount: 1
+      size:     2192
+    sunrpc:
+      refcount: 5
+      size:     263135
+    tcp_lp:
+      refcount: 0
+      size:     2415
+    tun:
+      refcount: 1
+      size:     19961
+    vboxguest:
+      refcount: 6
+      size:     284197
+    vboxsf:
+      refcount: 2
+      size:     36711
+    video:
+      refcount: 0
+      size:     12706
+    xfs:
+      refcount: 2
+      size:     866206
+    xt_CHECKSUM:
+      refcount: 1
+      size:     1309
+    xt_conntrack:
+      refcount: 1
+      size:     3312
+  name:      Linux
+  os:        GNU/Linux
+  processor: x86_64
+  release:   3.8.13-118.6.1.el7uek.x86_64
+  version:   #2 SMP Wed May 4 16:03:55 PDT 2016
+keys:
+  ssh:
+    host_ecdsa_public:   AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBGUXOUltn+eUB76oBiP24XQ7bnDR0S6JHjlfBcohd0mXO+OixFab/UP43PK6tcjbWtu09/GfHUuR3TsRc75K5zw=
+    host_ecdsa_type:     ecdsa-sha2-nistp256
+    host_ed25519_public: AAAAC3NzaC1lZDI1NTE5AAAAIMbNOFe5uPvVOa59n/8aqULV+Og/mQcdD6VBAetu19RB
+    host_rsa_public:     AAAAB3NzaC1yc2EAAAADAQABAAABAQCranANk76PwRp1GPmdrgONJUm1ZgZkf4MZbkjK6+J3Qy18oqd5yZmnvp+SfV9HlWVMdJ9U0/e3RAo8ZbUKhS2IJdKc9nFqEE0X/7EYOU2/S2cMyHj2sXTmTGTX+VeYxhiXvG5+vuzaBKichbOaXAA3xMFcjWV1qokkB51y0cC2w1DoAOB9lga6yyHfm207SSRml3n5Y2uMbeeiHPrTlM/lXH34xciRzhgh+PFjRsTfuNqr/oHEc6KPJqQXB3ONNml3cLq62vjS+SPGK2c9IeViiM8+gQK3ReMlVHdQ5go9uV98OcvWk5JitVEo8giKCnVYv7TufH8JQMPAS9O4v7vj
+languages:
+  c:
+    gcc:
+      description: gcc version 4.8.5 20150623 (Red Hat 4.8.5-4) (GCC) 
+      version:     4.8.5
+    glibc:
+      description: GNU C Library (GNU libc) stable release version 2.17, by Roland McGrath et al.
+      version:     2.17
+  java:
+    hotspot:
+      build: 25.91-b14, mixed mode
+      name:  OpenJDK 64-Bit Server VM
+    runtime:
+      build: 1.8.0_91-b14
+      name:  OpenJDK Runtime Environment
+    version: 1.8.0_91
+  lua:
+    version: 5.1.4
+  perl:
+    archname: x86_64-linux-thread-multi
+    version:  5.16.3
+  php:
+    builddate:           Mar  8 2016 07:57:55
+    version:             5.4.16
+    zend_engine_version: 2.4.0
+  python:
+    builddate: Nov 21 2015, 00:39:04
+    version:   2.7.5
+  ruby:
+    bin_dir:       /usr/bin
+    gem_bin:       /usr/bin/gem
+    gems_dir:      /usr/local/share/gems
+    host:          x86_64-redhat-linux-gnu
+    host_cpu:      x86_64
+    host_os:       linux-gnu
+    host_vendor:   redhat
+    platform:      x86_64-linux
+    release_date:  2014-11-13
+    ruby_bin:      /usr/bin/ruby
+    target:        x86_64-redhat-linux-gnu
+    target_cpu:    x86_64
+    target_os:     linux
+    target_vendor: redhat
+    version:       2.0.0
+lsb:
+macaddress:        08:00:27:BE:C1:83
+machinename:       ambari5
+memory:
+  active:           685156kB
+  anon_pages:       603184kB
+  bounce:           0kB
+  buffers:          1308kB
+  cached:           665276kB
+  commit_limit:     4411732kB
+  committed_as:     3103944kB
+  dirty:            24kB
+  free:             2359076kB
+  inactive:         584428kB
+  mapped:           115376kB
+  nfs_unstable:     0kB
+  page_tables:      24688kB
+  slab:             66344kB
+  slab_reclaimable: 38508kB
+  slab_unreclaim:   27836kB
+  swap:
+    cached: 0kB
+    free:   2519036kB
+    total:  2519036kB
+  total:            3785392kB
+  vmalloc_chunk:    34359656952kB
+  vmalloc_total:    34359738367kB
+  vmalloc_used:     55696kB
+  writeback:        0kB
+network:
+  default_gateway:   192.168.0.1
+  default_interface: enp0s3
+  interfaces:
+    enp0s3:
+      addresses:
+        08:00:27:BE:C1:83:
+          family: lladdr
+        192.168.0.38:
+          broadcast: 192.168.0.255
+          family:    inet
+          netmask:   255.255.255.0
+          prefixlen: 24
+          scope:     Global
+        fdbb:a83d:4d9d:0:a00:27ff:febe:c183:
+          family:    inet6
+          prefixlen: 128
+          scope:     Global
+        fe80::a00:27ff:febe:c183:
+          family:    inet6
+          prefixlen: 64
+          scope:     Link
+      arp:
+        192.168.0.1:  90:21:06:08:f3:20
+        192.168.0.30: 08:00:27:9e:31:a5
+      auto_negotiation: on
+      duplex:           Full
+      encapsulation:    Ethernet
+      flags:
+        BROADCAST
+        MULTICAST
+        UP
+        LOWER_UP
+      link_speed:       1000
+      mdi_x:            off (auto)
+      mtu:              1500
+      neighbour_inet6:
+        fe80::9221:6ff:fe08:f320: 90:21:06:08:f3:20
+      number:           3
+      port:             Twisted Pair
+      routes:
+        destination: default
+        family:      inet
+        metric:      100
+        proto:       static
+        via:         192.168.0.1
+        
+        destination: 192.168.0.0/24
+        family:      inet
+        metric:      100
+        proto:       kernel
+        scope:       link
+        src:         192.168.0.38
+        
+        destination: fdbb:a83d:4d9d:0:a00:27ff:febe:c183
+        family:      inet6
+        metric:      256
+        proto:       kernel
+        
+        destination: fdbb:a83d:4d9d::/64
+        family:      inet6
+        metric:      100
+        proto:       ra
+        
+        destination: fe80::/64
+        family:      inet6
+        metric:      256
+        proto:       kernel
+      state:            up
+      transceiver:      internal
+      type:             enp0s
+    enp0s8:
+      addresses:
+        08:00:27:5B:08:B7:
+          family: lladdr
+      auto_negotiation: on
+      duplex:           Full
+      encapsulation:    Ethernet
+      flags:
+        BROADCAST
+        MULTICAST
+        UP
+        LOWER_UP
+      link_speed:       1000
+      mdi_x:            off (auto)
+      mtu:              1500
+      number:           8
+      port:             Twisted Pair
+      state:            up
+      transceiver:      internal
+      type:             enp0s
+    lo:
+      addresses:
+        127.0.0.1:
+          family:    inet
+          netmask:   255.0.0.0
+          prefixlen: 8
+          scope:     Node
+        ::1:
+          family:    inet6
+          prefixlen: 128
+          scope:     Node
+      encapsulation: Loopback
+      flags:
+        LOOPBACK
+        UP
+        LOWER_UP
+      mtu:           65536
+      routes:
+        destination: unreachable
+        family:      inet6
+        metric:      1024
+        
+        destination: unreachable
+        family:      inet6
+        metric:      1024
+        
+        destination: unreachable
+        family:      inet6
+        metric:      1024
+        
+        destination: unreachable
+        family:      inet6
+        metric:      1024
+        
+        destination: unreachable
+        family:      inet6
+        metric:      1024
+        
+        destination: unreachable
+        family:      inet6
+        metric:      1024
+        
+        destination: unreachable
+        family:      inet6
+        metric:      1024
+        
+        destination: unreachable
+        family:      inet6
+        metric:      1024
+        
+        destination: unreachable
+        family:      inet6
+        metric:      1024
+      state:         unknown
+    virbr0:
+      addresses:
+        192.168.122.1:
+          broadcast: 192.168.122.255
+          family:    inet
+          netmask:   255.255.255.0
+          prefixlen: 24
+          scope:     Global
+        52:54:00:FA:82:14:
+          family: lladdr
+      encapsulation: Ethernet
+      flags:
+        BROADCAST
+        MULTICAST
+        UP
+      mtu:           1500
+      number:        0
+      routes:
+        destination: 192.168.122.0/24
+        family:      inet
+        proto:       kernel
+        scope:       link
+        src:         192.168.122.1
+      state:         down
+      type:          virbr
+    virbr0-nic:
+      addresses:
+        52:54:00:FA:82:14:
+          family: lladdr
+      auto_negotiation: off
+      duplex:           Full
+      encapsulation:    Ethernet
+      flags:
+        BROADCAST
+        MULTICAST
+      link_speed:       10
+      mdi_x:            Unknown
+      mtu:              1500
+      number:           0-nic
+      port:             Twisted Pair
+      state:            down
+      transceiver:      internal
+      type:             virbr
+ohai_time:         1463738346.1730316
+os:                linux
+os_version:        3.8.13-118.6.1.el7uek.x86_64
+packages:
+  389-ds-base:
+    release: 29.el7_2
+    version: 1.3.4.0
+  389-ds-base-libs:
+    release: 29.el7_2
+    version: 1.3.4.0
+  GConf2:
+    release: 8.el7
+    version: 3.2.6
+  ModemManager:
+    release: 8.git20130913.el7
+    version: 1.1.0
+  ModemManager-glib:
+    release: 8.git20130913.el7
+    version: 1.1.0
+  NetworkManager:
+    release: 29.0.1.el7_2
+    version: 1.0.6
+  NetworkManager-adsl:
+    release: 29.0.1.el7_2
+    version: 1.0.6
+  NetworkManager-config-server:
+    release: 29.0.1.el7_2
+    version: 1.0.6
+  NetworkManager-glib:
+    release: 29.0.1.el7_2
+    version: 1.0.6
+  NetworkManager-libnm:
+    release: 29.0.1.el7_2
+    version: 1.0.6
+  NetworkManager-libreswan:
+    release: 3.el7
+    version: 1.0.6
+  NetworkManager-libreswan-gnome:
+    release: 3.el7
+    version: 1.0.6
+  NetworkManager-team:
+    release: 29.0.1.el7_2
+    version: 1.0.6
+  NetworkManager-tui:
+    release: 29.0.1.el7_2
+    version: 1.0.6
+  NetworkManager-wifi:
+    release: 29.0.1.el7_2
+    version: 1.0.6
+  ORBit2:
+    release: 13.el7
+    version: 2.14.19
+  OpenEXR-libs:
+    release: 7.el7
+    version: 1.7.1
+  PackageKit:
+    release: 5.0.1.el7
+    version: 1.0.7
+  PackageKit-command-not-found:
+    release: 5.0.1.el7
+    version: 1.0.7
+  PackageKit-glib:
+    release: 5.0.1.el7
+    version: 1.0.7
+  PackageKit-gstreamer-plugin:
+    release: 5.0.1.el7
+    version: 1.0.7
+  PackageKit-gtk3-module:
+    release: 5.0.1.el7
+    version: 1.0.7
+  PackageKit-yum:
+    release: 5.0.1.el7
+    version: 1.0.7
+  PyQt4:
+    release: 13.el7
+    version: 4.10.1
+  PyYAML:
+    release: 11.el7
+    version: 3.10
+  SDL:
+    release: 14.el7
+    version: 1.2.15
+  abattis-cantarell-fonts:
+    release: 3.el7
+    version: 0.0.16
+  abrt:
+    release: 35.0.1.el7
+    version: 2.1.11
+  abrt-addon-ccpp:
+    release: 35.0.1.el7
+    version: 2.1.11
+  abrt-addon-kerneloops:
+    release: 35.0.1.el7
+    version: 2.1.11
+  abrt-addon-pstoreoops:
+    release: 35.0.1.el7
+    version: 2.1.11
+  abrt-addon-python:
+    release: 35.0.1.el7
+    version: 2.1.11
+  abrt-addon-vmcore:
+    release: 35.0.1.el7
+    version: 2.1.11
+  abrt-addon-xorg:
+    release: 35.0.1.el7
+    version: 2.1.11
+  abrt-cli:
+    release: 35.0.1.el7
+    version: 2.1.11
+  abrt-console-notification:
+    release: 35.0.1.el7
+    version: 2.1.11
+  abrt-dbus:
+    release: 35.0.1.el7
+    version: 2.1.11
+  abrt-desktop:
+    release: 35.0.1.el7
+    version: 2.1.11
+  abrt-gui:
+    release: 35.0.1.el7
+    version: 2.1.11
+  abrt-gui-libs:
+    release: 35.0.1.el7
+    version: 2.1.11
+  abrt-libs:
+    release: 35.0.1.el7
+    version: 2.1.11
+  abrt-python:
+    release: 35.0.1.el7
+    version: 2.1.11
+  abrt-tui:
+    release: 35.0.1.el7
+    version: 2.1.11
+  accountsservice:
+    release: 9.el7
+    version: 0.6.35
+  accountsservice-libs:
+    release: 9.el7
+    version: 0.6.35
+  acl:
+    release: 12.el7
+    version: 2.2.51
+  adwaita-cursor-theme:
+    release: 1.el7
+    version: 3.14.1
+  adwaita-gtk2-theme:
+    release: 2.el7
+    version: 3.14.2.2
+  adwaita-icon-theme:
+    release: 1.el7
+    version: 3.14.1
+  aic94xx-firmware:
+    release: 6.el7
+    version: 30
+  akonadi:
+    release: 4.0.1.el7
+    version: 1.9.2
+  akonadi-mysql:
+    release: 4.0.1.el7
+    version: 1.9.2
+  alsa-firmware:
+    release: 2.el7
+    version: 1.0.28
+  alsa-lib:
+    release: 2.el7
+    version: 1.0.28
+  alsa-plugins-pulseaudio:
+    release: 3.el7
+    version: 1.0.27
+  alsa-tools-firmware:
+    release: 2.el7
+    version: 1.0.28
+  alsa-utils:
+    release: 4.el7
+    version: 1.0.28
+  amanda:
+    release: 13.el7
+    version: 3.3.3
+  amanda-libs:
+    release: 13.el7
+    version: 3.3.3
+  amanda-server:
+    release: 13.el7
+    version: 3.3.3
+  anaconda-core:
+    release: 1.0.2.el7
+    version: 21.48.22.56
+  anaconda-gui:
+    release: 1.0.2.el7
+    version: 21.48.22.56
+  anaconda-tui:
+    release: 1.0.2.el7
+    version: 21.48.22.56
+  anaconda-widgets:
+    release: 1.0.2.el7
+    version: 21.48.22.56
+  ant:
+    release: 9.el7
+    version: 1.9.2
+  antlr-tool:
+    release: 30.el7
+    version: 2.7.7
+  apache-commons-cli:
+    release: 13.el7
+    version: 1.2
+  apache-commons-codec:
+    release: 7.el7
+    version: 1.8
+  apache-commons-collections:
+    release: 22.el7_2
+    version: 3.2.1
+  apache-commons-daemon:
+    release: 6.el7
+    version: 1.0.13
+  apache-commons-dbcp:
+    release: 17.el7
+    version: 1.4
+  apache-commons-io:
+    release: 12.el7
+    version: 2.4
+  apache-commons-lang:
+    release: 15.el7
+    version: 2.6
+  apache-commons-logging:
+    release: 7.el7
+    version: 1.1.2
+  apache-commons-pool:
+    release: 9.el7
+    version: 1.6
+  appstream-data:
+    release: 6.el7
+    version: 7
+  apr:
+    release: 3.el7
+    version: 1.4.8
+  apr-util:
+    release: 6.0.1.el7
+    version: 1.5.2
+  args4j:
+    release: 13.el7
+    version: 2.0.16
+  ark:
+    release: 4.el7
+    version: 4.10.5
+  ark-libs:
+    release: 4.el7
+    version: 4.10.5
+  at:
+    release: 20.el7
+    version: 3.1.13
+  at-spi2-atk:
+    release: 4.el7
+    version: 2.8.1
+  at-spi2-core:
+    release: 6.el7
+    version: 2.8.0
+  atk:
+    release: 1.el7
+    version: 2.14.0
+  atkmm:
+    release: 3.el7
+    version: 2.22.7
+  attica:
+    release: 1.el7
+    version: 0.4.2
+  attr:
+    release: 12.el7
+    version: 2.4.46
+  audit:
+    release: 5.el7
+    version: 2.4.1
+  audit-libs:
+    release: 5.el7
+    version: 2.4.1
+  audit-libs-python:
+    release: 5.el7
+    version: 2.4.1
+  augeas-libs:
+    release: 2.el7
+    version: 1.4.0
+  authconfig:
+    release: 10.el7
+    version: 6.2.8
+  autoconf:
+    release: 11.el7
+    version: 2.69
+  autofs:
+    release: 54.0.1.el7
+    version: 5.0.7
+  autogen-libopts:
+    release: 5.el7
+    version: 5.18
+  automake:
+    release: 3.el7
+    version: 1.13.4
+  avahi:
+    release: 15.el7_2.1
+    version: 0.6.31
+  avahi-autoipd:
+    release: 15.el7_2.1
+    version: 0.6.31
+  avahi-glib:
+    release: 15.el7_2.1
+    version: 0.6.31
+  avahi-gobject:
+    release: 15.el7_2.1
+    version: 0.6.31
+  avahi-libs:
+    release: 15.el7_2.1
+    version: 0.6.31
+  avahi-ui-gtk3:
+    release: 15.el7_2.1
+    version: 0.6.31
+  avalon-framework:
+    release: 10.el7
+    version: 4.3
+  avalon-logkit:
+    release: 14.el7
+    version: 2.1
+  baobab:
+    release: 5.el7
+    version: 3.14.1
+  basesystem:
+    release: 7.0.1.el7
+    version: 10.0
+  bash:
+    release: 19.el7
+    version: 4.2.46
+  bash-completion:
+    release: 6.el7
+    version: 2.1
+  bc:
+    release: 13.el7
+    version: 1.06.95
+  bcel:
+    release: 18.el7
+    version: 5.2
+  bea-stax:
+    release: 9.el7
+    version: 1.2.0
+  bea-stax-api:
+    release: 9.el7
+    version: 1.2.0
+  bind:
+    release: 29.el7_2.3
+    version: 9.9.4
+  bind-chroot:
+    release: 29.el7_2.3
+    version: 9.9.4
+  bind-libs:
+    release: 29.el7_2.3
+    version: 9.9.4
+  bind-libs-lite:
+    release: 29.el7_2.3
+    version: 9.9.4
+  bind-license:
+    release: 29.el7_2.3
+    version: 9.9.4
+  bind-utils:
+    release: 29.el7_2.3
+    version: 9.9.4
+  binutils:
+    release: 55.el7
+    version: 2.23.52.0.1
+  biosdevname:
+    release: 1.el7
+    version: 0.6.2
+  bison:
+    release: 4.el7
+    version: 2.7
+  blktrace:
+    release: 6.el7
+    version: 1.0.5
+  bluedevil:
+    release: 1.el7
+    version: 2.1
+  bluez:
+    release: 4.el7
+    version: 5.23
+  boost-program-options:
+    release: 25.el7
+    version: 1.53.0
+  boost-system:
+    release: 25.el7
+    version: 1.53.0
+  boost-thread:
+    release: 25.el7
+    version: 1.53.0
+  bridge-utils:
+    release: 9.el7
+    version: 1.5
+  brlapi:
+    release: 9.el7
+    version: 0.6.0
+  brltty:
+    release: 9.el7
+    version: 4.5
+  btrfs-progs:
+    release: 1.0.1.el7
+    version: 3.19.1
+  byacc:
+    release: 3.el7
+    version: 1.9.20130304
+  bzip2:
+    release: 13.el7
+    version: 1.0.6
+  bzip2-libs:
+    release: 13.el7
+    version: 1.0.6
+  c-ares:
+    release: 3.el7
+    version: 1.10.0
+  ca-certificates:
+    release: 70.1.el7_2
+    version: 2015.2.6
+  cairo:
+    release: 1.el7
+    version: 1.14.2
+  cairo-gobject:
+    release: 1.el7
+    version: 1.14.2
+  cairomm:
+    release: 8.el7
+    version: 1.10.0
+  caribou:
+    release: 1.el7
+    version: 0.4.16
+  caribou-gtk2-module:
+    release: 1.el7
+    version: 0.4.16
+  caribou-gtk3-module:
+    release: 1.el7
+    version: 0.4.16
+  cdparanoia-libs:
+    release: 17.el7
+    version: 10.2
+  celt051:
+    release: 8.el7
+    version: 0.5.1.3
+  certmonger:
+    release: 1.el7
+    version: 0.78.4
+  cgdcbxd:
+    release: 5.el7
+    version: 1.0.2
+  check:
+    release: 5.el7
+    version: 0.9.9
+  checkpolicy:
+    release: 6.el7
+    version: 2.1.12
+  cheese:
+    release: 5.el7
+    version: 3.14.2
+  cheese-libs:
+    release: 5.el7
+    version: 3.14.2
+  chef:
+    release: 1.el7
+    version: 12.9.41
+  chkconfig:
+    release: 5.el7
+    version: 1.3.61
+  chrony:
+    release: 1.el7
+    version: 2.1.1
+  cifs-utils:
+    release: 7.el7
+    version: 6.2
+  cim-schema:
+    release: 6.el7
+    version: 2.33.0
+  cjkuni-uming-fonts:
+    release: 53.el7
+    version: 0.2.20080216.1
+  clucene-core:
+    release: 11.el7
+    version: 2.3.3.4
+  clutter:
+    release: 4.el7
+    version: 1.20.0
+  clutter-gst2:
+    release: 2.el7
+    version: 2.0.12
+  clutter-gtk:
+    release: 7.el7
+    version: 1.4.4
+  cmpi-bindings-pywbem:
+    release: 6.el7
+    version: 0.9.5
+  codemodel:
+    release: 9.el7
+    version: 2.6
+  cogl:
+    release: 10.el7
+    version: 1.18.2
+  color-filesystem:
+    release: 13.el7
+    version: 1
+  colord:
+    release: 2.el7
+    version: 1.2.7
+  colord-gtk:
+    release: 4.el7
+    version: 0.1.25
+  colord-kde:
+    release: 3.el7
+    version: 0.3.0
+  colord-libs:
+    release: 2.el7
+    version: 1.2.7
+  compat-db-headers:
+    release: 28.el7
+    version: 4.7.25
+  compat-db47:
+    release: 28.el7
+    version: 4.7.25
+  compat-glibc:
+    release: 4.el7
+    version: 2.12
+  compat-glibc-headers:
+    release: 4.el7
+    version: 2.12
+  compat-libcap1:
+    release: 7.el7
+    version: 1.10
+  compat-libf2c-34:
+    release: 32.el7
+    version: 3.4.6
+  compat-libgfortran-41:
+    release: 44.el7
+    version: 4.1.2
+  compat-libstdc++-33:
+    release: 72.el7
+    version: 3.2.3
+  compat-libtiff3:
+    release: 11.el7
+    version: 3.9.4
+  compat-openldap:
+    release: 5.el7
+    version: 2.3.43
+  compat-poppler022:
+    release: 4.el7
+    version: 0.22.5
+  compat-poppler022-qt:
+    release: 4.el7
+    version: 0.22.5
+  control-center:
+    release: 8.el7
+    version: 3.14.5
+  control-center-filesystem:
+    release: 8.el7
+    version: 3.14.5
+  coolkey:
+    release: 33.el7
+    version: 1.1.0
+  coreutils:
+    release: 15.0.1.el7_2.1
+    version: 8.22
+  cpio:
+    release: 24.el7
+    version: 2.11
+  cpp:
+    release: 4.el7
+    version: 4.8.5
+  cracklib:
+    release: 11.el7
+    version: 2.9.0
+  cracklib-dicts:
+    release: 11.el7
+    version: 2.9.0
+  crash:
+    release: 3.el7_2
+    version: 7.1.2
+  crda:
+    release: 2.el7
+    version: 1.1.3_2015.04.06
+  createrepo:
+    release: 25.el7_2
+    version: 0.9.9
+  cronie:
+    release: 14.el7_2.1
+    version: 1.4.11
+  cronie-anacron:
+    release: 14.el7_2.1
+    version: 1.4.11
+  crontabs:
+    release: 6.20121102git.el7
+    version: 1.11
+  cryptsetup:
+    release: 1.el7
+    version: 1.6.7
+  cryptsetup-libs:
+    release: 1.el7
+    version: 1.6.7
+  cryptsetup-python:
+    release: 1.el7
+    version: 1.6.7
+  cscope:
+    release: 7.el7
+    version: 15.8
+  ctags:
+    release: 13.el7
+    version: 5.8
+  cups:
+    release: 22.el7
+    version: 1.6.3
+  cups-client:
+    release: 22.el7
+    version: 1.6.3
+  cups-filesystem:
+    release: 22.el7
+    version: 1.6.3
+  cups-filters:
+    release: 21.el7
+    version: 1.0.35
+  cups-filters-libs:
+    release: 21.el7
+    version: 1.0.35
+  cups-libs:
+    release: 22.el7
+    version: 1.6.3
+  cups-pk-helper:
+    release: 5.el7
+    version: 0.2.4
+  curl:
+    release: 25.0.1.el7
+    version: 7.29.0
+  cyrus-sasl:
+    release: 20.el7_2
+    version: 2.1.26
+  cyrus-sasl-gssapi:
+    release: 20.el7_2
+    version: 2.1.26
+  cyrus-sasl-lib:
+    release: 20.el7_2
+    version: 2.1.26
+  cyrus-sasl-md5:
+    release: 20.el7_2
+    version: 2.1.26
+  cyrus-sasl-plain:
+    release: 20.el7_2
+    version: 2.1.26
+  cyrus-sasl-scram:
+    release: 20.el7_2
+    version: 2.1.26
+  dapl:
+    release: 1.el7
+    version: 2.1.5
+  dbus:
+    release: 13.0.1.el7
+    version: 1.6.12
+  dbus-glib:
+    release: 7.el7
+    version: 0.100
+  dbus-libs:
+    release: 13.0.1.el7
+    version: 1.6.12
+  dbus-python:
+    release: 9.el7
+    version: 1.1.1
+  dbus-x11:
+    release: 13.0.1.el7
+    version: 1.6.12
+  dbusmenu-qt:
+    release: 7.el7
+    version: 0.9.2
+  dconf:
+    release: 2.el7
+    version: 0.22.0
+  dejavu-fonts-common:
+    release: 6.el7
+    version: 2.33
+  dejavu-sans-fonts:
+    release: 6.el7
+    version: 2.33
+  dejavu-sans-mono-fonts:
+    release: 6.el7
+    version: 2.33
+  dejavu-serif-fonts:
+    release: 6.el7
+    version: 2.33
+  deltarpm:
+    release: 3.el7
+    version: 3.6
+  desktop-file-utils:
+    release: 1.el7
+    version: 0.22
+  device-mapper:
+    release: 5.el7_2.1
+    version: 1.02.107
+  device-mapper-event:
+    release: 5.el7_2.1
+    version: 1.02.107
+  device-mapper-event-libs:
+    release: 5.el7_2.1
+    version: 1.02.107
+  device-mapper-libs:
+    release: 5.el7_2.1
+    version: 1.02.107
+  device-mapper-multipath:
+    release: 85.el7_2.1
+    version: 0.4.9
+  device-mapper-multipath-libs:
+    release: 85.el7_2.1
+    version: 0.4.9
+  device-mapper-persistent-data:
+    release: 1.el7
+    version: 0.5.5
+  dhclient:
+    release: 42.0.1.el7
+    version: 4.2.5
+  dhcp-common:
+    release: 42.0.1.el7
+    version: 4.2.5
+  dhcp-libs:
+    release: 42.0.1.el7
+    version: 4.2.5
+  dialog:
+    release: 4.20130523.el7
+    version: 1.2
+  diffstat:
+    release: 4.el7
+    version: 1.57
+  diffutils:
+    release: 4.el7
+    version: 3.3
+  dleyna-connector-dbus:
+    release: 1.el7
+    version: 0.2.0
+  dleyna-core:
+    release: 1.el7
+    version: 0.4.0
+  dleyna-server:
+    release: 1.el7
+    version: 0.4.0
+  dmidecode:
+    release: 9.el7
+    version: 2.12
+  dmraid:
+    release: 26.el7
+    version: 1.0.0.rc16
+  dmraid-events:
+    release: 26.el7
+    version: 1.0.0.rc16
+  dnsmasq:
+    release: 14.el7_1
+    version: 2.66
+  docbook-dtds:
+    release: 60.el7
+    version: 1.0
+  docbook-style-xsl:
+    release: 3.el7
+    version: 1.78.1
+  dom4j:
+    release: 20.el7
+    version: 1.6.1
+  dosfstools:
+    release: 9.el7
+    version: 3.0.20
+  dotconf:
+    release: 8.el7
+    version: 1.3
+  dovecot:
+    release: 5.el7
+    version: 2.2.10
+  doxygen:
+    release: 3.el7
+    version: 1.8.5
+  dracut:
+    release: 360.0.1.el7_2
+    version: 033
+  dracut-config-rescue:
+    release: 360.0.1.el7_2
+    version: 033
+  dracut-network:
+    release: 360.0.1.el7_2
+    version: 033
+  dstat:
+    release: 12.el7
+    version: 0.7.2
+  dvd+rw-tools:
+    release: 15.el7
+    version: 7.1
+  dwz:
+    release: 3.el7
+    version: 0.11
+  dyninst:
+    release: 2.el7
+    version: 8.2.0
+  e2fsprogs:
+    release: 7.el7
+    version: 1.42.9
+  e2fsprogs-libs:
+    release: 7.el7
+    version: 1.42.9
+  easymock2:
+    release: 12.el7
+    version: 2.5.2
+  ebtables:
+    release: 13.el7
+    version: 2.0.10
+  ecj:
+    release: 8.el7
+    version: 4.2.1
+  ed:
+    release: 4.el7
+    version: 1.9
+  elfutils:
+    release: 3.el7
+    version: 0.163
+  elfutils-libelf:
+    release: 3.el7
+    version: 0.163
+  elfutils-libs:
+    release: 3.el7
+    version: 0.163
+  emacs-filesystem:
+    release: 18.el7
+    version: 24.3
+  empathy:
+    release: 2.el7
+    version: 3.12.10
+  enchant:
+    release: 8.el7
+    version: 1.6.0
+  enscript:
+    release: 6.el7
+    version: 1.6.6
+  eog:
+    release: 1.el7
+    version: 3.14.3
+  esc:
+    release: 36.el7
+    version: 1.1.0
+  espeak:
+    release: 4.el7
+    version: 1.47.11
+  ethtool:
+    release: 2.el7
+    version: 3.15
+  evince:
+    release: 5.el7
+    version: 3.14.2
+  evince-libs:
+    release: 5.el7
+    version: 3.14.2
+  evince-nautilus:
+    release: 5.el7
+    version: 3.14.2
+  evolution-data-server:
+    release: 24.el7
+    version: 3.12.11
+  exempi:
+    release: 8.el7
+    version: 2.2.0
+  exiv2-libs:
+    release: 6.el7
+    version: 0.23
+  expat:
+    release: 8.el7
+    version: 2.1.0
+  farstream:
+    release: 8.el7
+    version: 0.1.2
+  farstream02:
+    release: 3.el7
+    version: 0.2.3
+  fcoe-utils:
+    release: 3.git91c0c8c.el7
+    version: 1.0.30
+  festival:
+    release: 28.el7
+    version: 1.96
+  festival-freebsoft-utils:
+    release: 7.el7
+    version: 0.10
+  festival-lib:
+    release: 28.el7
+    version: 1.96
+  festival-speechtools-libs:
+    release: 28.el7
+    version: 1.2.96
+  festvox-slt-arctic-hts:
+    release: 28.el7
+    version: 0.20061229
+  fftw-libs-double:
+    release: 8.el7
+    version: 3.3.3
+  file:
+    release: 31.el7
+    version: 5.11
+  file-libs:
+    release: 31.el7
+    version: 5.11
+  file-roller:
+    release: 7.el7
+    version: 3.14.2
+  file-roller-nautilus:
+    release: 7.el7
+    version: 3.14.2
+  filesystem:
+    release: 20.el7
+    version: 3.2
+  findutils:
+    release: 5.el7
+    version: 4.5.11
+  fipscheck:
+    release: 5.el7
+    version: 1.4.1
+  fipscheck-lib:
+    release: 5.el7
+    version: 1.4.1
+  firefox:
+    release: 1.0.1.el7_2
+    version: 45.1.0
+  firewall-config:
+    release: 14.el7
+    version: 0.3.9
+  firewalld:
+    release: 14.el7
+    version: 0.3.9
+  firstboot:
+    release: 10.el7
+    version: 19.9
+  flac-libs:
+    release: 5.el7_1
+    version: 1.3.0
+  flex:
+    release: 3.el7
+    version: 2.5.37
+  flite:
+    release: 22.el7
+    version: 1.3
+  folks:
+    release: 1.el7
+    version: 0.10.1
+  fontawesome-fonts:
+    release: 1.el7
+    version: 4.1.0
+  fontconfig:
+    release: 7.el7
+    version: 2.10.95
+  fontpackages-filesystem:
+    release: 8.el7
+    version: 1.44
+  foomatic:
+    release: 8.el7
+    version: 4.0.9
+  foomatic-db:
+    release: 40.20130911.el7
+    version: 4.0
+  foomatic-db-filesystem:
+    release: 40.20130911.el7
+    version: 4.0
+  foomatic-db-ppds:
+    release: 40.20130911.el7
+    version: 4.0
+  foomatic-filters:
+    release: 8.el7
+    version: 4.0.9
+  fprintd:
+    release: 4.0.el7_0
+    version: 0.5.0
+  fprintd-pam:
+    release: 4.0.el7_0
+    version: 0.5.0
+  freerdp-libs:
+    release: 6.el7_2.1
+    version: 1.0.2
+  freetype:
+    release: 11.el7
+    version: 2.4.11
+  frei0r-plugins:
+    release: 13.el7
+    version: 1.3
+  fros:
+    release: 2.el7
+    version: 1.0
+  fuse:
+    release: 6.0.1.el7
+    version: 2.9.2
+  fuse-libs:
+    release: 6.0.1.el7
+    version: 2.9.2
+  fxload:
+    release: 16.el7
+    version: 2002_04_11
+  gamin:
+    release: 16.el7
+    version: 0.1.10
+  gavl:
+    release: 4.el7
+    version: 1.4.0
+  gawk:
+    release: 4.el7
+    version: 4.0.2
+  gcc:
+    release: 4.el7
+    version: 4.8.5
+  gcc-c++:
+    release: 4.el7
+    version: 4.8.5
+  gcc-gfortran:
+    release: 4.el7
+    version: 4.8.5
+  gcr:
+    release: 1.el7
+    version: 3.14.0
+  gd:
+    release: 26.el7
+    version: 2.0.35
+  gdb:
+    release: 80.el7
+    version: 7.6.1
+  gdbm:
+    release: 8.el7
+    version: 1.10
+  gdbm-devel:
+    release: 8.el7
+    version: 1.10
+  gdisk:
+    release: 5.el7
+    version: 0.8.6
+  gdk-pixbuf2:
+    release: 3.el7
+    version: 2.31.6
+  gdm:
+    release: 12.el7
+    version: 3.14.2
+  gedit:
+    release: 9.el7
+    version: 3.14.3
+  genisoimage:
+    release: 23.el7
+    version: 1.1.11
+  geoclue2:
+    release: 2.el7
+    version: 2.1.10
+  geocode-glib:
+    release: 2.el7
+    version: 3.14.0
+  geronimo-jms:
+    release: 19.el7
+    version: 1.1.1
+  geronimo-jta:
+    release: 17.el7
+    version: 1.1.1
+  gettext:
+    release: 4.el7
+    version: 0.18.2.1
+  gettext-common-devel:
+    release: 4.el7
+    version: 0.18.2.1
+  gettext-devel:
+    release: 4.el7
+    version: 0.18.2.1
+  gettext-libs:
+    release: 4.el7
+    version: 0.18.2.1
+  ghostscript:
+    release: 18.el7
+    version: 9.07
+  ghostscript-cups:
+    release: 18.el7
+    version: 9.07
+  ghostscript-fonts:
+    release: 32.el7
+    version: 5.50
+  giflib:
+    release: 9.el7
+    version: 4.1.6
+  git:
+    release: 6.el7_2.1
+    version: 1.8.3.1
+  gjs:
+    release: 1.el7
+    version: 1.42.0
+  glade-libs:
+    release: 5.el7
+    version: 3.15.0
+  glassfish-dtd-parser:
+    release: 0.8.20120120svn.el7
+    version: 1.2
+  glassfish-fastinfoset:
+    release: 9.el7
+    version: 1.2.12
+  glassfish-jaxb:
+    release: 6.el7
+    version: 2.2.5
+  glassfish-jaxb-api:
+    release: 4.el7
+    version: 2.2.7
+  glib-networking:
+    release: 1.el7
+    version: 2.42.0
+  glib2:
+    release: 5.el7
+    version: 2.42.2
+  glibc:
+    release: 106.0.1.el7_2.4
+    version: 2.17
+  glibc-common:
+    release: 106.0.1.el7_2.4
+    version: 2.17
+  glibc-devel:
+    release: 106.0.1.el7_2.4
+    version: 2.17
+  glibc-headers:
+    release: 106.0.1.el7_2.4
+    version: 2.17
+  glibmm24:
+    release: 1.el7
+    version: 2.42.0
+  glusterfs:
+    release: 16.el7
+    version: 3.7.1
+  glusterfs-api:
+    release: 16.el7
+    version: 3.7.1
+  glusterfs-client-xlators:
+    release: 16.el7
+    version: 3.7.1
+  glusterfs-fuse:
+    release: 16.el7
+    version: 3.7.1
+  glusterfs-libs:
+    release: 16.el7
+    version: 3.7.1
+  glusterfs-rdma:
+    release: 16.el7
+    version: 3.7.1
+  glx-utils:
+    release: 2.el7
+    version: 8.2.0
+  gmp:
+    release: 12.el7_1
+    version: 6.0.0
+  gnome-abrt:
+    release: 6.el7
+    version: 0.3.4
+  gnome-backgrounds:
+    release: 1.el7
+    version: 3.14.1
+  gnome-bluetooth:
+    release: 1.el7
+    version: 3.14.1
+  gnome-bluetooth-libs:
+    release: 1.el7
+    version: 3.14.1
+  gnome-boxes:
+    release: 7.el7
+    version: 3.14.3.1
+  gnome-calculator:
+    release: 2.el7
+    version: 3.14.1
+  gnome-classic-session:
+    release: 13.el7
+    version: 3.14.4
+  gnome-clocks:
+    release: 1.el7
+    version: 3.14.1
+  gnome-color-manager:
+    release: 1.el7
+    version: 3.14.2
+  gnome-contacts:
+    release: 2.el7
+    version: 3.14.2
+  gnome-desktop3:
+    release: 2.el7
+    version: 3.14.2
+  gnome-dictionary:
+    release: 1.el7
+    version: 3.14.2
+  gnome-disk-utility:
+    release: 2.el7
+    version: 3.14.0
+  gnome-documents:
+    release: 2.el7
+    version: 3.14.3
+  gnome-font-viewer:
+    release: 2.el7
+    version: 3.14.1
+  gnome-getting-started-docs:
+    release: 1.el7
+    version: 3.14.1.0.2
+  gnome-icon-theme:
+    release: 1.el7
+    version: 3.12.0
+  gnome-icon-theme-extras:
+    release: 1.el7
+    version: 3.12.0
+  gnome-icon-theme-symbolic:
+    release: 2.el7
+    version: 3.12.0
+  gnome-initial-setup:
+    release: 5.el7
+    version: 3.14.4
+  gnome-keyring:
+    release: 1.el7
+    version: 3.14.0
+  gnome-keyring-pam:
+    release: 1.el7
+    version: 3.14.0
+  gnome-menus:
+    release: 3.el7
+    version: 3.13.3
+  gnome-online-accounts:
+    release: 3.el7
+    version: 3.14.4
+  gnome-online-miners:
+    release: 1.el7
+    version: 3.14.3
+  gnome-packagekit:
+    release: 5.el7
+    version: 3.14.3
+  gnome-packagekit-updater:
+    release: 5.el7
+    version: 3.14.3
+  gnome-python2:
+    release: 14.el7
+    version: 2.28.1
+  gnome-python2-bonobo:
+    release: 14.el7
+    version: 2.28.1
+  gnome-python2-canvas:
+    release: 14.el7
+    version: 2.28.1
+  gnome-python2-gnome:
+    release: 14.el7
+    version: 2.28.1
+  gnome-python2-gnomevfs:
+    release: 14.el7
+    version: 2.28.1
+  gnome-screenshot:
+    release: 2.el7
+    version: 3.14.0
+  gnome-session:
+    release: 4.el7
+    version: 3.14.0
+  gnome-session-xsession:
+    release: 4.el7
+    version: 3.14.0
+  gnome-settings-daemon:
+    release: 9.el7
+    version: 3.14.4
+  gnome-shell:
+    release: 37.el7
+    version: 3.14.4
+  gnome-shell-extension-alternate-tab:
+    release: 13.el7
+    version: 3.14.4
+  gnome-shell-extension-apps-menu:
+    release: 13.el7
+    version: 3.14.4
+  gnome-shell-extension-common:
+    release: 13.el7
+    version: 3.14.4
+  gnome-shell-extension-launch-new-instance:
+    release: 13.el7
+    version: 3.14.4
+  gnome-shell-extension-places-menu:
+    release: 13.el7
+    version: 3.14.4
+  gnome-shell-extension-window-list:
+    release: 13.el7
+    version: 3.14.4
+  gnome-software:
+    release: 2.el7
+    version: 3.14.7
+  gnome-system-log:
+    release: 3.el7
+    version: 3.9.90
+  gnome-system-monitor:
+    release: 3.el7
+    version: 3.14.1
+  gnome-terminal:
+    release: 3.el7
+    version: 3.14.3
+  gnome-themes-standard:
+    release: 2.el7
+    version: 3.14.2.2
+  gnome-tweak-tool:
+    release: 2.el7
+    version: 3.14.3
+  gnome-user-docs:
+    release: 1.el7
+    version: 3.14.2
+  gnome-vfs2:
+    release: 14.el7
+    version: 2.24.4
+  gnome-video-effects:
+    release: 1.el7
+    version: 0.4.1
+  gnome-weather:
+    release: 1.el7
+    version: 3.14.1
+  gnu-free-fonts-common:
+    release: 8.el7
+    version: 20120503
+  gnu-free-mono-fonts:
+    release: 8.el7
+    version: 20120503
+  gnu-free-sans-fonts:
+    release: 8.el7
+    version: 20120503
+  gnu-free-serif-fonts:
+    release: 8.el7
+    version: 20120503
+  gnupg2:
+    release: 3.el7
+    version: 2.0.22
+  gnutls:
+    release: 14.el7_2
+    version: 3.3.8
+  gnutls-dane:
+    release: 14.el7_2
+    version: 3.3.8
+  gnutls-utils:
+    release: 14.el7_2
+    version: 3.3.8
+  gobject-introspection:
+    release: 1.el7
+    version: 1.42.0
+  gom:
+    release: 3.el7
+    version: 0.2.1
+  google-crosextra-caladea-fonts:
+    release: 0.4.20130214.el7
+    version: 1.002
+  google-crosextra-carlito-fonts:
+    release: 0.2.20130920.el7
+    version: 1.103
+  gperftools-libs:
+    release: 7.0.1.el7
+    version: 2.4
+  gpg-pubkey:
+    release: 4ff1e4fa
+    version: 4bd6ec30
+  gpgme:
+    release: 5.el7
+    version: 1.3.2
+  gpm-libs:
+    release: 5.el7
+    version: 1.20.7
+  graphite2:
+    release: 1.el7_2
+    version: 1.3.6
+  graphviz:
+    release: 19.el7
+    version: 2.30.1
+  graphviz-tcl:
+    release: 19.el7
+    version: 2.30.1
+  grep:
+    release: 2.el7
+    version: 2.20
+  grilo:
+    release: 2.el7
+    version: 0.2.12
+  grilo-plugins:
+    release: 8.el7
+    version: 0.2.14
+  groff-base:
+    release: 8.el7
+    version: 1.22.2
+  grub2:
+    release: 0.34.0.1.el7_2
+    version: 2.02
+  grub2-tools:
+    release: 0.34.0.1.el7_2
+    version: 2.02
+  grubby:
+    release: 17.0.1.el7
+    version: 8.28
+  gsettings-desktop-schemas:
+    release: 1.el7
+    version: 3.14.2
+  gsm:
+    release: 11.el7
+    version: 1.0.13
+  gssdp:
+    release: 3.el7
+    version: 0.14.3
+  gssproxy:
+    release: 7.el7
+    version: 0.4.1
+  gstreamer:
+    release: 7.0.1.el7
+    version: 0.10.36
+  gstreamer-plugins-bad-free:
+    release: 20.el7
+    version: 0.10.23
+  gstreamer-plugins-base:
+    release: 10.el7
+    version: 0.10.36
+  gstreamer-plugins-good:
+    release: 11.el7
+    version: 0.10.31
+  gstreamer-tools:
+    release: 7.0.1.el7
+    version: 0.10.36
+  gstreamer1:
+    release: 1.el7
+    version: 1.4.5
+  gstreamer1-plugins-bad-free:
+    release: 3.el7
+    version: 1.4.5
+  gstreamer1-plugins-base:
+    release: 2.el7
+    version: 1.4.5
+  gstreamer1-plugins-good:
+    release: 2.el7
+    version: 1.4.5
+  gtk-vnc2:
+    release: 7.el7
+    version: 0.5.2
+  gtk2:
+    release: 8.el7
+    version: 2.24.28
+  gtk2-immodule-xim:
+    release: 8.el7
+    version: 2.24.28
+  gtk3:
+    release: 16.el7
+    version: 3.14.13
+  gtk3-immodule-xim:
+    release: 16.el7
+    version: 3.14.13
+  gtkmm24:
+    release: 8.el7
+    version: 2.24.2
+  gtkmm30:
+    release: 3.el7
+    version: 3.8.1
+  gtksourceview3:
+    release: 1.el7
+    version: 3.14.3
+  gucharmap:
+    release: 1.el7
+    version: 3.14.2
+  gupnp:
+    release: 1.el7
+    version: 0.20.13
+  gupnp-av:
+    release: 3.el7
+    version: 0.12.2
+  gupnp-dlna:
+    release: 3.el7
+    version: 0.10.2
+  gupnp-igd:
+    release: 3.el7
+    version: 0.2.2
+  gutenprint:
+    release: 18.el7
+    version: 5.2.9
+  gutenprint-cups:
+    release: 18.el7
+    version: 5.2.9
+  gvfs:
+    release: 6.el7
+    version: 1.22.4
+  gvfs-afc:
+    release: 6.el7
+    version: 1.22.4
+  gvfs-afp:
+    release: 6.el7
+    version: 1.22.4
+  gvfs-archive:
+    release: 6.el7
+    version: 1.22.4
+  gvfs-fuse:
+    release: 6.el7
+    version: 1.22.4
+  gvfs-goa:
+    release: 6.el7
+    version: 1.22.4
+  gvfs-gphoto2:
+    release: 6.el7
+    version: 1.22.4
+  gvfs-mtp:
+    release: 6.el7
+    version: 1.22.4
+  gvfs-smb:
+    release: 6.el7
+    version: 1.22.4
+  gvnc:
+    release: 7.el7
+    version: 0.5.2
+  gwenview:
+    release: 3.el7
+    version: 4.10.5
+  gwenview-libs:
+    release: 3.el7
+    version: 4.10.5
+  gzip:
+    release: 8.el7
+    version: 1.5
+  hamcrest:
+    release: 6.el7
+    version: 1.3
+  hardlink:
+    release: 19.el7
+    version: 1.0
+  harfbuzz:
+    release: 1.el7
+    version: 0.9.36
+  harfbuzz-icu:
+    release: 1.el7
+    version: 0.9.36
+  hesiod:
+    release: 3.el7
+    version: 3.2.1
+  hicolor-icon-theme:
+    release: 7.el7
+    version: 0.12
+  hivex:
+    release: 5.7.0.1.el7
+    version: 1.3.10
+  hostname:
+    release: 3.el7
+    version: 3.13
+  hpijs:
+    release: 6.el7
+    version: 3.13.7
+  hplip-common:
+    release: 6.el7
+    version: 3.13.7
+  hplip-libs:
+    release: 6.el7
+    version: 3.13.7
+  hsqldb:
+    release: 13.el7
+    version: 1.8.1.3
+  httpcomponents-client:
+    release: 5.el7_0
+    version: 4.2.5
+  httpcomponents-core:
+    release: 6.el7
+    version: 4.2.4
+  httpd:
+    release: 40.0.1.el7
+    version: 2.4.6
+  httpd-tools:
+    release: 40.0.1.el7
+    version: 2.4.6
+  hunspell:
+    release: 13.el7
+    version: 1.3.2
+  hunspell-en:
+    release: 5.el7
+    version: 0.20121024
+  hunspell-en-GB:
+    release: 5.el7
+    version: 0.20121024
+  hunspell-en-US:
+    release: 5.el7
+    version: 0.20121024
+  hwdata:
+    release: 8.1.el7
+    version: 0.252
+  hwloc:
+    release: 5.el7
+    version: 1.7
+  hwloc-libs:
+    release: 5.el7
+    version: 1.7
+  hyperv-daemons:
+    release: 0.26.20150402git.el7
+    version: 0
+  hyperv-daemons-license:
+    release: 0.26.20150402git.el7
+    version: 0
+  hypervfcopyd:
+    release: 0.26.20150402git.el7
+    version: 0
+  hypervkvpd:
+    release: 0.26.20150402git.el7
+    version: 0
+  hypervvssd:
+    release: 0.26.20150402git.el7
+    version: 0
+  ibacm:
+    release: 1.el7
+    version: 1.1.0
+  ibus:
+    release: 13.el7
+    version: 1.5.3
+  ibus-chewing:
+    release: 14.el7
+    version: 1.4.4
+  ibus-gtk2:
+    release: 13.el7
+    version: 1.5.3
+  ibus-gtk3:
+    release: 13.el7
+    version: 1.5.3
+  ibus-hangul:
+    release: 10.el7
+    version: 1.4.2
+  ibus-kkc:
+    release: 5.el7
+    version: 1.5.18
+  ibus-libpinyin:
+    release: 4.el7
+    version: 1.6.91
+  ibus-libs:
+    release: 13.el7
+    version: 1.5.3
+  ibus-m17n:
+    release: 13.el7
+    version: 1.3.4
+  ibus-qt:
+    release: 4.el7
+    version: 1.3.2
+  ibus-rawcode:
+    release: 3.el7
+    version: 1.3.2
+  ibus-sayura:
+    release: 3.el7
+    version: 1.3.2
+  ibus-setup:
+    release: 13.el7
+    version: 1.5.3
+  ibus-table:
+    release: 5.el7
+    version: 1.5.0
+  ibus-table-chinese:
+    release: 3.el7
+    version: 1.4.6
+  ibutils:
+    release: 12.el7
+    version: 1.5.7
+  ibutils-libs:
+    release: 12.el7
+    version: 1.5.7
+  icedtea-web:
+    release: 4.el7
+    version: 1.6.1
+  icoutils:
+    release: 3.el7
+    version: 0.31.0
+  ilmbase:
+    release: 7.el7
+    version: 1.0.3
+  im-chooser:
+    release: 4.el7
+    version: 1.6.4
+  im-chooser-common:
+    release: 4.el7
+    version: 1.6.4
+  imsettings:
+    release: 9.el7
+    version: 1.6.3
+  imsettings-gsettings:
+    release: 9.el7
+    version: 1.6.3
+  imsettings-libs:
+    release: 9.el7
+    version: 1.6.3
+  imsettings-qt:
+    release: 9.el7
+    version: 1.6.3
+  indent:
+    release: 13.el7
+    version: 2.2.11
+  info:
+    release: 4.el7
+    version: 5.1
+  initial-setup:
+    release: 1.0.1.el7
+    version: 0.3.9.30
+  initial-setup-gui:
+    release: 1.0.1.el7
+    version: 0.3.9.30
+  initscripts:
+    release: 1.0.1.el7_2.2
+    version: 9.49.30
+  intltool:
+    release: 6.el7
+    version: 0.50.2
+  iotop:
+    release: 2.el7
+    version: 0.6
+  iowatcher:
+    release: 6.el7
+    version: 1.0
+  ipa-admintools:
+    release: 15.0.1.el7_2.6.1
+    version: 4.2.0
+  ipa-client:
+    release: 15.0.1.el7_2.6.1
+    version: 4.2.0
+  ipa-python:
+    release: 15.0.1.el7_2.6.1
+    version: 4.2.0
+  iproute:
+    release: 54.el7
+    version: 3.10.0
+  iprutils:
+    release: 1.el7
+    version: 2.4.8
+  iptables:
+    release: 16.el7
+    version: 1.4.21
+  iputils:
+    release: 7.el7
+    version: 20121221
+  ipvsadm:
+    release: 7.el7
+    version: 1.27
+  ipxe-roms-qemu:
+    release: 8.gitc4bce43.el7_2.1
+    version: 20130517
+  irqbalance:
+    release: 5.0.1.el7
+    version: 1.0.7
+  iscsi-initiator-utils:
+    release: 32.0.2.el7
+    version: 6.2.0.873
+  iscsi-initiator-utils-iscsiuio:
+    release: 32.0.2.el7
+    version: 6.2.0.873
+  iso-codes:
+    release: 2.el7
+    version: 3.46
+  isomd5sum:
+    release: 5.el7
+    version: 1.0.10
+  isorelax:
+    release: 0.15.release20050331.el7
+    version: 0
+  istack-commons:
+    release: 4.el7
+    version: 2.17
+  ivtv-firmware:
+    release: 26.el7
+    version: 20080701
+  iw:
+    release: 6.el7
+    version: 3.10
+  iwl100-firmware:
+    release: 43.el7
+    version: 39.31.5.1
+  iwl1000-firmware:
+    release: 43.el7
+    version: 39.31.5.1
+  iwl105-firmware:
+    release: 43.el7
+    version: 18.168.6.1
+  iwl135-firmware:
+    release: 43.el7
+    version: 18.168.6.1
+  iwl2000-firmware:
+    release: 43.el7
+    version: 18.168.6.1
+  iwl2030-firmware:
+    release: 43.el7
+    version: 18.168.6.1
+  iwl3160-firmware:
+    release: 43.el7
+    version: 22.0.7.0
+  iwl3945-firmware:
+    release: 43.el7
+    version: 15.32.2.9
+  iwl4965-firmware:
+    release: 43.el7
+    version: 228.61.2.24
+  iwl5000-firmware:
+    release: 43.el7
+    version: 8.83.5.1_1
+  iwl5150-firmware:
+    release: 43.el7
+    version: 8.24.2.2
+  iwl6000-firmware:
+    release: 43.el7
+    version: 9.221.4.1
+  iwl6000g2a-firmware:
+    release: 43.el7
+    version: 17.168.5.3
+  iwl6000g2b-firmware:
+    release: 43.el7
+    version: 17.168.5.2
+  iwl6050-firmware:
+    release: 43.el7
+    version: 41.28.5.1
+  iwl7260-firmware:
+    release: 43.el7
+    version: 22.0.7.0
+  iwl7265-firmware:
+    release: 43.el7
+    version: 22.0.7.0
+  jackson:
+    release: 7.el7
+    version: 1.9.4
+  jakarta-commons-httpclient:
+    release: 16.el7_0
+    version: 3.1
+  jakarta-oro:
+    release: 16.el7
+    version: 2.0.8
+  jansson:
+    release: 6.el7
+    version: 2.4
+  jasper-libs:
+    release: 29.el7
+    version: 1.900.1
+  java-1.7.0-openjdk:
+    release: 2.6.6.1.0.1.el7_2
+    version: 1.7.0.101
+  java-1.7.0-openjdk-devel:
+    release: 2.6.6.1.0.1.el7_2
+    version: 1.7.0.101
+  java-1.7.0-openjdk-headless:
+    release: 2.6.6.1.0.1.el7_2
+    version: 1.7.0.101
+  java-1.8.0-openjdk:
+    release: 0.b14.el7_2
+    version: 1.8.0.91
+  java-1.8.0-openjdk-headless:
+    release: 0.b14.el7_2
+    version: 1.8.0.91
+  javamail:
+    release: 8.el7
+    version: 1.4.6
+  javapackages-tools:
+    release: 11.el7
+    version: 3.4.1
+  javassist:
+    release: 10.el7
+    version: 3.16.1
+  jaxen:
+    release: 11.el7
+    version: 1.1.3
+  jbigkit-libs:
+    release: 11.el7
+    version: 2.0
+  jboss-annotations-1.1-api:
+    release: 0.6.20120212git76e1a2.el7
+    version: 1.0.1
+  jdom:
+    release: 6.el7
+    version: 1.1.3
+  jing:
+    release: 14.el7
+    version: 20091111
+  jline:
+    release: 8.el7
+    version: 1.0
+  joda-convert:
+    release: 5.el7
+    version: 1.3
+  joda-time:
+    release: 3.tzdata2013c.el7
+    version: 2.2
+  jomolhari-fonts:
+    release: 17.el7
+    version: 0.003
+  json-c:
+    release: 4.el7_0
+    version: 0.11
+  json-glib:
+    release: 1.el7
+    version: 1.0.2
+  jsr-311:
+    release: 6.el7
+    version: 1.1.1
+  jss:
+    release: 37.el7
+    version: 4.2.6
+  junit:
+    release: 8.el7
+    version: 4.11
+  jvnet-parent:
+    release: 2.el7
+    version: 4
+  kaccessible:
+    release: 3.el7
+    version: 4.10.5
+  kaccessible-libs:
+    release: 3.el7
+    version: 4.10.5
+  kactivities:
+    release: 3.el7
+    version: 4.10.5
+  kamera:
+    release: 3.el7
+    version: 4.10.5
+  kate-part:
+    release: 3.el7
+    version: 4.10.5
+  kbd:
+    release: 11.el7
+    version: 1.15.5
+  kbd-legacy:
+    release: 11.el7
+    version: 1.15.5
+  kbd-misc:
+    release: 11.el7
+    version: 1.15.5
+  kcalc:
+    release: 4.el7
+    version: 4.10.5
+  kcharselect:
+    release: 3.el7
+    version: 4.10.5
+  kcm-gtk:
+    release: 14.el7
+    version: 0.5.3
+  kcm_colors:
+    release: 7.el7
+    version: 4.11.19
+  kcm_touchpad:
+    release: 11.el7
+    version: 0.3.1
+  kcolorchooser:
+    release: 3.el7
+    version: 4.10.5
+  kde-base-artwork:
+    release: 2.el7
+    version: 4.10.5
+  kde-baseapps:
+    release: 4.el7
+    version: 4.10.5
+  kde-baseapps-libs:
+    release: 4.el7
+    version: 4.10.5
+  kde-filesystem:
+    release: 47.el7
+    version: 4
+  kde-plasma-networkmanagement:
+    release: 7.el7
+    version: 0.9.0.9
+  kde-plasma-networkmanagement-libs:
+    release: 7.el7
+    version: 0.9.0.9
+  kde-print-manager:
+    release: 4.el7
+    version: 4.10.5
+  kde-runtime:
+    release: 8.el7
+    version: 4.10.5
+  kde-runtime-drkonqi:
+    release: 8.el7
+    version: 4.10.5
+  kde-runtime-libs:
+    release: 8.el7
+    version: 4.10.5
+  kde-settings:
+    release: 23.5.0.1.el7
+    version: 19
+  kde-settings-ksplash:
+    release: 23.5.0.1.el7
+    version: 19
+  kde-settings-plasma:
+    release: 23.5.0.1.el7
+    version: 19
+  kde-settings-pulseaudio:
+    release: 23.5.0.1.el7
+    version: 19
+  kde-style-oxygen:
+    release: 7.el7
+    version: 4.11.19
+  kde-wallpapers:
+    release: 2.el7
+    version: 4.10.5
+  kde-workspace:
+    release: 7.el7
+    version: 4.11.19
+  kde-workspace-libs:
+    release: 7.el7
+    version: 4.11.19
+  kdeaccessibility:
+    release: 2.el7
+    version: 4.10.5
+  kdeadmin:
+    release: 3.el7
+    version: 4.10.5
+  kdegraphics-strigi-analyzer:
+    release: 3.el7
+    version: 4.10.5
+  kdegraphics-thumbnailers:
+    release: 3.el7
+    version: 4.10.5
+  kdelibs:
+    release: 5.el7_2
+    version: 4.14.8
+  kdelibs-common:
+    release: 5.el7_2
+    version: 4.14.8
+  kdelibs-ktexteditor:
+    release: 5.el7_2
+    version: 4.14.8
+  kdenetwork-common:
+    release: 8.el7_0
+    version: 4.10.5
+  kdenetwork-kdnssd:
+    release: 8.el7_0
+    version: 4.10.5
+  kdenetwork-kget:
+    release: 8.el7_0
+    version: 4.10.5
+  kdenetwork-kget-libs:
+    release: 8.el7_0
+    version: 4.10.5
+  kdenetwork-krfb:
+    release: 8.el7_0
+    version: 4.10.5
+  kdenetwork-krfb-libs:
+    release: 8.el7_0
+    version: 4.10.5
+  kdepim:
+    release: 4.el7
+    version: 4.10.5
+  kdepim-libs:
+    release: 4.el7
+    version: 4.10.5
+  kdepim-runtime:
+    release: 3.el7
+    version: 4.10.5
+  kdepim-runtime-libs:
+    release: 3.el7
+    version: 4.10.5
+  kdepimlibs:
+    release: 4.el7
+    version: 4.10.5
+  kdepimlibs-akonadi:
+    release: 4.el7
+    version: 4.10.5
+  kdepimlibs-kxmlrpcclient:
+    release: 4.el7
+    version: 4.10.5
+  kdeplasma-addons:
+    release: 5.el7
+    version: 4.10.5
+  kdeplasma-addons-libs:
+    release: 5.el7
+    version: 4.10.5
+  kdeutils-minimal:
+    release: 3.el7
+    version: 4.10.5
+  kdf:
+    release: 3.el7
+    version: 4.10.5
+  keepalived:
+    release: 7.el7
+    version: 1.2.13
+  kernel:
+    release: 327.13.1.el7
+    version: 3.10.0
+  kernel-devel:
+    release: 327.el7
+    version: 3.10.0
+  kernel-headers:
+    release: 327.13.1.el7
+    version: 3.10.0
+  kernel-tools:
+    release: 327.13.1.el7
+    version: 3.10.0
+  kernel-tools-libs:
+    release: 327.13.1.el7
+    version: 3.10.0
+  kernel-uek:
+    release: 118.2.2.el7uek
+    version: 3.8.13
+  kernel-uek-devel:
+    release: 118.4.2.el7uek
+    version: 3.8.13
+  kernel-uek-firmware:
+    release: 118.6.1.el7uek
+    version: 3.8.13
+  kexec-tools:
+    release: 38.0.2.el7_2.1
+    version: 2.0.7
+  keybinder3:
+    release: 1.el7
+    version: 0.3.0
+  keyutils:
+    release: 3.el7
+    version: 1.5.8
+  keyutils-libs:
+    release: 3.el7
+    version: 1.5.8
+  kgpg:
+    release: 4.el7
+    version: 4.10.5
+  kgreeter-plugins:
+    release: 7.el7
+    version: 4.11.19
+  khmeros-base-fonts:
+    release: 17.el7
+    version: 5.0
+  khmeros-fonts-common:
+    release: 17.el7
+    version: 5.0
+  khotkeys:
+    release: 7.el7
+    version: 4.11.19
+  khotkeys-libs:
+    release: 7.el7
+    version: 4.11.19
+  kinfocenter:
+    release: 7.el7
+    version: 4.11.19
+  kmag:
+    release: 3.el7
+    version: 4.10.5
+  kmenuedit:
+    release: 7.el7
+    version: 4.11.19
+  kmix:
+    release: 4.el7
+    version: 4.10.5
+  kmod:
+    release: 5.el7
+    version: 20
+  kmod-libs:
+    release: 5.el7
+    version: 20
+  kmod-oracleasm:
+    release: 15.0.1.el7
+    version: 2.0.8
+  konkretcmpi:
+    release: 5.el7
+    version: 0.9.1
+  konsole:
+    release: 3.el7
+    version: 4.10.5
+  konsole-part:
+    release: 3.el7
+    version: 4.10.5
+  kpartx:
+    release: 85.el7_2.1
+    version: 0.4.9
+  krb5-libs:
+    release: 12.el7_2
+    version: 1.13.2
+  krb5-pkinit:
+    release: 12.el7_2
+    version: 1.13.2
+  krb5-server:
+    release: 12.el7_2
+    version: 1.13.2
+  krb5-workstation:
+    release: 12.el7_2
+    version: 1.13.2
+  kruler:
+    release: 3.el7
+    version: 4.10.5
+  ksaneplugin:
+    release: 3.el7
+    version: 4.10.5
+  kscreen:
+    release: 9.el7
+    version: 1.0.1
+  ksh:
+    release: 22.el7_1.3
+    version: 20120801
+  ksnapshot:
+    release: 3.el7
+    version: 4.10.5
+  ksshaskpass:
+    release: 7.el7
+    version: 0.5.3
+  ksysguard:
+    release: 7.el7
+    version: 4.11.19
+  ksysguard-libs:
+    release: 7.el7
+    version: 4.11.19
+  ksysguardd:
+    release: 7.el7
+    version: 4.11.19
+  ktimer:
+    release: 3.el7
+    version: 4.10.5
+  kwallet:
+    release: 3.el7
+    version: 4.10.5
+  kwin:
+    release: 7.el7
+    version: 4.11.19
+  kwin-libs:
+    release: 7.el7
+    version: 4.11.19
+  kwrite:
+    release: 3.el7
+    version: 4.10.5
+  langtable:
+    release: 3.el7
+    version: 0.0.31
+  langtable-data:
+    release: 3.el7
+    version: 0.0.31
+  langtable-python:
+    release: 3.el7
+    version: 0.0.31
+  latencytop:
+    release: 13.el7
+    version: 0.5
+  latencytop-common:
+    release: 13.el7
+    version: 0.5
+  latencytop-tui:
+    release: 13.el7
+    version: 0.5
+  lcms2:
+    release: 2.el7
+    version: 2.6
+  ldapjdk:
+    release: 14.el7
+    version: 4.18
+  ldns:
+    release: 7.el7
+    version: 1.6.16
+  ledmon:
+    release: 4.el7
+    version: 0.79
+  less:
+    release: 9.el7
+    version: 458
+  libICE:
+    release: 2.el7
+    version: 1.0.9
+  libIDL:
+    release: 8.el7
+    version: 0.8.14
+  libSM:
+    release: 2.el7
+    version: 1.2.2
+  libX11:
+    release: 2.el7
+    version: 1.6.3
+  libX11-common:
+    release: 2.el7
+    version: 1.6.3
+  libXScrnSaver:
+    release: 6.1.el7
+    version: 1.2.2
+  libXau:
+    release: 2.1.el7
+    version: 1.0.8
+  libXaw:
+    release: 5.el7
+    version: 1.0.12
+  libXcomposite:
+    release: 4.1.el7
+    version: 0.4.4
+  libXcursor:
+    release: 2.1.el7
+    version: 1.1.14
+  libXdamage:
+    release: 4.1.el7
+    version: 1.1.4
+  libXdmcp:
+    release: 6.1.el7
+    version: 1.1.1
+  libXevie:
+    release: 7.1.el7
+    version: 1.0.3
+  libXext:
+    release: 3.el7
+    version: 1.3.3
+  libXfixes:
+    release: 2.1.el7
+    version: 5.0.1
+  libXfont:
+    release: 2.el7
+    version: 1.5.1
+  libXft:
+    release: 2.el7
+    version: 2.3.2
+  libXi:
+    release: 2.el7
+    version: 1.7.4
+  libXinerama:
+    release: 2.1.el7
+    version: 1.1.3
+  libXmu:
+    release: 2.el7
+    version: 1.1.2
+  libXpm:
+    release: 3.el7
+    version: 3.5.11
+  libXrandr:
+    release: 2.el7
+    version: 1.4.2
+  libXrender:
+    release: 2.1.el7
+    version: 0.9.8
+  libXres:
+    release: 2.1.el7
+    version: 1.0.7
+  libXt:
+    release: 6.1.el7
+    version: 1.1.4
+  libXtst:
+    release: 2.1.el7
+    version: 1.2.2
+  libXv:
+    release: 2.el7
+    version: 1.0.10
+  libXvMC:
+    release: 2.1.el7
+    version: 1.0.8
+  libXxf86dga:
+    release: 2.1.el7
+    version: 1.1.4
+  libXxf86misc:
+    release: 7.1.el7
+    version: 1.0.3
+  libXxf86vm:
+    release: 2.1.el7
+    version: 1.1.3
+  libacl:
+    release: 12.el7
+    version: 2.2.51
+  libaio:
+    release: 13.el7
+    version: 0.3.109
+  libaio-devel:
+    release: 13.el7
+    version: 0.3.109
+  libao:
+    release: 8.el7
+    version: 1.1.0
+  libappstream-glib:
+    release: 1.el7
+    version: 0.3.6
+  libarchive:
+    release: 7.el7
+    version: 3.1.2
+  libart_lgpl:
+    release: 10.el7
+    version: 2.3.21
+  libassuan:
+    release: 3.el7
+    version: 2.1.0
+  libasyncns:
+    release: 7.el7
+    version: 0.8
+  libatasmart:
+    release: 6.el7
+    version: 0.19
+  libattr:
+    release: 12.el7
+    version: 2.4.46
+  libavc1394:
+    release: 14.el7
+    version: 0.5.3
+  libbasicobjects:
+    release: 25.el7
+    version: 0.1.1
+  libblkid:
+    release: 26.el7_2.2
+    version: 2.23.2
+  libbluedevil:
+    release: 1.el7
+    version: 2.1
+  libbluray:
+    release: 5.el7
+    version: 0.2.3
+  libbonobo:
+    release: 7.el7
+    version: 2.32.1
+  libbonoboui:
+    release: 7.el7
+    version: 2.24.5
+  libcacard:
+    release: 105.el7_2.3
+    version: 1.5.3
+  libcanberra:
+    release: 5.el7
+    version: 0.30
+  libcanberra-gtk2:
+    release: 5.el7
+    version: 0.30
+  libcanberra-gtk3:
+    release: 5.el7
+    version: 0.30
+  libcap:
+    release: 8.el7
+    version: 2.22
+  libcap-ng:
+    release: 4.el7
+    version: 0.7.5
+  libcdio:
+    release: 1.el7
+    version: 0.92
+  libcdio-paranoia:
+    release: 11.el7
+    version: 10.2+0.90
+  libcgroup:
+    release: 8.el7
+    version: 0.41
+  libcgroup-tools:
+    release: 8.el7
+    version: 0.41
+  libchamplain:
+    release: 5.el7
+    version: 0.12.4
+  libchamplain-gtk:
+    release: 5.el7
+    version: 0.12.4
+  libchewing:
+    release: 6.el7
+    version: 0.3.4
+  libcollection:
+    release: 25.el7
+    version: 0.6.2
+  libcom_err:
+    release: 7.el7
+    version: 1.42.9
+  libconfig:
+    release: 5.el7
+    version: 1.4.9
+  libcroco:
+    release: 5.el7
+    version: 0.6.8
+  libcurl:
+    release: 25.0.1.el7
+    version: 7.29.0
+  libcxgb3:
+    release: 8.el7
+    version: 1.3.1
+  libcxgb4:
+    release: 3.el7
+    version: 1.3.5
+  libdaemon:
+    release: 7.el7
+    version: 0.14
+  libdb:
+    release: 19.el7
+    version: 5.3.21
+  libdb-devel:
+    release: 19.el7
+    version: 5.3.21
+  libdb-utils:
+    release: 19.el7
+    version: 5.3.21
+  libdhash:
+    release: 25.el7
+    version: 0.4.3
+  libdmapsharing:
+    release: 1.el7
+    version: 2.9.30
+  libdmx:
+    release: 3.el7
+    version: 1.1.3
+  libdnet:
+    release: 13.1.el7
+    version: 1.12
+  libdrm:
+    release: 3.el7
+    version: 2.4.60
+  libdtrace-ctf:
+    release: 2.el7
+    version: 0.5.0
+  libdv:
+    release: 17.el7
+    version: 1.0.0
+  libdvdnav:
+    release: 8.el7
+    version: 4.2.0
+  libdvdread:
+    release: 6.el7
+    version: 4.2.0
+  libdwarf:
+    release: 4.el7
+    version: 20130207
+  libedit:
+    release: 12.20121213cvs.el7
+    version: 3.0
+  libepoxy:
+    release: 2.el7
+    version: 1.2
+  liberation-fonts-common:
+    release: 15.el7
+    version: 1.07.2
+  liberation-mono-fonts:
+    release: 15.el7
+    version: 1.07.2
+  liberation-sans-fonts:
+    release: 15.el7
+    version: 1.07.2
+  liberation-serif-fonts:
+    release: 15.el7
+    version: 1.07.2
+  libestr:
+    release: 2.el7
+    version: 0.1.9
+  libevdev:
+    release: 1.el7
+    version: 1.4.1
+  libevent:
+    release: 4.el7
+    version: 2.0.21
+  libexif:
+    release: 6.el7
+    version: 0.6.21
+  libffi:
+    release: 16.el7
+    version: 3.0.13
+  libfontenc:
+    release: 3.el7
+    version: 1.1.2
+  libfprint:
+    release: 3.0.1.el7
+    version: 0.5.0
+  libgcc:
+    release: 4.el7
+    version: 4.8.5
+  libgcrypt:
+    release: 12.el7_1.1
+    version: 1.5.3
+  libgdata:
+    release: 1.el7
+    version: 0.17.1
+  libgdither:
+    release: 8.el7
+    version: 0.6
+  libgee:
+    release: 3.el7
+    version: 0.10.1
+  libgee06:
+    release: 3.el7
+    version: 0.6.8
+  libgfortran:
+    release: 4.el7
+    version: 4.8.5
+  libglade2:
+    release: 11.el7
+    version: 2.6.4
+  libgnome:
+    release: 9.el7
+    version: 2.32.1
+  libgnome-keyring:
+    release: 3.el7
+    version: 3.8.0
+  libgnomecanvas:
+    release: 8.el7
+    version: 2.30.3
+  libgnomekbd:
+    release: 4.el7
+    version: 3.6.0
+  libgnomeui:
+    release: 8.el7
+    version: 2.24.5
+  libgomp:
+    release: 4.el7
+    version: 4.8.5
+  libgovirt:
+    release: 1.el7_2.1
+    version: 0.3.3
+  libgpg-error:
+    release: 3.el7
+    version: 1.12
+  libgphoto2:
+    release: 3.el7
+    version: 2.5.2
+  libgsf:
+    release: 7.el7
+    version: 1.14.26
+  libgtop2:
+    release: 7.el7
+    version: 2.28.4
+  libgudev1:
+    release: 19.0.2.el7_2.7
+    version: 219
+  libguestfs:
+    release: 1.55.0.1.el7_2.2
+    version: 1.28.1
+  libgusb:
+    release: 3.el7
+    version: 0.1.6
+  libgweather:
+    release: 1.el7
+    version: 3.14.1
+  libgxps:
+    release: 9.el7
+    version: 0.2.2
+  libhangul:
+    release: 8.el7
+    version: 0.1.0
+  libhbaapi:
+    release: 6.el7
+    version: 2.2.9
+  libhbalinux:
+    release: 2.el7
+    version: 1.0.17
+  libhugetlbfs:
+    release: 11.el7
+    version: 2.16
+  libhugetlbfs-utils:
+    release: 11.el7
+    version: 2.16
+  libibcm:
+    release: 8.el7
+    version: 1.0.5
+  libibmad:
+    release: 1.el7
+    version: 1.3.12
+  libibumad:
+    release: 1.el7
+    version: 1.3.10.2
+  libibverbs:
+    release: 8.el7
+    version: 1.1.8
+  libibverbs-utils:
+    release: 8.el7
+    version: 1.1.8
+  libical:
+    release: 1.el7
+    version: 1.0.1
+  libicu:
+    release: 15.el7
+    version: 50.1.2
+  libidn:
+    release: 4.el7
+    version: 1.28
+  libiec61883:
+    release: 10.el7
+    version: 1.2.0
+  libieee1284:
+    release: 15.el7
+    version: 0.2.11
+  libimobiledevice:
+    release: 6.el7
+    version: 1.1.5
+  libini_config:
+    release: 25.el7
+    version: 1.2.0
+  libiodbc:
+    release: 7.el7
+    version: 3.52.7
+  libipa_hbac:
+    release: 40.el7_2.2
+    version: 1.13.0
+  libipathverbs:
+    release: 2.el7
+    version: 1.3
+  libiptcdata:
+    release: 11.el7
+    version: 1.0.4
+  libiscsi:
+    release: 6.el7
+    version: 1.9.0
+  libjpeg-turbo:
+    release: 5.el7
+    version: 1.2.90
+  libkdcraw:
+    release: 4.el7
+    version: 4.10.5
+  libkexiv2:
+    release: 3.el7
+    version: 4.10.5
+  libkipi:
+    release: 3.el7
+    version: 4.10.5
+  libkkc:
+    release: 8.el7
+    version: 0.3.1
+  libkkc-common:
+    release: 8.el7
+    version: 0.3.1
+  libkkc-data:
+    release: 8.el7
+    version: 0.3.1
+  libksane:
+    release: 3.el7
+    version: 4.10.5
+  libkscreen:
+    release: 6.el7
+    version: 1.0.1
+  libkworkspace:
+    release: 7.el7
+    version: 4.11.19
+  libldb:
+    release: 1.el7_2
+    version: 1.1.25
+  liblouis:
+    release: 10.el7
+    version: 2.5.2
+  liblouis-python:
+    release: 10.el7
+    version: 2.5.2
+  libmbim:
+    release: 3.20130815git.el7
+    version: 1.5.0
+  libmediaart:
+    release: 1.el7
+    version: 0.7.0
+  libmlx4:
+    release: 5.el7
+    version: 1.0.6
+  libmlx5:
+    release: 1.el7
+    version: 1.0.2
+  libmng:
+    release: 14.el7
+    version: 1.0.10
+  libmnl:
+    release: 7.el7
+    version: 1.0.3
+  libmodman:
+    release: 8.el7
+    version: 2.0.1
+  libmount:
+    release: 26.el7_2.2
+    version: 2.23.2
+  libmpc:
+    release: 3.el7
+    version: 1.0.1
+  libmpcdec:
+    release: 12.el7
+    version: 1.2.6
+  libmspack:
+    release: 0.4.alpha.el7
+    version: 0.5
+  libmthca:
+    release: 13.el7
+    version: 1.0.6
+  libmtp:
+    release: 3.el7
+    version: 1.1.6
+  libmusicbrainz5:
+    release: 9.el7
+    version: 5.0.1
+  libndp:
+    release: 4.el7
+    version: 1.2
+  libnes:
+    release: 2.el7
+    version: 1.1.4
+  libnetfilter_conntrack:
+    release: 2.el7
+    version: 1.0.4
+  libnfnetlink:
+    release: 4.el7
+    version: 1.0.1
+  libnfsidmap:
+    release: 12.el7
+    version: 0.25
+  libnice:
+    release: 4.el7
+    version: 0.1.3
+  libnl:
+    release: 3.el7
+    version: 1.1.4
+  libnl3:
+    release: 10.0.1.el7
+    version: 3.2.21
+  libnl3-cli:
+    release: 10.0.1.el7
+    version: 3.2.21
+  libnm-gtk:
+    release: 2.el7
+    version: 1.0.6
+  libnotify:
+    release: 8.el7
+    version: 0.7.5
+  liboauth:
+    release: 4.el7
+    version: 0.9.7
+  libofa:
+    release: 24.el7
+    version: 0.9.3
+  libogg:
+    release: 7.el7
+    version: 1.3.0
+  libosinfo:
+    release: 3.0.1.el7
+    version: 0.2.12
+  libpath_utils:
+    release: 25.el7
+    version: 0.2.1
+  libpcap:
+    release: 8.el7
+    version: 1.5.3
+  libpciaccess:
+    release: 2.el7
+    version: 0.13.4
+  libpeas:
+    release: 1.el7
+    version: 1.12.1
+  libpinyin:
+    release: 4.el7
+    version: 0.9.93
+  libpinyin-data:
+    release: 4.el7
+    version: 0.9.93
+  libpipeline:
+    release: 3.el7
+    version: 1.2.3
+  libplist:
+    release: 4.el7
+    version: 1.10
+  libpng:
+    release: 7.el7_2
+    version: 1.5.13
+  libpng12:
+    release: 7.el7_2
+    version: 1.2.50
+  libproxy:
+    release: 8.el7
+    version: 0.4.11
+  libproxy-mozjs:
+    release: 8.el7
+    version: 0.4.11
+  libpurple:
+    release: 23.el7
+    version: 2.10.7
+  libpwquality:
+    release: 4.el7
+    version: 1.2.3
+  libqmi:
+    release: 4.el7
+    version: 1.6.0
+  libquadmath:
+    release: 4.el7
+    version: 4.8.5
+  libquadmath-devel:
+    release: 4.el7
+    version: 4.8.5
+  librados2:
+    release: 3.el7
+    version: 0.80.7
+  libraw1394:
+    release: 2.el7
+    version: 2.1.0
+  librbd1:
+    release: 3.el7
+    version: 0.80.7
+  librdmacm:
+    release: 1.el7
+    version: 1.0.21
+  librdmacm-utils:
+    release: 1.el7
+    version: 1.0.21
+  libref_array:
+    release: 25.el7
+    version: 0.1.5
+  libreport:
+    release: 31.0.1.el7
+    version: 2.1.11
+  libreport-anaconda:
+    release: 31.0.1.el7
+    version: 2.1.11
+  libreport-cli:
+    release: 31.0.1.el7
+    version: 2.1.11
+  libreport-filesystem:
+    release: 31.0.1.el7
+    version: 2.1.11
+  libreport-gtk:
+    release: 31.0.1.el7
+    version: 2.1.11
+  libreport-plugin-bugzilla:
+    release: 31.0.1.el7
+    version: 2.1.11
+  libreport-plugin-mailx:
+    release: 31.0.1.el7
+    version: 2.1.11
+  libreport-plugin-reportuploader:
+    release: 31.0.1.el7
+    version: 2.1.11
+  libreport-plugin-ureport:
+    release: 31.0.1.el7
+    version: 2.1.11
+  libreport-python:
+    release: 31.0.1.el7
+    version: 2.1.11
+  libreport-rhel-anaconda-bugzilla:
+    release: 31.0.1.el7
+    version: 2.1.11
+  libreport-web:
+    release: 31.0.1.el7
+    version: 2.1.11
+  libreswan:
+    release: 5.0.1.el7_1
+    version: 3.15
+  librsvg2:
+    release: 1.el7
+    version: 2.39.0
+  librsvg2-tools:
+    release: 1.el7
+    version: 2.39.0
+  libsamplerate:
+    release: 6.el7
+    version: 0.1.8
+  libsane-hpaio:
+    release: 6.el7
+    version: 3.13.7
+  libseccomp:
+    release: 1.el7
+    version: 2.2.1
+  libsecret:
+    release: 2.el7
+    version: 0.18.2
+  libselinux:
+    release: 6.el7
+    version: 2.2.2
+  libselinux-python:
+    release: 6.el7
+    version: 2.2.2
+  libselinux-utils:
+    release: 6.el7
+    version: 2.2.2
+  libsemanage:
+    release: 18.el7
+    version: 2.1.10
+  libsemanage-python:
+    release: 18.el7
+    version: 2.1.10
+  libsepol:
+    release: 3.el7
+    version: 2.1.9
+  libshout:
+    release: 11.el7
+    version: 2.2.2
+  libsigc++20:
+    release: 4.el7
+    version: 2.3.1
+  libsmbclient:
+    release: 6.el7_2
+    version: 4.2.10
+  libsndfile:
+    release: 10.el7
+    version: 1.0.25
+  libsoup:
+    release: 3.el7
+    version: 2.48.1
+  libspectre:
+    release: 4.el7
+    version: 0.2.7
+  libsrtp:
+    release: 10.20101004cvs.el7
+    version: 1.4.4
+  libss:
+    release: 7.el7
+    version: 1.42.9
+  libssh2:
+    release: 10.el7_2.1
+    version: 1.4.3
+  libsss_idmap:
+    release: 40.el7_2.2
+    version: 1.13.0
+  libsss_nss_idmap:
+    release: 40.el7_2.2
+    version: 1.13.0
+  libstdc++:
+    release: 4.el7
+    version: 4.8.5
+  libstdc++-devel:
+    release: 4.el7
+    version: 4.8.5
+  libstoragemgmt:
+    release: 4.el7
+    version: 1.2.3
+  libstoragemgmt-python:
+    release: 4.el7
+    version: 1.2.3
+  libsysfs:
+    release: 16.el7
+    version: 2.1.0
+  libtalloc:
+    release: 1.el7_2
+    version: 2.1.5
+  libtar:
+    release: 29.el7
+    version: 1.2.11
+  libtasn1:
+    release: 2.el7
+    version: 3.8
+  libtdb:
+    release: 1.el7_2
+    version: 1.3.8
+  libteam:
+    release: 6.el7_2
+    version: 1.17
+  libtevent:
+    release: 1.el7_2
+    version: 0.9.26
+  libthai:
+    release: 9.el7
+    version: 0.1.14
+  libtheora:
+    release: 8.el7
+    version: 1.1.1
+  libtiff:
+    release: 14.el7
+    version: 4.0.3
+  libtimezonemap:
+    release: 1.el7
+    version: 0.4.4
+  libtirpc:
+    release: 0.6.el7
+    version: 0.2.4
+  libtool:
+    release: 21.el7_2
+    version: 2.4.2
+  libtool-ltdl:
+    release: 21.el7_2
+    version: 2.4.2
+  libudisks2:
+    release: 6.el7
+    version: 2.1.2
+  libunistring:
+    release: 9.el7
+    version: 0.9.3
+  libunwind:
+    release: 5.el7_2.2
+    version: 1.1
+  libusal:
+    release: 23.el7
+    version: 1.1.11
+  libusb:
+    release: 3.el7
+    version: 0.1.4
+  libusbx:
+    release: 4.el7
+    version: 1.0.15
+  libuser:
+    release: 7.el7_1
+    version: 0.60
+  libuser-python:
+    release: 7.el7_1
+    version: 0.60
+  libutempter:
+    release: 4.el7
+    version: 1.1.6
+  libuuid:
+    release: 26.el7_2.2
+    version: 2.23.2
+  libv4l:
+    release: 4.el7
+    version: 0.9.5
+  libverto:
+    release: 4.el7
+    version: 0.2.5
+  libverto-tevent:
+    release: 4.el7
+    version: 0.2.5
+  libvirt:
+    release: 13.0.1.el7_2.4
+    version: 1.2.17
+  libvirt-client:
+    release: 13.0.1.el7_2.4
+    version: 1.2.17
+  libvirt-daemon:
+    release: 13.0.1.el7_2.4
+    version: 1.2.17
+  libvirt-daemon-config-network:
+    release: 13.0.1.el7_2.4
+    version: 1.2.17
+  libvirt-daemon-config-nwfilter:
+    release: 13.0.1.el7_2.4
+    version: 1.2.17
+  libvirt-daemon-driver-interface:
+    release: 13.0.1.el7_2.4
+    version: 1.2.17
+  libvirt-daemon-driver-lxc:
+    release: 13.0.1.el7_2.4
+    version: 1.2.17
+  libvirt-daemon-driver-network:
+    release: 13.0.1.el7_2.4
+    version: 1.2.17
+  libvirt-daemon-driver-nodedev:
+    release: 13.0.1.el7_2.4
+    version: 1.2.17
+  libvirt-daemon-driver-nwfilter:
+    release: 13.0.1.el7_2.4
+    version: 1.2.17
+  libvirt-daemon-driver-qemu:
+    release: 13.0.1.el7_2.4
+    version: 1.2.17
+  libvirt-daemon-driver-secret:
+    release: 13.0.1.el7_2.4
+    version: 1.2.17
+  libvirt-daemon-driver-storage:
+    release: 13.0.1.el7_2.4
+    version: 1.2.17
+  libvirt-daemon-kvm:
+    release: 13.0.1.el7_2.4
+    version: 1.2.17
+  libvirt-gconfig:
+    release: 1.el7
+    version: 0.1.9
+  libvirt-glib:
+    release: 1.el7
+    version: 0.1.9
+  libvirt-gobject:
+    release: 1.el7
+    version: 0.1.9
+  libvirt-python:
+    release: 2.el7
+    version: 1.2.17
+  libvisual:
+    release: 16.el7
+    version: 0.4.0
+  libvncserver:
+    release: 9.el7_0.1
+    version: 0.9.9
+  libvorbis:
+    release: 8.el7
+    version: 1.3.3
+  libvpx:
+    release: 5.el7_0
+    version: 1.3.0
+  libwacom:
+    release: 1.el7
+    version: 0.12
+  libwacom-data:
+    release: 1.el7
+    version: 0.12
+  libwbclient:
+    release: 6.el7_2
+    version: 4.2.10
+  libwebp:
+    release: 3.el7
+    version: 0.3.0
+  libwnck3:
+    release: 3.el7
+    version: 3.4.5
+  libwsman1:
+    release: 13.el7
+    version: 2.3.6
+  libwvstreams:
+    release: 11.el7
+    version: 4.6.1
+  libxcb:
+    release: 4.el7
+    version: 1.11
+  libxkbfile:
+    release: 5.el7
+    version: 1.0.8
+  libxklavier:
+    release: 7.el7
+    version: 5.4
+  libxml2:
+    release: 6.0.1.el7_2.2
+    version: 2.9.1
+  libxml2-python:
+    release: 6.0.1.el7_2.2
+    version: 2.9.1
+  libxshmfence:
+    release: 1.el7
+    version: 1.2
+  libxslt:
+    release: 5.0.1.el7
+    version: 1.1.28
+  libyaml:
+    release: 11.el7_0
+    version: 0.1.4
+  libzapojit:
+    release: 4.el7
+    version: 0.0.3
+  libzip:
+    release: 8.el7
+    version: 0.10.1
+  linux-firmware:
+    release: 43.git6ebf5d5.0.1.el7
+    version: 20150904
+  lklug-fonts:
+    release: 10.20090803cvs.el7
+    version: 0.6
+  lksctp-tools:
+    release: 3.el7
+    version: 1.0.13
+  lldpad:
+    release: 2.git986eb2e.el7
+    version: 1.0.1
+  lm_sensors-libs:
+    release: 11.el7
+    version: 3.3.4
+  lockdev:
+    release: 0.13.20111007git.el7
+    version: 1.0.4
+  log4j:
+    release: 15.el7
+    version: 1.2.17
+  logrotate:
+    release: 7.el7_2
+    version: 3.8.6
+  lohit-assamese-fonts:
+    release: 2.el7
+    version: 2.5.3
+  lohit-bengali-fonts:
+    release: 4.el7
+    version: 2.5.3
+  lohit-devanagari-fonts:
+    release: 4.el7
+    version: 2.5.3
+  lohit-gujarati-fonts:
+    release: 2.el7
+    version: 2.5.3
+  lohit-kannada-fonts:
+    release: 3.el7
+    version: 2.5.3
+  lohit-malayalam-fonts:
+    release: 2.el7
+    version: 2.5.3
+  lohit-marathi-fonts:
+    release: 2.el7
+    version: 2.5.3
+  lohit-nepali-fonts:
+    release: 2.el7
+    version: 2.5.3
+  lohit-oriya-fonts:
+    release: 3.el7
+    version: 2.5.4.1
+  lohit-punjabi-fonts:
+    release: 2.el7
+    version: 2.5.3
+  lohit-tamil-fonts:
+    release: 2.el7
+    version: 2.5.3
+  lohit-telugu-fonts:
+    release: 3.el7
+    version: 2.5.3
+  lrzsz:
+    release: 36.el7
+    version: 0.12.20
+  lsof:
+    release: 4.el7
+    version: 4.87
+  lsscsi:
+    release: 3.el7
+    version: 0.27
+  lua:
+    release: 14.el7
+    version: 5.1.4
+  lvm2:
+    release: 5.el7_2.1
+    version: 2.02.130
+  lvm2-libs:
+    release: 5.el7_2.1
+    version: 2.02.130
+  lvm2-python-libs:
+    release: 5.el7_2.1
+    version: 2.02.130
+  lzo:
+    release: 8.el7
+    version: 2.06
+  lzo-minilzo:
+    release: 8.el7
+    version: 2.06
+  lzop:
+    release: 10.el7
+    version: 1.03
+  m17n-contrib:
+    release: 3.el7
+    version: 1.1.14
+  m17n-db:
+    release: 3.el7
+    version: 1.6.4
+  m17n-lib:
+    release: 14.el7
+    version: 1.6.4
+  m2crypto:
+    release: 17.el7
+    version: 0.21.1
+  m4:
+    release: 10.el7
+    version: 1.4.16
+  madan-fonts:
+    release: 11.el7
+    version: 2.000
+  mailcap:
+    release: 2.el7
+    version: 2.1.41
+  mailx:
+    release: 12.el7_0
+    version: 12.5
+  make:
+    release: 21.el7
+    version: 3.82
+  man-db:
+    release: 9.el7
+    version: 2.6.3
+  man-pages:
+    release: 5.el7
+    version: 3.53
+  man-pages-overrides:
+    release: 1.el7
+    version: 7.2.4
+  marisa:
+    release: 3.el7
+    version: 0.2.4
+  mdadm:
+    release: 7.el7
+    version: 3.3.2
+  meanwhile:
+    release: 12.el7
+    version: 1.1.0
+  media-player-info:
+    release: 4.el7
+    version: 17
+  memcached:
+    release: 9.el7
+    version: 1.4.15
+  mesa-dri-drivers:
+    release: 3.20150824.el7
+    version: 10.6.5
+  mesa-filesystem:
+    release: 3.20150824.el7
+    version: 10.6.5
+  mesa-libEGL:
+    release: 3.20150824.el7
+    version: 10.6.5
+  mesa-libGL:
+    release: 3.20150824.el7
+    version: 10.6.5
+  mesa-libGLU:
+    release: 4.el7
+    version: 9.0.0
+  mesa-libgbm:
+    release: 3.20150824.el7
+    version: 10.6.5
+  mesa-libglapi:
+    release: 3.20150824.el7
+    version: 10.6.5
+  mesa-libxatracker:
+    release: 3.20150824.el7
+    version: 10.6.5
+  mesa-private-llvm:
+    release: 2.el7
+    version: 3.6.2
+  metacity:
+    release: 7.el7
+    version: 2.34.13
+  microcode_ctl:
+    release: 12.el7
+    version: 2.1
+  mlocate:
+    release: 5.el7
+    version: 0.26
+  mobile-broadband-provider-info:
+    release: 4.el7
+    version: 1.20120614
+  mod_auth_gssapi:
+    release: 1.el7
+    version: 1.3.1
+  mod_nss:
+    release: 6.el7
+    version: 1.0.11
+  mod_wsgi:
+    release: 12.el7_0
+    version: 3.4
+  mokutil:
+    release: 2.0.3.el7
+    version: 0.9
+  mousetweaks:
+    release: 3.el7
+    version: 3.8.0
+  mozilla-filesystem:
+    release: 11.el7
+    version: 1.9
+  mozjs17:
+    release: 12.el7
+    version: 17.0.0
+  mozjs24:
+    release: 6.el7
+    version: 24.2.0
+  mpfr:
+    release: 4.el7
+    version: 3.1.1
+  msv-msv:
+    release: 6.el7
+    version: 2013.5.1
+  msv-xsdlib:
+    release: 6.el7
+    version: 2013.5.1
+  mt-st:
+    release: 14.el7
+    version: 1.1
+  mtdev:
+    release: 5.el7
+    version: 1.1.5
+  mtools:
+    release: 5.el7
+    version: 4.0.18
+  mtr:
+    release: 7.el7
+    version: 0.85
+  mtx:
+    release: 11.el7
+    version: 1.3.12
+  mutter:
+    release: 17.el7
+    version: 3.14.4
+  mysql-community-client:
+    release: 2.el7
+    version: 5.6.27
+  mysql-community-common:
+    release: 2.el7
+    version: 5.6.27
+  mysql-community-libs:
+    release: 2.el7
+    version: 5.6.27
+  mysql-community-server:
+    release: 2.el7
+    version: 5.6.27
+  nano:
+    release: 10.el7
+    version: 2.3.1
+  nautilus:
+    release: 7.el7
+    version: 3.14.3
+  nautilus-extensions:
+    release: 7.el7
+    version: 3.14.3
+  nautilus-open-terminal:
+    release: 3.el7
+    version: 0.20
+  nautilus-sendto:
+    release: 5.el7
+    version: 3.8.0
+  ncompress:
+    release: 3.el7
+    version: 4.2.4.4
+  ncurses:
+    release: 13.20130511.el7
+    version: 5.9
+  ncurses-base:
+    release: 13.20130511.el7
+    version: 5.9
+  ncurses-libs:
+    release: 13.20130511.el7
+    version: 5.9
+  neon:
+    release: 3.el7
+    version: 0.30.0
+  nepomuk-core:
+    release: 5.el7
+    version: 4.10.5
+  nepomuk-core-libs:
+    release: 5.el7
+    version: 4.10.5
+  nepomuk-widgets:
+    release: 3.el7
+    version: 4.10.5
+  net-snmp:
+    release: 24.el7
+    version: 5.7.2
+  net-snmp-agent-libs:
+    release: 24.el7
+    version: 5.7.2
+  net-snmp-libs:
+    release: 24.el7
+    version: 5.7.2
+  net-snmp-utils:
+    release: 24.el7
+    version: 5.7.2
+  net-tools:
+    release: 0.17.20131004git.el7
+    version: 2.0
+  netcf-libs:
+    release: 1.el7
+    version: 0.2.8
+  netpbm:
+    release: 9.el7
+    version: 10.61.02
+  netpbm-progs:
+    release: 9.el7
+    version: 10.61.02
+  nettle:
+    release: 4.el7
+    version: 2.7.1
+  newt:
+    release: 4.el7
+    version: 0.52.15
+  newt-python:
+    release: 4.el7
+    version: 0.52.15
+  nfs-utils:
+    release: 0.21.el7_2
+    version: 1.3.0
+  nfs4-acl-tools:
+    release: 14.el7
+    version: 0.3.3
+  nhn-nanum-fonts-common:
+    release: 9.el7
+    version: 3.020
+  nhn-nanum-gothic-fonts:
+    release: 9.el7
+    version: 3.020
+  nm-connection-editor:
+    release: 2.el7
+    version: 1.0.6
+  nmap-ncat:
+    release: 7.el7
+    version: 6.40
+  nspr:
+    release: 1.el7_2
+    version: 4.11.0
+  nss:
+    release: 9.0.1.el7_2
+    version: 3.21.0
+  nss-softokn:
+    release: 14.2.el7_2
+    version: 3.16.2.3
+  nss-softokn-freebl:
+    release: 14.2.el7_2
+    version: 3.16.2.3
+  nss-sysinit:
+    release: 9.0.1.el7_2
+    version: 3.21.0
+  nss-tools:
+    release: 9.0.1.el7_2
+    version: 3.21.0
+  nss-util:
+    release: 2.2.el7_2
+    version: 3.21.0
+  ntp:
+    release: 22.el7_2.1
+    version: 4.2.6p5
+  ntpdate:
+    release: 22.el7_2.1
+    version: 4.2.6p5
+  ntsysv:
+    release: 5.el7
+    version: 1.3.61
+  numactl:
+    release: 6.el7_2
+    version: 2.0.9
+  numactl-libs:
+    release: 6.el7_2
+    version: 2.0.9
+  numad:
+    release: 14.20140620git.el7
+    version: 0.5
+  nuxwdog:
+    release: 4.el7_2
+    version: 1.0.3
+  objectweb-asm:
+    release: 9.el7
+    version: 3.3.1
+  oddjob:
+    release: 4.el7
+    version: 0.31.5
+  oddjob-mkhomedir:
+    release: 4.el7
+    version: 0.31.5
+  okular:
+    release: 4.el7
+    version: 4.10.5
+  okular-libs:
+    release: 4.el7
+    version: 4.10.5
+  okular-part:
+    release: 4.el7
+    version: 4.10.5
+  open-sans-fonts:
+    release: 1.el7
+    version: 1.10
+  open-vm-tools:
+    release: 4.0.1.el7
+    version: 9.10.2
+  open-vm-tools-desktop:
+    release: 4.0.1.el7
+    version: 9.10.2
+  opencc:
+    release: 3.el7
+    version: 0.4.3
+  openjpeg-libs:
+    release: 10.el7
+    version: 1.5.1
+  openldap:
+    release: 9.el7_2
+    version: 2.4.40
+  openldap-clients:
+    release: 9.el7_2
+    version: 2.4.40
+  openlmi-account:
+    release: 3.el7
+    version: 0.5.0
+  openlmi-hardware:
+    release: 3.el7
+    version: 0.5.0
+  openlmi-indicationmanager-libs:
+    release: 3.el7
+    version: 0.5.0
+  openlmi-logicalfile:
+    release: 3.el7
+    version: 0.5.0
+  openlmi-networking:
+    release: 3.el7
+    version: 0.3.0
+  openlmi-providers:
+    release: 3.el7
+    version: 0.5.0
+  openlmi-python-base:
+    release: 3.el7
+    version: 0.5.0
+  openlmi-python-providers:
+    release: 3.el7
+    version: 0.5.0
+  openlmi-service:
+    release: 3.el7
+    version: 0.5.0
+  openlmi-software:
+    release: 3.el7
+    version: 0.5.0
+  openlmi-storage:
+    release: 2.el7
+    version: 0.8.0
+  openscap:
+    release: 3.0.1.el7
+    version: 1.2.5
+  openscap-scanner:
+    release: 3.0.1.el7
+    version: 1.2.5
+  openslp:
+    release: 5.el7
+    version: 2.0.0
+  openslp-server:
+    release: 5.el7
+    version: 2.0.0
+  opensm-libs:
+    release: 1.el7
+    version: 3.3.19
+  openssh:
+    release: 25.el7_2
+    version: 6.6.1p1
+  openssh-clients:
+    release: 25.el7_2
+    version: 6.6.1p1
+  openssh-server:
+    release: 25.el7_2
+    version: 6.6.1p1
+  openssl:
+    release: 51.el7_2.4
+    version: 1.0.1e
+  openssl-libs:
+    release: 51.el7_2.4
+    version: 1.0.1e
+  openssl098e:
+    release: 29.el7_2.3
+    version: 0.9.8e
+  openwsman-client:
+    release: 13.el7
+    version: 2.3.6
+  oprofile:
+    release: 16.el7
+    version: 0.9.9
+  opus:
+    release: 6.el7
+    version: 1.0.2
+  oracle-logos:
+    release: 4.0.7.el7
+    version: 70.0.3
+  oracle-rdbms-server-12cR1-preinstall:
+    release: 4.el7
+    version: 1.0
+  oracleasm-support:
+    release: 3.el7
+    version: 2.1.8
+  oraclelinux-release:
+    release: 1.0.5.el7
+    version: 7.2
+  orc:
+    release: 5.el7
+    version: 0.4.22
+  orca:
+    release: 4.el7
+    version: 3.6.3
+  os-prober:
+    release: 5.0.1.el7
+    version: 1.58
+  overpass-fonts:
+    release: 5.el7
+    version: 1.01
+  oxygen-gtk:
+    release: 5.el7
+    version: 1.2.0
+  oxygen-gtk2:
+    release: 3.el7
+    version: 1.3.4
+  oxygen-gtk3:
+    release: 3.el7
+    version: 1.1.4
+  oxygen-icon-theme:
+    release: 2.el7
+    version: 4.10.5
+  p11-kit:
+    release: 3.el7
+    version: 0.20.7
+  p11-kit-trust:
+    release: 3.el7
+    version: 0.20.7
+  pakchois:
+    release: 10.el7
+    version: 0.4
+  paktype-naskh-basic-fonts:
+    release: 3.el7
+    version: 4.1
+  pam:
+    release: 12.el7_1.1
+    version: 1.1.8
+  pam_krb5:
+    release: 4.el7
+    version: 2.4.8
+  pam_pkcs11:
+    release: 24.el7
+    version: 0.6.2
+  pango:
+    release: 2.el7
+    version: 1.36.8
+  pangomm:
+    release: 3.el7
+    version: 2.34.0
+  paps:
+    release: 28.el7.1
+    version: 0.6.8
+  paps-libs:
+    release: 28.el7.1
+    version: 0.6.8
+  paratype-pt-sans-fonts:
+    release: 3.el7
+    version: 20101909
+  parted:
+    release: 23.el7
+    version: 3.1
+  passwd:
+    release: 4.el7
+    version: 0.79
+  patch:
+    release: 8.el7
+    version: 2.7.1
+  patchutils:
+    release: 4.el7
+    version: 0.3.3
+  pciutils:
+    release: 4.el7
+    version: 3.2.1
+  pciutils-libs:
+    release: 4.el7
+    version: 3.2.1
+  pcp:
+    release: 2.el7
+    version: 3.10.6
+  pcp-compat:
+    release: 2.el7
+    version: 3.10.6
+  pcp-conf:
+    release: 2.el7
+    version: 3.10.6
+  pcp-doc:
+    release: 2.el7
+    version: 3.10.6
+  pcp-export-pcp2graphite:
+    release: 2.el7
+    version: 3.10.6
+  pcp-libs:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-activemq:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-apache:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-bash:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-bonding:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-cisco:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-dbping:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-dm:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-ds389:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-ds389log:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-elasticsearch:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-gfs2:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-gluster:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-gpfs:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-gpsd:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-json:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-kvm:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-lmsensors:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-logger:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-lustre:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-lustrecomm:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-mailq:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-memcache:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-mounts:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-mysql:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-named:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-netfilter:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-news:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-nfsclient:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-nginx:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-nvidia-gpu:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-pdns:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-postfix:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-postgresql:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-roomtemp:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-rpm:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-sendmail:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-shping:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-summary:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-trace:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-unbound:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-weblog:
+    release: 2.el7
+    version: 3.10.6
+  pcp-pmda-zswap:
+    release: 2.el7
+    version: 3.10.6
+  pcp-system-tools:
+    release: 2.el7
+    version: 3.10.6
+  pcre:
+    release: 15.el7
+    version: 8.32
+  pcsc-lite:
+    release: 6.el7
+    version: 1.8.8
+  pcsc-lite-ccid:
+    release: 10.el7
+    version: 1.4.10
+  pcsc-lite-libs:
+    release: 6.el7
+    version: 1.8.8
+  perf:
+    release: 327.13.1.el7
+    version: 3.10.0
+  perl:
+    release: 286.el7
+    version: 5.16.3
+  perl-Archive-Tar:
+    release: 2.el7
+    version: 1.92
+  perl-Bit-Vector:
+    release: 3.el7
+    version: 7.3
+  perl-Business-ISBN:
+    release: 2.el7
+    version: 2.06
+  perl-Business-ISBN-Data:
+    release: 2.el7
+    version: 20120719.001
+  perl-Carp:
+    release: 244.el7
+    version: 1.26
+  perl-Carp-Clan:
+    release: 10.el7
+    version: 6.04
+  perl-Compress-Raw-Bzip2:
+    release: 3.el7
+    version: 2.061
+  perl-Compress-Raw-Zlib:
+    release: 4.el7
+    version: 2.061
+  perl-Crypt-OpenSSL-Bignum:
+    release: 18.el7
+    version: 0.04
+  perl-Crypt-OpenSSL-RSA:
+    release: 7.el7
+    version: 0.28
+  perl-Crypt-OpenSSL-Random:
+    release: 21.el7
+    version: 0.04
+  perl-DBD-SQLite:
+    release: 3.el7
+    version: 1.39
+  perl-DBI:
+    release: 4.el7
+    version: 1.627
+  perl-DB_File:
+    release: 6.el7
+    version: 1.830
+  perl-Data-Dumper:
+    release: 3.el7
+    version: 2.145
+  perl-Date-Calc:
+    release: 14.el7
+    version: 6.3
+  perl-Digest:
+    release: 245.el7
+    version: 1.17
+  perl-Digest-HMAC:
+    release: 5.el7
+    version: 1.03
+  perl-Digest-MD5:
+    release: 3.el7
+    version: 2.52
+  perl-Digest-SHA:
+    release: 3.el7
+    version: 5.85
+  perl-Encode:
+    release: 7.el7
+    version: 2.51
+  perl-Encode-Detect:
+    release: 13.el7
+    version: 1.01
+  perl-Encode-Locale:
+    release: 5.el7
+    version: 1.03
+  perl-Error:
+    release: 2.el7
+    version: 0.17020
+  perl-Exporter:
+    release: 3.el7
+    version: 5.68
+  perl-ExtUtils-Install:
+    release: 286.el7
+    version: 1.58
+  perl-ExtUtils-MakeMaker:
+    release: 3.el7
+    version: 6.68
+  perl-ExtUtils-Manifest:
+    release: 244.el7
+    version: 1.61
+  perl-ExtUtils-ParseXS:
+    release: 2.el7
+    version: 3.18
+  perl-File-Listing:
+    release: 7.el7
+    version: 6.04
+  perl-File-Path:
+    release: 2.el7
+    version: 2.09
+  perl-File-Slurp:
+    release: 6.el7
+    version: 9999.19
+  perl-File-Temp:
+    release: 3.el7
+    version: 0.23.01
+  perl-Filter:
+    release: 3.el7
+    version: 1.49
+  perl-Getopt-Long:
+    release: 2.el7
+    version: 2.40
+  perl-Git:
+    release: 6.el7_2.1
+    version: 1.8.3.1
+  perl-HTML-Parser:
+    release: 4.el7
+    version: 3.71
+  perl-HTML-Tagset:
+    release: 15.el7
+    version: 3.20
+  perl-HTTP-Cookies:
+    release: 5.el7
+    version: 6.01
+  perl-HTTP-Daemon:
+    release: 5.el7
+    version: 6.01
+  perl-HTTP-Date:
+    release: 8.el7
+    version: 6.02
+  perl-HTTP-Message:
+    release: 6.el7
+    version: 6.06
+  perl-HTTP-Negotiate:
+    release: 5.el7
+    version: 6.01
+  perl-HTTP-Tiny:
+    release: 3.el7
+    version: 0.033
+  perl-IO-Compress:
+    release: 2.el7
+    version: 2.061
+  perl-IO-HTML:
+    release: 2.el7
+    version: 1.00
+  perl-IO-Socket-INET6:
+    release: 5.el7
+    version: 2.69
+  perl-IO-Socket-IP:
+    release: 4.el7
+    version: 0.21
+  perl-IO-Socket-SSL:
+    release: 3.el7
+    version: 1.94
+  perl-IO-Zlib:
+    release: 286.el7
+    version: 1.10
+  perl-JSON:
+    release: 2.el7
+    version: 2.59
+  perl-LWP-MediaTypes:
+    release: 2.el7
+    version: 6.02
+  perl-Mail-DKIM:
+    release: 8.el7
+    version: 0.39
+  perl-Mail-SPF:
+    release: 4.el7
+    version: 2.8.0
+  perl-MailTools:
+    release: 2.el7
+    version: 2.12
+  perl-Mozilla-LDAP:
+    release: 12.el7
+    version: 1.5.3
+  perl-Net-DNS:
+    release: 5.el7
+    version: 0.72
+  perl-Net-Daemon:
+    release: 5.el7
+    version: 0.48
+  perl-Net-HTTP:
+    release: 2.el7
+    version: 6.06
+  perl-Net-LibIDN:
+    release: 15.el7
+    version: 0.12
+  perl-Net-SMTP-SSL:
+    release: 13.el7
+    version: 1.01
+  perl-Net-SSLeay:
+    release: 3.el7
+    version: 1.55
+  perl-NetAddr-IP:
+    release: 3.el7
+    version: 4.069
+  perl-PCP-PMDA:
+    release: 2.el7
+    version: 3.10.6
+  perl-Package-Constants:
+    release: 286.el7
+    version: 0.02
+  perl-PathTools:
+    release: 5.el7
+    version: 3.40
+  perl-PlRPC:
+    release: 14.el7
+    version: 0.2020
+  perl-Pod-Escapes:
+    release: 286.el7
+    version: 1.04
+  perl-Pod-Perldoc:
+    release: 4.el7
+    version: 3.20
+  perl-Pod-Simple:
+    release: 4.el7
+    version: 3.28
+  perl-Pod-Usage:
+    release: 3.el7
+    version: 1.63
+  perl-Scalar-List-Utils:
+    release: 248.el7
+    version: 1.27
+  perl-Socket:
+    release: 3.el7
+    version: 2.010
+  perl-Socket6:
+    release: 15.el7
+    version: 0.23
+  perl-Storable:
+    release: 3.el7
+    version: 2.45
+  perl-Sys-Syslog:
+    release: 3.el7
+    version: 0.33
+  perl-TermReadKey:
+    release: 20.el7
+    version: 2.30
+  perl-Test-Harness:
+    release: 3.el7
+    version: 3.28
+  perl-Text-ParseWords:
+    release: 4.el7
+    version: 3.29
+  perl-Thread-Queue:
+    release: 2.el7
+    version: 3.02
+  perl-Time-HiRes:
+    release: 3.el7
+    version: 1.9725
+  perl-Time-Local:
+    release: 2.el7
+    version: 1.2300
+  perl-TimeDate:
+    release: 2.el7
+    version: 2.30
+  perl-URI:
+    release: 9.el7
+    version: 1.60
+  perl-WWW-RobotRules:
+    release: 5.el7
+    version: 6.02
+  perl-XML-NamespaceSupport:
+    release: 10.el7
+    version: 1.11
+  perl-XML-Parser:
+    release: 10.0.1.el7
+    version: 2.41
+  perl-XML-SAX:
+    release: 9.el7
+    version: 0.99
+  perl-XML-SAX-Base:
+    release: 7.el7
+    version: 1.08
+  perl-XML-Simple:
+    release: 5.el7
+    version: 2.20
+  perl-constant:
+    release: 2.el7
+    version: 1.27
+  perl-devel:
+    release: 286.el7
+    version: 5.16.3
+  perl-hivex:
+    release: 5.7.0.1.el7
+    version: 1.3.10
+  perl-libs:
+    release: 286.el7
+    version: 5.16.3
+  perl-libwww-perl:
+    release: 2.el7
+    version: 6.05
+  perl-macros:
+    release: 286.el7
+    version: 5.16.3
+  perl-parent:
+    release: 244.el7
+    version: 0.225
+  perl-podlators:
+    release: 3.el7
+    version: 2.5.1
+  perl-srpm-macros:
+    release: 8.el7
+    version: 1
+  perl-threads:
+    release: 4.el7
+    version: 1.87
+  perl-threads-shared:
+    release: 6.el7
+    version: 1.43
+  perl-version:
+    release: 2.el7
+    version: 0.99.07
+  phonon:
+    release: 10.el7
+    version: 4.6.0
+  phonon-backend-gstreamer:
+    release: 3.el7
+    version: 4.6.3
+  php:
+    release: 36.0.1.el7_1
+    version: 5.4.16
+  php-cli:
+    release: 36.0.1.el7_1
+    version: 5.4.16
+  php-common:
+    release: 36.0.1.el7_1
+    version: 5.4.16
+  pinentry:
+    release: 14.el7
+    version: 0.8.1
+  pinentry-qt:
+    release: 14.el7
+    version: 0.8.1
+  pinfo:
+    release: 9.el7
+    version: 0.6.10
+  pixman:
+    release: 3.el7
+    version: 0.32.6
+  pkgconfig:
+    release: 4.el7
+    version: 0.27.1
+  pki-base:
+    release: 6.el7
+    version: 10.2.5
+  pki-tools:
+    release: 6.el7
+    version: 10.2.5
+  plasma-scriptengine-python:
+    release: 7.el7
+    version: 4.11.19
+  plymouth:
+    release: 0.24.20140113.0.1.el7
+    version: 0.8.9
+  plymouth-core-libs:
+    release: 0.24.20140113.0.1.el7
+    version: 0.8.9
+  plymouth-graphics-libs:
+    release: 0.24.20140113.0.1.el7
+    version: 0.8.9
+  plymouth-plugin-label:
+    release: 0.24.20140113.0.1.el7
+    version: 0.8.9
+  plymouth-plugin-two-step:
+    release: 0.24.20140113.0.1.el7
+    version: 0.8.9
+  plymouth-scripts:
+    release: 0.24.20140113.0.1.el7
+    version: 0.8.9
+  plymouth-system-theme:
+    release: 0.24.20140113.0.1.el7
+    version: 0.8.9
+  plymouth-theme-charge:
+    release: 0.24.20140113.0.1.el7
+    version: 0.8.9
+  pm-utils:
+    release: 27.el7
+    version: 1.4.1
+  pnm2ppa:
+    release: 28.el7
+    version: 1.04
+  policycoreutils:
+    release: 20.0.1.el7
+    version: 2.2.5
+  policycoreutils-python:
+    release: 20.0.1.el7
+    version: 2.2.5
+  polkit:
+    release: 6.el7_2
+    version: 0.112
+  polkit-kde:
+    release: 4.20130311git.el7
+    version: 0.99.1
+  polkit-pkla-compat:
+    release: 4.el7
+    version: 0.1
+  polkit-qt:
+    release: 10.el7_0
+    version: 0.103.0
+  poppler:
+    release: 5.el7
+    version: 0.26.5
+  poppler-data:
+    release: 3.el7
+    version: 0.4.6
+  poppler-glib:
+    release: 5.el7
+    version: 0.26.5
+  poppler-utils:
+    release: 5.el7
+    version: 0.26.5
+  popt:
+    release: 16.el7
+    version: 1.13
+  portreserve:
+    release: 10.el7
+    version: 0.0.5
+  postfix:
+    release: 6.0.1.el7
+    version: 2.10.1
+  postfix-perl-scripts:
+    release: 6.0.1.el7
+    version: 2.10.1
+  postgresql:
+    release: 1.el7_2
+    version: 9.2.15
+  postgresql-docs:
+    release: 1.el7_2
+    version: 9.2.15
+  postgresql-libs:
+    release: 1.el7_2
+    version: 9.2.15
+  postgresql-server:
+    release: 1.el7_2
+    version: 9.2.15
+  powertop:
+    release: 9.el7
+    version: 2.3
+  ppp:
+    release: 33.el7
+    version: 2.4.5
+  procmail:
+    release: 35.el7
+    version: 3.22
+  procps-ng:
+    release: 5.el7_2
+    version: 3.3.10
+  psacct:
+    release: 9.el7
+    version: 6.6.1
+  psmisc:
+    release: 9.el7
+    version: 22.20
+  pth:
+    release: 23.el7
+    version: 2.0.7
+  pulseaudio:
+    release: 7.el7
+    version: 6.0
+  pulseaudio-gdm-hooks:
+    release: 7.el7
+    version: 6.0
+  pulseaudio-libs:
+    release: 7.el7
+    version: 6.0
+  pulseaudio-libs-glib2:
+    release: 7.el7
+    version: 6.0
+  pulseaudio-module-bluetooth:
+    release: 7.el7
+    version: 6.0
+  pulseaudio-module-x11:
+    release: 7.el7
+    version: 6.0
+  pulseaudio-utils:
+    release: 7.el7
+    version: 6.0
+  puppet-agent:
+    release: 1.el7
+    version: 1.4.2
+  puppetlabs-release-pc1:
+    release: 2.el7
+    version: 1.0.0
+  pyOpenSSL:
+    release: 3.el7
+    version: 0.13.1
+  pyatspi:
+    release: 3.el7
+    version: 2.8.0
+  pycairo:
+    release: 8.el7
+    version: 1.8.10
+  pygobject2:
+    release: 11.el7
+    version: 2.28.6
+  pygobject3:
+    release: 3.el7
+    version: 3.14.0
+  pygobject3-base:
+    release: 3.el7
+    version: 3.14.0
+  pygpgme:
+    release: 9.el7
+    version: 0.3
+  pygtk2:
+    release: 9.el7
+    version: 2.24.0
+  pygtk2-libglade:
+    release: 9.el7
+    version: 2.24.0
+  pykde4:
+    release: 4.el7
+    version: 4.10.5
+  pykickstart:
+    release: 1.0.1.el7
+    version: 1.99.66.6
+  pyliblzma:
+    release: 11.el7
+    version: 0.5.3
+  pyorbit:
+    release: 15.el7
+    version: 2.24.0
+  pyparsing:
+    release: 9.el7
+    version: 1.5.6
+  pyparted:
+    release: 13.el7
+    version: 3.9
+  pytalloc:
+    release: 1.el7_2
+    version: 2.1.5
+  python:
+    release: 34.0.1.el7
+    version: 2.7.5
+  python-IPy:
+    release: 6.el7
+    version: 0.75
+  python-augeas:
+    release: 2.el7
+    version: 0.5.0
+  python-backports:
+    release: 8.el7
+    version: 1.0
+  python-backports-ssl_match_hostname:
+    release: 4.el7
+    version: 3.4.0.2
+  python-blivet:
+    release: 1.0.1.el7
+    version: 0.61.15.37
+  python-brlapi:
+    release: 9.el7
+    version: 0.6.0
+  python-caribou:
+    release: 1.el7
+    version: 0.4.16
+  python-cffi:
+    release: 2.el7
+    version: 0.8.6
+  python-chardet:
+    release: 1.el7_1
+    version: 2.2.1
+  python-configobj:
+    release: 7.el7
+    version: 4.7.2
+  python-configshell:
+    release: 1.el7
+    version: 1.1.fb18
+  python-coverage:
+    release: 0.5.b3.el7
+    version: 3.6
+  python-cryptography:
+    release: 1.el7
+    version: 0.8.2
+  python-cups:
+    release: 6.el7
+    version: 1.9.63
+  python-dateutil:
+    release: 7.el7
+    version: 1.5
+  python-decorator:
+    release: 3.el7
+    version: 3.4.0
+  python-deltarpm:
+    release: 3.el7
+    version: 3.6
+  python-di:
+    release: 2.el7
+    version: 0.3
+  python-dmidecode:
+    release: 11.el7
+    version: 3.10.13
+  python-dns:
+    release: 1.20150617git465785f.el7
+    version: 1.12.0
+  python-enum34:
+    release: 1.el7
+    version: 1.0.4
+  python-ethtool:
+    release: 5.el7
+    version: 0.8
+  python-gudev:
+    release: 7.el7
+    version: 147.2
+  python-hwdata:
+    release: 4.el7
+    version: 1.7.3
+  python-iniparse:
+    release: 9.el7
+    version: 0.4
+  python-inotify:
+    release: 4.el7
+    version: 0.9.4
+  python-ipaddr:
+    release: 5.el7
+    version: 2.1.9
+  python-javapackages:
+    release: 11.el7
+    version: 3.4.1
+  python-jsonpointer:
+    release: 2.el7
+    version: 1.9
+  python-kdcproxy:
+    release: 1.el7
+    version: 0.3.2
+  python-kerberos:
+    release: 15.el7
+    version: 1.1
+  python-kitchen:
+    release: 5.el7
+    version: 1.1.1
+  python-kmod:
+    release: 4.el7
+    version: 0.9
+  python-krbV:
+    release: 8.el7
+    version: 1.0.90
+  python-ldap:
+    release: 2.el7
+    version: 2.4.15
+  python-libipa_hbac:
+    release: 40.el7_2.2
+    version: 1.13.0
+  python-libs:
+    release: 34.0.1.el7
+    version: 2.7.5
+  python-lxml:
+    release: 4.el7
+    version: 3.2.1
+  python-meh:
+    release: 1.el7
+    version: 0.25.2
+  python-meh-gui:
+    release: 1.el7
+    version: 0.25.2
+  python-memcached:
+    release: 4.el7
+    version: 1.48
+  python-netaddr:
+    release: 7.el7
+    version: 0.7.5
+  python-nss:
+    release: 3.el7
+    version: 0.16.0
+  python-ntplib:
+    release: 1.el7
+    version: 0.3.2
+  python-pcp:
+    release: 2.el7
+    version: 3.10.6
+  python-perf:
+    release: 327.13.1.el7
+    version: 3.10.0
+  python-ply:
+    release: 10.el7
+    version: 3.4
+  python-pwquality:
+    release: 4.el7
+    version: 1.2.3
+  python-pyasn1:
+    release: 2.el7
+    version: 0.1.6
+  python-pyblock:
+    release: 6.el7
+    version: 0.53
+  python-pycparser:
+    release: 1.el7
+    version: 2.14
+  python-pycurl:
+    release: 17.el7
+    version: 7.19.0
+  python-pyudev:
+    release: 7.el7_2.1
+    version: 0.15
+  python-qrcode-core:
+    release: 1.el7
+    version: 5.0.1
+  python-requests:
+    release: 1.el7_1
+    version: 2.6.0
+  python-rtslib:
+    release: 3.el7
+    version: 2.1.fb57
+  python-setproctitle:
+    release: 5.el7
+    version: 1.1.6
+  python-setuptools:
+    release: 4.el7
+    version: 0.9.8
+  python-six:
+    release: 2.el7
+    version: 1.9.0
+  python-slip:
+    release: 2.el7
+    version: 0.4.0
+  python-slip-dbus:
+    release: 2.el7
+    version: 0.4.0
+  python-smbc:
+    release: 7.el7
+    version: 1.0.13
+  python-sss-murmur:
+    release: 40.el7_2.2
+    version: 1.13.0
+  python-sssdconfig:
+    release: 40.el7_2.2
+    version: 1.13.0
+  python-urlgrabber:
+    release: 7.el7
+    version: 3.10
+  python-urllib3:
+    release: 2.el7_1
+    version: 1.10.2
+  python-urwid:
+    release: 3.el7
+    version: 1.1.1
+  python-yubico:
+    release: 1.el7
+    version: 1.2.3
+  pytz:
+    release: 5.el7
+    version: 2012d
+  pyusb:
+    release: 0.11.b1.el7
+    version: 1.0.0
+  pywbem:
+    release: 25.20130827svn625.el7
+    version: 0.7.0
+  pyxattr:
+    release: 5.el7
+    version: 0.5.1
+  qca2:
+    release: 7.el7
+    version: 2.0.3
+  qdox:
+    release: 9.el7
+    version: 1.12.1
+  qemu-guest-agent:
+    release: 4.el7
+    version: 2.3.0
+  qemu-img:
+    release: 105.el7_2.3
+    version: 1.5.3
+  qemu-kvm:
+    release: 105.el7_2.3
+    version: 1.5.3
+  qemu-kvm-common:
+    release: 105.el7_2.3
+    version: 1.5.3
+  qimageblitz:
+    release: 7.el7
+    version: 0.0.6
+  qjson:
+    release: 4.el7
+    version: 0.8.1
+  qpdf-libs:
+    release: 3.el7
+    version: 5.0.1
+  qrencode-libs:
+    release: 3.el7
+    version: 3.4.1
+  qt:
+    release: 11.el7
+    version: 4.8.5
+  qt-mysql:
+    release: 11.el7
+    version: 4.8.5
+  qt-settings:
+    release: 23.5.0.1.el7
+    version: 19
+  qt-x11:
+    release: 11.el7
+    version: 4.8.5
+  qt3:
+    release: 51.0.1.el7
+    version: 3.3.8b
+  quota:
+    release: 11.el7_2.1
+    version: 4.01
+  quota-nls:
+    release: 11.el7_2.1
+    version: 4.01
+  radvd:
+    release: 9.el7
+    version: 1.9.2
+  raptor2:
+    release: 3.el7
+    version: 2.0.9
+  rarian:
+    release: 11.el7
+    version: 0.8.1
+  rarian-compat:
+    release: 11.el7
+    version: 0.8.1
+  rasdaemon:
+    release: 20.el7
+    version: 0.4.1
+  rasqal:
+    release: 4.el7
+    version: 0.9.30
+  rcs:
+    release: 5.el7
+    version: 5.9.0
+  rdate:
+    release: 25.el7
+    version: 1.4
+  rdma:
+    release: 2.el7
+    version: 7.2_4.1_rc6
+  readline:
+    release: 9.el7
+    version: 6.2
+  realmd:
+    release: 5.el7
+    version: 0.16.1
+  redhat-indexhtml:
+    release: 11.0.1.el7_0
+    version: 7
+  redhat-menus:
+    release: 7.el7
+    version: 12.0.2
+  redhat-release-server:
+    release: 9.0.1.el7
+    version: 7.2
+  redhat-rpm-config:
+    release: 68.0.1.el7
+    version: 9.1.0
+  redland:
+    release: 6.0.1.el7
+    version: 1.0.16
+  redland-virtuoso:
+    release: 6.0.1.el7
+    version: 1.0.16
+  regexp:
+    release: 13.el7
+    version: 1.5
+  relaxngDatatype:
+    release: 11.el7
+    version: 1.0
+  rest:
+    release: 3.el7
+    version: 0.7.92
+  resteasy-base-atom-provider:
+    release: 1.el7
+    version: 3.0.6
+  resteasy-base-client:
+    release: 1.el7
+    version: 3.0.6
+  resteasy-base-jackson-provider:
+    release: 1.el7
+    version: 3.0.6
+  resteasy-base-jaxb-provider:
+    release: 1.el7
+    version: 3.0.6
+  resteasy-base-jaxrs:
+    release: 1.el7
+    version: 3.0.6
+  resteasy-base-jaxrs-api:
+    release: 1.el7
+    version: 3.0.6
+  rfkill:
+    release: 9.el7
+    version: 0.4
+  rhino:
+    release: 5.el7
+    version: 1.7R4
+  rhn-check:
+    release: 6.0.10.el7
+    version: 2.0.2
+  rhn-client-tools:
+    release: 6.0.10.el7
+    version: 2.0.2
+  rhn-setup:
+    release: 6.0.10.el7
+    version: 2.0.2
+  rhn-setup-gnome:
+    release: 6.0.10.el7
+    version: 2.0.2
+  rhnlib:
+    release: 2.0.1.el7
+    version: 2.5.65
+  rhnsd:
+    release: 5.0.1.el7
+    version: 5.0.13
+  rng-tools:
+    release: 7.el7
+    version: 5
+  rngom:
+    release: 0.8.20120119svn.el7
+    version: 201103
+  rootfiles:
+    release: 11.el7
+    version: 8.1
+  rpcbind:
+    release: 33.el7_2
+    version: 0.2.0
+  rpm:
+    release: 17.el7
+    version: 4.11.3
+  rpm-build:
+    release: 17.el7
+    version: 4.11.3
+  rpm-build-libs:
+    release: 17.el7
+    version: 4.11.3
+  rpm-libs:
+    release: 17.el7
+    version: 4.11.3
+  rpm-python:
+    release: 17.el7
+    version: 4.11.3
+  rpm-sign:
+    release: 17.el7
+    version: 4.11.3
+  rsync:
+    release: 17.el7
+    version: 3.0.9
+  rsyslog:
+    release: 12.0.1.el7
+    version: 7.4.7
+  rsyslog-mmjsonparse:
+    release: 12.0.1.el7
+    version: 7.4.7
+  rtkit:
+    release: 10.el7
+    version: 0.11
+  ruby:
+    release: 25.el7_1
+    version: 2.0.0.598
+  ruby-irb:
+    release: 25.el7_1
+    version: 2.0.0.598
+  ruby-libs:
+    release: 25.el7_1
+    version: 2.0.0.598
+  rubygem-abrt:
+    release: 2.el7
+    version: 0.0.6
+  rubygem-bigdecimal:
+    release: 25.el7_1
+    version: 1.2.0
+  rubygem-io-console:
+    release: 25.el7_1
+    version: 0.4.2
+  rubygem-json:
+    release: 25.el7_1
+    version: 1.7.7
+  rubygem-psych:
+    release: 25.el7_1
+    version: 2.0.0
+  rubygem-rdoc:
+    release: 25.el7_1
+    version: 4.0.0
+  rubygems:
+    release: 25.el7_1
+    version: 2.0.14
+  samba:
+    release: 6.el7_2
+    version: 4.2.10
+  samba-client:
+    release: 6.el7_2
+    version: 4.2.10
+  samba-client-libs:
+    release: 6.el7_2
+    version: 4.2.10
+  samba-common:
+    release: 6.el7_2
+    version: 4.2.10
+  samba-common-libs:
+    release: 6.el7_2
+    version: 4.2.10
+  samba-common-tools:
+    release: 6.el7_2
+    version: 4.2.10
+  samba-libs:
+    release: 6.el7_2
+    version: 4.2.10
+  sane-backends:
+    release: 9.el7
+    version: 1.0.24
+  sane-backends-drivers-scanners:
+    release: 9.el7
+    version: 1.0.24
+  sane-backends-libs:
+    release: 9.el7
+    version: 1.0.24
+  satyr:
+    release: 12.el7
+    version: 0.13
+  sbc:
+    release: 5.el7
+    version: 1.0
+  scannotation:
+    release: 0.7.r12.el7
+    version: 1.0.3
+  scap-security-guide:
+    release: 3.0.2.el7
+    version: 0.1.25
+  scl-utils:
+    release: 17.el7_1
+    version: 20130529
+  scrub:
+    release: 5.el7
+    version: 2.5.2
+  seabios-bin:
+    release: 11.el7
+    version: 1.7.5
+  seahorse:
+    release: 1.el7
+    version: 3.14.1
+  seavgabios-bin:
+    release: 11.el7
+    version: 1.7.5
+  sed:
+    release: 5.el7
+    version: 4.2.2
+  selinux-policy:
+    release: 60.0.1.el7_2.3
+    version: 3.13.1
+  selinux-policy-targeted:
+    release: 60.0.1.el7_2.3
+    version: 3.13.1
+  setools-libs:
+    release: 46.el7
+    version: 3.3.7
+  setroubleshoot:
+    release: 1.1.0.1.el7
+    version: 3.2.24
+  setroubleshoot-plugins:
+    release: 1.0.1.el7
+    version: 3.0.59
+  setroubleshoot-server:
+    release: 1.1.0.1.el7
+    version: 3.2.24
+  setserial:
+    release: 33.el7
+    version: 2.17
+  setup:
+    release: 6.el7
+    version: 2.8.71
+  setuptool:
+    release: 8.el7
+    version: 1.19.11
+  sg3_utils:
+    release: 5.el7
+    version: 1.37
+  sg3_utils-libs:
+    release: 5.el7
+    version: 1.37
+  sgabios-bin:
+    release: 4.el7
+    version: 0.20110622svn
+  sgml-common:
+    release: 39.el7
+    version: 0.6.3
+  sgpio:
+    release: 13.el7
+    version: 1.2.0.10
+  shadow-utils:
+    release: 18.el7
+    version: 4.1.5.1
+  shared-desktop-ontologies:
+    release: 2.el7
+    version: 0.11.0
+  shared-mime-info:
+    release: 9.el7
+    version: 1.1
+  sil-abyssinica-fonts:
+    release: 6.el7
+    version: 1.200
+  sil-nuosu-fonts:
+    release: 5.el7
+    version: 2.1.1
+  sil-padauk-fonts:
+    release: 5.el7
+    version: 2.8
+  sip:
+    release: 4.el7
+    version: 4.14.6
+  skkdic:
+    release: 6.T1435.el7
+    version: 20130104
+  slang:
+    release: 11.el7
+    version: 2.2.4
+  slapi-nis:
+    release: 6.el7_2
+    version: 0.54
+  smartmontools:
+    release: 4.el7
+    version: 6.2
+  smc-fonts-common:
+    release: 7.el7
+    version: 6.0
+  smc-meera-fonts:
+    release: 7.el7
+    version: 6.0
+  snappy:
+    release: 3.el7
+    version: 1.1.0
+  softhsm:
+    release: 3.el7
+    version: 2.0.0rc1
+  soprano:
+    release: 3.el7
+    version: 2.9.2
+  sos:
+    release: 35.0.1.el7_2.3
+    version: 3.2
+  sound-theme-freedesktop:
+    release: 3.el7
+    version: 0.8
+  soundtouch:
+    release: 9.el7
+    version: 1.4.0
+  sox:
+    release: 6.el7
+    version: 14.4.1
+  spamassassin:
+    release: 2.el7
+    version: 3.4.0
+  speech-dispatcher:
+    release: 15.el7
+    version: 0.7.1
+  speech-dispatcher-python:
+    release: 15.el7
+    version: 0.7.1
+  speex:
+    release: 0.19.rc1.el7
+    version: 1.2
+  spice-glib:
+    release: 5.el7
+    version: 0.26
+  spice-gtk3:
+    release: 5.el7
+    version: 0.26
+  spice-server:
+    release: 15.el7
+    version: 0.12.4
+  spice-vdagent:
+    release: 10.el7
+    version: 0.14.0
+  sqlite:
+    release: 8.el7
+    version: 3.7.17
+  sssd:
+    release: 40.el7_2.2
+    version: 1.13.0
+  sssd-ad:
+    release: 40.el7_2.2
+    version: 1.13.0
+  sssd-client:
+    release: 40.el7_2.2
+    version: 1.13.0
+  sssd-common:
+    release: 40.el7_2.2
+    version: 1.13.0
+  sssd-common-pac:
+    release: 40.el7_2.2
+    version: 1.13.0
+  sssd-ipa:
+    release: 40.el7_2.2
+    version: 1.13.0
+  sssd-krb5:
+    release: 40.el7_2.2
+    version: 1.13.0
+  sssd-krb5-common:
+    release: 40.el7_2.2
+    version: 1.13.0
+  sssd-ldap:
+    release: 40.el7_2.2
+    version: 1.13.0
+  sssd-proxy:
+    release: 40.el7_2.2
+    version: 1.13.0
+  startup-notification:
+    release: 8.el7
+    version: 0.12
+  stax-ex:
+    release: 6.el7
+    version: 1.7.1
+  stax2-api:
+    release: 10.el7
+    version: 3.1.1
+  stix-fonts:
+    release: 5.el7
+    version: 1.1.0
+  strace:
+    release: 11.el7
+    version: 4.8
+  strigi-libs:
+    release: 12.20120626.el7
+    version: 0.7.7
+  subversion:
+    release: 10.el7
+    version: 1.7.14
+  subversion-libs:
+    release: 10.el7
+    version: 1.7.14
+  sudo:
+    release: 17.el7_2
+    version: 1.8.6p7
+  supermin5:
+    release: 1.2.el7
+    version: 5.1.10
+  sushi:
+    release: 3.el7
+    version: 3.12.0
+  svrcore:
+    release: 11.el7
+    version: 4.0.4
+  sweeper:
+    release: 4.el7
+    version: 4.10.5
+  swig:
+    release: 4.el7
+    version: 2.0.10
+  syslinux:
+    release: 12.el7
+    version: 4.05
+  syslinux-extlinux:
+    release: 12.el7
+    version: 4.05
+  sysstat:
+    release: 7.el7
+    version: 10.1.5
+  system-config-date:
+    release: 2.0.1.el7
+    version: 1.10.6
+  system-config-date-docs:
+    release: 4.el7
+    version: 1.0.11
+  system-config-printer:
+    release: 19.el7
+    version: 1.4.1
+  system-config-printer-libs:
+    release: 19.el7
+    version: 1.4.1
+  system-config-printer-udev:
+    release: 19.el7
+    version: 1.4.1
+  systemd:
+    release: 19.0.2.el7_2.7
+    version: 219
+  systemd-libs:
+    release: 19.0.2.el7_2.7
+    version: 219
+  systemd-python:
+    release: 19.0.2.el7_2.7
+    version: 219
+  systemd-sysv:
+    release: 19.0.2.el7_2.7
+    version: 219
+  systemtap:
+    release: 10.el7
+    version: 2.8
+  systemtap-client:
+    release: 10.el7
+    version: 2.8
+  systemtap-devel:
+    release: 10.el7
+    version: 2.8
+  systemtap-runtime:
+    release: 10.el7
+    version: 2.8
+  systemtap-sdt-devel:
+    release: 10.el7
+    version: 2.8
+  sysvinit-tools:
+    release: 14.dsf.el7
+    version: 2.88
+  taglib:
+    release: 7.20130218git.el7
+    version: 1.8
+  tagsoup:
+    release: 8.el7
+    version: 1.2.1
+  tar:
+    release: 29.el7
+    version: 1.26
+  targetcli:
+    release: 3.el7
+    version: 2.1.fb41
+  targetd:
+    release: 1.el7
+    version: 0.7.1
+  tcl:
+    release: 8.el7
+    version: 8.5.13
+  tcp_wrappers:
+    release: 77.el7
+    version: 7.6
+  tcp_wrappers-libs:
+    release: 77.el7
+    version: 7.6
+  tcpdump:
+    release: 3.el7
+    version: 4.5.1
+  tcsh:
+    release: 8.el7
+    version: 6.18.01
+  teamd:
+    release: 6.el7_2
+    version: 1.17
+  telepathy-farstream:
+    release: 5.el7
+    version: 0.6.0
+  telepathy-filesystem:
+    release: 6.el7
+    version: 0.0.2
+  telepathy-gabble:
+    release: 4.el7
+    version: 0.18.1
+  telepathy-glib:
+    release: 1.el7
+    version: 0.24.0
+  telepathy-haze:
+    release: 1.el7
+    version: 0.8.0
+  telepathy-logger:
+    release: 5.el7
+    version: 0.8.0
+  telepathy-mission-control:
+    release: 2.el7
+    version: 5.16.3
+  telepathy-salut:
+    release: 6.el7
+    version: 0.8.1
+  thai-scalable-fonts-common:
+    release: 7.el7
+    version: 0.5.0
+  thai-scalable-waree-fonts:
+    release: 7.el7
+    version: 0.5.0
+  theora-tools:
+    release: 8.el7
+    version: 1.1.1
+  tigervnc-license:
+    release: 4.el7_2
+    version: 1.3.1
+  tigervnc-server-minimal:
+    release: 4.el7_2
+    version: 1.3.1
+  time:
+    release: 45.el7
+    version: 1.7
+  tk:
+    release: 6.el7
+    version: 8.5.13
+  tn5250:
+    release: 10.el7
+    version: 0.17.4
+  tog-pegasus:
+    release: 3.0.1.el7
+    version: 2.14.1
+  tog-pegasus-libs:
+    release: 3.0.1.el7
+    version: 2.14.1
+  tomcat:
+    release: 2.el7_1
+    version: 7.0.54
+  tomcat-el-2.2-api:
+    release: 2.el7_1
+    version: 7.0.54
+  tomcat-jsp-2.2-api:
+    release: 2.el7_1
+    version: 7.0.54
+  tomcat-lib:
+    release: 2.el7_1
+    version: 7.0.54
+  tomcat-servlet-3.0-api:
+    release: 2.el7_1
+    version: 7.0.54
+  tomcatjss:
+    release: 1.el7
+    version: 7.1.2
+  totem:
+    release: 5.el7
+    version: 3.14.3
+  totem-nautilus:
+    release: 5.el7
+    version: 3.14.3
+  totem-pl-parser:
+    release: 1.el7
+    version: 3.10.5
+  traceroute:
+    release: 5.el7
+    version: 2.0.19
+  tracker:
+    release: 3.el7
+    version: 1.2.6
+  trousers:
+    release: 1.el7
+    version: 0.3.13
+  ttmkfdir:
+    release: 42.el7
+    version: 3.0.9
+  tuned:
+    release: 4.el7_2.3
+    version: 2.5.1
+  txw2:
+    release: 8.el7
+    version: 20110809
+  tzdata:
+    release: 1.el7
+    version: 2016d
+  tzdata-java:
+    release: 1.el7
+    version: 2016d
+  ucs-miscfixed-fonts:
+    release: 11.el7
+    version: 0.3
+  udisks2:
+    release: 6.el7
+    version: 2.1.2
+  uname26:
+    release: 1.el7
+    version: 1.0
+  unbound-libs:
+    release: 26.el7
+    version: 1.4.20
+  unzip:
+    release: 15.el7
+    version: 6.0
+  upower:
+    release: 1.el7
+    version: 0.99.2
+  urw-fonts:
+    release: 16.el7
+    version: 2.4
+  usb_modeswitch:
+    release: 6.el7
+    version: 1.2.7
+  usb_modeswitch-data:
+    release: 2.el7
+    version: 20130807
+  usbmuxd:
+    release: 11.el7
+    version: 1.0.8
+  usbredir:
+    release: 7.el7
+    version: 0.6
+  usbutils:
+    release: 5.el7
+    version: 007
+  usermode:
+    release: 5.el7
+    version: 1.111
+  usermode-gtk:
+    release: 5.el7
+    version: 1.111
+  ustr:
+    release: 16.el7
+    version: 1.0.4
+  util-linux:
+    release: 26.el7_2.2
+    version: 2.23.2
+  velocity:
+    release: 10.el7
+    version: 1.7
+  vim-common:
+    release: 1.el7
+    version: 7.4.160
+  vim-enhanced:
+    release: 1.el7
+    version: 7.4.160
+  vim-filesystem:
+    release: 1.el7
+    version: 7.4.160
+  vim-minimal:
+    release: 1.el7
+    version: 7.4.160
+  vinagre:
+    release: 1.el7
+    version: 3.14.3
+  vino:
+    release: 1.el7
+    version: 3.14.2
+  virt-install:
+    release: 8.el7
+    version: 1.2.1
+  virt-manager:
+    release: 8.el7
+    version: 1.2.1
+  virt-manager-common:
+    release: 8.el7
+    version: 1.2.1
+  virt-top:
+    release: 8.el7
+    version: 1.0.8
+  virt-viewer:
+    release: 6.el7
+    version: 2.0
+  virt-what:
+    release: 6.el7
+    version: 1.13
+  virtuoso-opensource:
+    release: 6.el7
+    version: 6.1.6
+  vlgothic-fonts:
+    release: 2.el7
+    version: 20130607
+  vsftpd:
+    release: 11.el7_2
+    version: 3.0.2
+  vte-profile:
+    release: 2.el7
+    version: 0.38.3
+  vte291:
+    release: 2.el7
+    version: 0.38.3
+  vte3:
+    release: 1.el7
+    version: 0.36.4
+  wavpack:
+    release: 9.el7
+    version: 4.60.1
+  webkitgtk3:
+    release: 5.el7
+    version: 2.4.9
+  webrtc-audio-processing:
+    release: 5.el7
+    version: 0.1
+  wget:
+    release: 10.el7_0.1
+    version: 1.14
+  which:
+    release: 7.el7
+    version: 2.20
+  wodim:
+    release: 23.el7
+    version: 1.1.11
+  words:
+    release: 22.el7
+    version: 3.0
+  wpa_supplicant:
+    release: 17.el7_1
+    version: 2.0
+  wqy-microhei-fonts:
+    release: 0.12.beta.el7
+    version: 0.2.0
+  wqy-zenhei-fonts:
+    release: 11.el7
+    version: 0.9.46
+  ws-jaxme:
+    release: 10.el7
+    version: 0.5.2
+  wsmancli:
+    release: 4.el7
+    version: 2.3.0
+  wvdial:
+    release: 9.el7
+    version: 1.61
+  x3270:
+    release: 4.el7
+    version: 3.3.12ga12
+  x3270-text:
+    release: 4.el7
+    version: 3.3.12ga12
+  x3270-x11:
+    release: 4.el7
+    version: 3.3.12ga12
+  xalan-j2:
+    release: 23.el7
+    version: 2.7.1
+  xcb-util:
+    release: 2.el7
+    version: 0.4.0
+  xcb-util-image:
+    release: 2.el7
+    version: 0.4.0
+  xcb-util-keysyms:
+    release: 1.el7
+    version: 0.4.0
+  xdg-user-dirs:
+    release: 4.el7
+    version: 0.15
+  xdg-user-dirs-gtk:
+    release: 4.el7
+    version: 0.10
+  xdg-utils:
+    release: 0.16.20120809git.el7
+    version: 1.1.0
+  xerces-j2:
+    release: 17.el7_0
+    version: 2.11.0
+  xfsdump:
+    release: 1.el7
+    version: 3.1.4
+  xfsprogs:
+    release: 2.el7
+    version: 3.2.2
+  xkeyboard-config:
+    release: 1.el7
+    version: 2.14
+  xml-common:
+    release: 39.el7
+    version: 0.6.3
+  xml-commons-apis:
+    release: 16.el7
+    version: 1.4.01
+  xml-commons-resolver:
+    release: 15.el7
+    version: 1.2
+  xmlrpc-c:
+    release: 1905.svn2451.el7
+    version: 1.32.5
+  xmlrpc-c-client:
+    release: 1905.svn2451.el7
+    version: 1.32.5
+  xorg-x11-drivers:
+    release: 6.el7
+    version: 7.7
+  xorg-x11-drv-ati:
+    release: 3.el7
+    version: 7.5.0
+  xorg-x11-drv-dummy:
+    release: 21.el7
+    version: 0.3.6
+  xorg-x11-drv-evdev:
+    release: 2.el7
+    version: 2.9.2
+  xorg-x11-drv-fbdev:
+    release: 20.el7
+    version: 0.4.3
+  xorg-x11-drv-intel:
+    release: 8.20150615.el7
+    version: 2.99.917
+  xorg-x11-drv-nouveau:
+    release: 2.el7
+    version: 1.0.11
+  xorg-x11-drv-qxl:
+    release: 18.el7
+    version: 0.1.1
+  xorg-x11-drv-synaptics:
+    release: 1.el7
+    version: 1.8.2
+  xorg-x11-drv-v4l:
+    release: 42.el7
+    version: 0.2.0
+  xorg-x11-drv-vesa:
+    release: 20.el7
+    version: 2.3.2
+  xorg-x11-drv-vmmouse:
+    release: 11.el7
+    version: 13.0.0
+  xorg-x11-drv-vmware:
+    release: 7.20150211git8f0cf7c.el7
+    version: 13.0.2
+  xorg-x11-drv-void:
+    release: 1.el7
+    version: 1.4.1
+  xorg-x11-drv-wacom:
+    release: 1.el7
+    version: 0.29.0
+  xorg-x11-font-utils:
+    release: 20.el7
+    version: 7.5
+  xorg-x11-fonts-Type1:
+    release: 9.el7
+    version: 7.5
+  xorg-x11-server-Xorg:
+    release: 10.el7
+    version: 1.17.2
+  xorg-x11-server-common:
+    release: 10.el7
+    version: 1.17.2
+  xorg-x11-server-utils:
+    release: 14.el7
+    version: 7.7
+  xorg-x11-utils:
+    release: 13.1.el7
+    version: 7.5
+  xorg-x11-xauth:
+    release: 1.el7
+    version: 1.0.9
+  xorg-x11-xinit:
+    release: 1.el7
+    version: 1.3.4
+  xorg-x11-xkb-utils:
+    release: 12.el7
+    version: 7.7
+  xpp3:
+    release: 11.el7
+    version: 1.1.3.8
+  xsettings-kde:
+    release: 7.el7
+    version: 0.12.3
+  xsom:
+    release: 10.20110809svn.el7
+    version: 0
+  xterm:
+    release: 3.el7
+    version: 295
+  xulrunner:
+    release: 2.0.1.el7_1
+    version: 31.6.0
+  xvattr:
+    release: 27.el7
+    version: 1.3
+  xz:
+    release: 12alpha.el7
+    version: 5.1.2
+  xz-libs:
+    release: 12alpha.el7
+    version: 5.1.2
+  yajl:
+    release: 4.el7
+    version: 2.0.4
+  yelp:
+    release: 1.el7
+    version: 3.14.2
+  yelp-libs:
+    release: 1.el7
+    version: 3.14.2
+  yelp-xsl:
+    release: 1.el7
+    version: 3.14.0
+  yum:
+    release: 132.0.2.el7
+    version: 3.4.3
+  yum-langpacks:
+    release: 4.el7
+    version: 0.4.2
+  yum-metadata-parser:
+    release: 10.el7
+    version: 1.1.4
+  yum-plugin-ulninfo:
+    release: 13.el7
+    version: 0.2
+  yum-rhn-plugin:
+    release: 5.0.3.el7
+    version: 2.0.1
+  yum-utils:
+    release: 34.0.1.el7
+    version: 1.1.31
+  zenity:
+    release: 5.el7
+    version: 3.8.0
+  zip:
+    release: 10.el7
+    version: 3.0
+  zlib:
+    release: 15.el7
+    version: 1.2.7
+platform:          oracle
+platform_family:   rhel
+platform_version:  7.2
+recipes:
+  grid12c
+  grid12c::default
+  grid12c::asm_setup
+roles:
+root_group:        root
+sessions:
+  by_session:
+    1:
+      seat:    seat0
+      session: 1
+      uid:     591
+      user:    grid
+    10:
+      seat:    
+      session: 10
+      uid:     1000
+      user:    paul
+    c1:
+      seat:    seat0
+      session: c1
+      uid:     42
+      user:    gdm
+  by_user:
+    gdm:
+      seat:    seat0
+      session: c1
+      uid:     42
+      user:    gdm
+    grid:
+      seat:    seat0
+      session: 1
+      uid:     591
+      user:    grid
+    paul:
+      seat:    
+      session: 10
+      uid:     1000
+      user:    paul
+uptime:            48 minutes 45 seconds
+uptime_seconds:    2925
+virtualbox:
+  guest:
+    guest_additions_revision: 106931
+    guest_additions_version:  5.0.20
+  host:
+    language: en_US
+    revision: 106931
+    version:  5.0.20
+virtualization:
+  role:    guest
+  system:  vbox
+  systems:
+    vbox: guest
+
