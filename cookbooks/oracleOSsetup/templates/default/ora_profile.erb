@@ -3,14 +3,16 @@ ulimit -S -c unlimited > /dev/null 2>&1
 
 EDITOR=/bin/vi
 ORACLE_BASE=<%= node[:oracle][:ora_base] %>
-ORACLE_HOME=<%= node[:oracle][:rdbms11g][:ora_home] %>
-ORACLE_SID=
+ORACLE_HOME=<%= node[:oracle][:rdbms12c][:ora_home] %>
+ORACLE_SID=orcl
 ORACLE_UNQNAME=
-ORA_ENV=<%= File.basename node[:oracle][:rdbms11g][:ora_home] %>
+ORA_ENV=<%= File.basename node[:oracle][:rdbms12c][:ora_home] %>
 ORACLE_HOSTNAME=`hostname -f`
 export EDITOR ORACLE_BASE ORACLE_HOME ORACLE_SID ORA_ENV ORACLE_HOSTNAME
 
-
+export EDITOR=vi
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
 
 NLS_DATE_FORMAT='YYYYMMDD.HH24MISS'
 NLS_LANG=american_america.al32utf8

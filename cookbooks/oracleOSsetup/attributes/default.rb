@@ -20,6 +20,7 @@
 default[:system][:mem] = '4'
 # General Oracle settings.
 default[:oracle][:ora_base] = '/u01/app/oracle'
+default[:oracle][:grid_base] = '/u01/app/grid'
 default[:oracle][:ora_inventory] = '/u01/app/oraInventory'
 #ORACLE_BASE /u01/app/12.1.0/grid
 #ORA_CRS_HOME /u01/app/12.1.0/grid
@@ -33,9 +34,9 @@ default[:oracle][:grid][:shell] = '/bin/bash'
 default[:oracle][:grid][:pw_set] = false
 default[:oracle][:grid][:edb] = 'oracle'
 default[:oracle][:grid][:edb_item] = 'foo'
-default[:oracle][:grid][:grid_home] = "#{node[:oracle][:ora_base]}/grid"
+default[:oracle][:grid][:grid_home] = "#{node[:oracle][:grid_base]}/12102"
 default[:oracle][:grid][:install_dir] = "#{node[:oracle][:ora_base]}/install_dir"
-default[:oracle][:grid][:sup_grps] = {'wheel' => 10, 'asmadmin' => 508, 'asmdba' => 505, 'asmoper' => 509, 'dba' => 502, 'bckpdba' => 504, 'vboxsf' => 978}
+default[:oracle][:grid][:sup_grps] = {'wheel' => 10, 'oinstall' => 501, 'asmadmin' => 508, 'asmdba' => 505, 'asmoper' => 509, 'dba' => 502, 'bckpdba' => 504, 'vboxsf' => 978}
 default[:oracle][:grid][:install_files] = ['/u01/V46096-01_1of2.zip','/u01/V46096-01_2of2.zip']
 
 # Settings specific to ASM setup

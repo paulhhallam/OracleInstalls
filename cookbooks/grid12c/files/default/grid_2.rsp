@@ -1,0 +1,6 @@
+oracle.assistants.server|S_SYSPASSWORD=wissempwd  
+oracle.assistants.server|S_SYSTEMPASSWORD=wissempwd   
+oracle.assistants.server|S_SYSMANPASSWORD=wissempwd   
+oracle.assistants.server|S_DBSNMPPASSWORD=wissempwd   
+oracle.assistants.server|S_HOSTUSERPASSWORD=wissempwd  
+oracle.assistants.server|S_ASMSNMPPASSWORD=wissempwd  

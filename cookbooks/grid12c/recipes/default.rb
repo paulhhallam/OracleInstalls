@@ -14,15 +14,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Baseline install for Grid itself
-#phh# include_recipe 'grid12c::gridbin' unless node[:oracle][:grid][:is_installed]
+# Set up and configure the oracle user.
+include_recipe 'oracleOSsetup::oracle_user_config'
+#
+# ## Install dependencies and configure kernel parameters.
+include_recipe 'oracleOSsetup::deps_install'
+#
+# # Setting up kernel parameters
+include_recipe 'oracleOSsetup::kernel_params'
+#
+# # Set up and configure the oracle user.
+include_recipe 'oracle12c::oracle_users_profiles'
+#
 
+# Baseline install for Grid itself
 #
 # Configure ASM
 #
-include_recipe 'grid12c::asm_setup'
-#
-#include_recipe 'grid12c::asm_createdisk'
+include_recipe 'grid12c::asm_setup' unless node[:oracle][:grid][:is_installed]
+
+include_recipe 'grid12c::gridbin'   unless node[:oracle][:grid][:is_installed]
 
 # Patching oracle binaries to the latest patch
 # Node attribute changes for 12c, if default[:oracle][:rdbms][:dbbin_version] is set to 12c

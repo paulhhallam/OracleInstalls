@@ -19,6 +19,7 @@
 #
 # Set up the ORACLE users profile
 #
+puts "#### ORACLE12C ORACLE USER PROFILES"
 template "/home/oracle/.bash_profile" do
   action :create
   source 'ora_profile_12c.erb'
@@ -29,6 +30,7 @@ end
 #
 # Set up the GRID users profile
 #
+puts "#### ORACLE12C GRID USER PROFILES"
 template "/home/grid/.bash_profile" do
   action :create
   source 'ora_grid_profile.erb'

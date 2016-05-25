@@ -4,6 +4,7 @@ ulimit -S -c unlimited > /dev/null 2>&1
 EDITOR=/bin/vi
 ORACLE_BASE=<%= node[:oracle][:ora_base] %>
 ORACLE_HOME=<%= node[:oracle][:grid][:ora_home] %>
+GRID_HOME=<%= node[:oracle][:grid][:ora_home] %>
 ORACLE_SID=
 ORACLE_UNQNAME=
 ORA_ENV=<%= File.basename node[:oracle][:grid][:ora_home] %>

@@ -18,6 +18,7 @@
 ## Configure kernel parameters for Oracle RDBMS.
 #
 
+puts "#### Creating SWAPFS"
 ruby_block "create_swapfs" do
   block do
     file = Chef::Util::FileEdit.new("/etc/fstab")
@@ -26,6 +27,7 @@ ruby_block "create_swapfs" do
   end
 end
 
+puts "#### RELOAD SYSCTL"
 bash 'sysctl_reload' do
   code 'source /etc/init.d/functions && apply_sysctl'
   action :nothing
