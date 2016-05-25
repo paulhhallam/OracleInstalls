@@ -2,13 +2,15 @@
 ulimit -S -c unlimited > /dev/null 2>&1
 
 EDITOR=/bin/vi
-ORACLE_BASE=<%= node[:oracle][:ora_base] %>
+ORACLE_BASE=<%= node[:oracle][:grid_base] %>
 ORACLE_HOME=<%= node[:oracle][:grid][:grid_home] %>
-ORACLE_SID=
+GRID_BASE=<%= node[:oracle][:grid_base] %>
+GRID_HOME=<%= node[:oracle][:grid][:grid_home] %>
+ORACLE_SID=+ASM
 ORACLE_UNQNAME=
 ORA_ENV=<%= File.basename node[:oracle][:grid][:grid_home] %>
 ORACLE_HOSTNAME=`hostname -f`
-export EDITOR ORACLE_BASE ORACLE_HOME ORACLE_SID ORA_ENV ORACLE_HOSTNAME
+export EDITOR ORACLE_BASE ORACLE_HOME GRID_BASE GRID_HOME ORACLE_SID ORA_ENV ORACLE_HOSTNAME
 
 
 NLS_DATE_FORMAT='YYYYMMDD.HH24MISS'

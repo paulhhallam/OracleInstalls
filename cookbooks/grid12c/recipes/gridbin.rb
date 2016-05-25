@@ -109,7 +109,7 @@ cookbook_file "/u01/app/grid/12102/grid_second_response_file.rsp" do
   owner 'grid'
   group 'oinstall'
   mode '0755'
-
+end
 #/u01/app/oracle/product/12.1.0/grid/cfgtoollogs/configToolAllCommands RESPONSE_FILE=/home/grid/Documents/grid_stand_alone.rsp
 
 # RAN MANUALLY THIS WORKS

@@ -97,12 +97,12 @@ default[:oracle][:rdbms12c][:env] = {
 # Passwords set by createdb.rb for the default open database users.
 # By order of appearance, those are: SYS, SYSTEM and DBSNMP.
 # The latter is for the OEM agent.
-default[:oracle][:rdbms11g][:sys_pw] = 'changeme'
-default[:oracle][:rdbms11g][:system_pw] = 'changeme'
-default[:oracle][:rdbms11g][:dbsnmp_pw] = 'changeme'
-default[:oracle][:rdbms12c][:sys_pw] = 'changeme'
-default[:oracle][:rdbms12c][:system_pw] = 'changeme'
-default[:oracle][:rdbms12c][:dbsnmp_pw] = 'changeme'
+default[:oracle][:rdbms11g][:sys_pw] = 'Changeme3'
+default[:oracle][:rdbms11g][:system_pw] = 'Changeme3'
+default[:oracle][:rdbms11g][:dbsnmp_pw] = 'Changeme3'
+default[:oracle][:rdbms12c][:sys_pw] = 'Changeme3'
+default[:oracle][:rdbms12c][:system_pw] = 'Changeme3'
+default[:oracle][:rdbms12c][:dbsnmp_pw] = 'Changeme3'
 
 # Settings related to patching.
 #default[:oracle][:rdbms][:opatch_update_url] = 'https://https-server.example.localdomain/path/to/p6880880_112000_Linux-x86-64.zip'
