@@ -21,8 +21,9 @@ One important point to note is that due to discrepancies between the different v
 
 i.e. 
 	FAILS: LABEL=U01 /u01 auto nosuid,nodev,nofail,x-gvfs-show 0 0
-	
+
 	WORKS: LABEL=U01 /u01 auto rw                              0 0
+	
 
 The cookbooks
 =============
