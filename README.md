@@ -1,20 +1,24 @@
-The set of recipes in this cookbook are here to provide a means to install various different oracle database configurations on RedHat Linux 7.
+Oracle 11g, 12, and Grid Installations
+======================================
+This set of cookbooks are here to provide a method of installing various different oracle database configurations on RedHat Linux 7.
 
-I am using a set of Oracle Virtual Box VM's with disks configured for use by ASM.
+I am using a set of 4 Oracle Virtual Box VM's with disks configured for use by ASM.
 These instructions will not (not at the moment anyway) describe the setup of the VM's or the disk volumes.
 
-One important point to note is that due to discrepancies between the different versions of Oracle Virtual Box, Oracle 12c and numerous examples of how to install ASM volumes on linux, any ASM volumes should be mounted as RW, not NOSUID in fstab.
-e.g. 
-  FAILS LABEL=U01 /u01 auto nosuid,nodev,nofail,x-gvfs-show 0 0
-  WORKS LABEL=U01 /u01 auto rw                              0 0
+One important point to note is that due to discrepancies between the different versions of Oracle Virtual Box, Oracle 12c and numerous examples of how to install VBox ASM volumes on linux, any ASM volumes should be mounted as RW, not NOSUID in fstab.
+i.e. 
+	FAILS: LABEL=U01 /u01 auto nosuid,nodev,nofail,x-gvfs-show 0 0
+	WORKS: LABEL=U01 /u01 auto rw                              0 0
 
-In these cookbooks
+Hosts
+=====
 Ambari1 is the Chef client, Git hub and Jenkins host.
 Ambari2 is the Chef Server.
 Ambari5 is one node that will either be a standalone database or part of a RAC cluster (depending upon which recipe you want to use).
 Ambari6 is the second node in the oracle RAC cluster.
 
-The cookbooks :
+The cookbooks
+=============
 oracleOSsetup
 grid12c
 oracle11g
@@ -115,19 +119,28 @@ COOKBOOK: grid12c
 Prerequisites: None
 
 RECIPE: oracleOSsetup::oracle_user_config
+
 RECIPE: oracleOSsetup::deps_install
+
 RECIPE: oracleOSsetup::kernel_params
+
 RECIPE: oracle12c::oracle_users_profiles
 
 RECIPE: asm_setup
 	Configure the ASM drivers.
 	Find sd devices that are not partitioned.
 	Create a single partition on the devices identified.
-	ASM createdisk for each device.
-	
-
+	Run oracleasm createdisk for each device.
 
 RECIPE: gridbin
+	Create the oracle base, grid  etc directories
+	Unzip the grid software package.
+	Run runcluvfy on the system.
+At this point we could stop and check the output from runcluvfy to ensure everything is setup correctly.
+	Install the grid software using a response file from templates.
+	
+	
+
 
 
 
