@@ -27,6 +27,15 @@ ruby_block "create_swapfs" do
   end
 end
 
+puts "#### Add volume /u01"
+ruby_block "add u01" do
+  block do
+    file = Chef::Util::FileEdit.new("/etc/fstab")
+    file.insert_line_if_no_match("LABEL=U01                                 /u01      auto    rw              0 0","LABEL=U01                                 /u01      auto    rw              0 0")
+    file.write_file
+  end
+end
+
 puts "#### RELOAD SYSCTL"
 bash 'sysctl_reload' do
   code 'source /etc/init.d/functions && apply_sysctl'

@@ -97,19 +97,19 @@ end
 # RUNINSTALLER USING RESPONSE FILE TO "INSTALL AND CONFIGURE ORACLE GRID INFRASTRUCTURE FOR A STANDALONE SERVER"
 #
 
-bash "install grid" do
-  user 'grid'
-  code <<-EOH5
-     #{node[:oracle][:grid][:install_dir]}/grid/runInstaller -silent -showProgress -waitforcompletion ORACLE_HOSTNAME=ambari5 INVENTORY_LOCATION=/u01/app/oraInventory SELECTED_LANGUAGES=en oracle.install.option=HA_CONFIG  ORACLE_BASE=/u01/app/grid ORACLE_HOME=/u01/app/grid/12102 oracle.install.asm.OSDBA=asmdba oracle.install.asm.OSOPER=asmoper oracle.install.asm.OSASM=asmadmin oracle.install.crs.config.autoConfigureClusterNodeVIP=false oracle.install.asm.diskGroup.name=DATA oracle.install.asm.diskGroup.redundancy=EXTERNAL oracle.install.asm.diskGroup.AUSize=1 oracle.install.asm.diskGroup.disks=/dev/oracleasm/disks/DISK0,/dev/oracleasm/disks/DISK1,/dev/oracleasm/disks/DISK2,/dev/oracleasm/disks/DISK3 oracle.install.asm.diskGroup.diskDiscoveryString=/dev/oracleasm/disks oracle.install.asm.SYSASMPassword=Change321me oracle.install.asm.monitorPassword=Change321me
-EOH5
-end
+#phh#bash "install grid" do
+#phh#  user 'grid'
+#phh#  code <<-EOH5
+#phh#     #{node[:oracle][:grid][:install_dir]}/grid/runInstaller -silent -showProgress -waitforcompletion ORACLE_HOSTNAME=ambari5 INVENTORY_LOCATION=/u01/app/oraInventory SELECTED_LANGUAGES=en oracle.install.option=HA_CONFIG  ORACLE_BASE=/u01/app/grid ORACLE_HOME=/u01/app/grid/12102 oracle.install.asm.OSDBA=asmdba oracle.install.asm.OSOPER=asmoper oracle.install.asm.OSASM=asmadmin oracle.install.crs.config.autoConfigureClusterNodeVIP=false oracle.install.asm.diskGroup.name=DATA oracle.install.asm.diskGroup.redundancy=EXTERNAL oracle.install.asm.diskGroup.AUSize=1 oracle.install.asm.diskGroup.disks=/dev/oracleasm/disks/DISK0,/dev/oracleasm/disks/DISK1,/dev/oracleasm/disks/DISK2,/dev/oracleasm/disks/DISK3 oracle.install.asm.diskGroup.diskDiscoveryString=/dev/oracleasm/disks oracle.install.asm.SYSASMPassword=Change321me oracle.install.asm.monitorPassword=Change321me
+#phh#EOH5
+#phh#end
 
-cookbook_file "/u01/app/grid/12102/grid_second_response_file.rsp" do
-  source 'grid_2.rsp'
-  owner 'grid'
-  group 'oinstall'
-  mode '0755'
-end
+#phh#cookbook_file "/u01/app/grid/12102/grid_second_response_file.rsp" do
+#phh#  source 'grid_2.rsp'
+#phh#  owner 'grid'
+#phh#  group 'oinstall'
+#phh#  mode '0755'
+#phh#end
 #/u01/app/oracle/product/12.1.0/grid/cfgtoollogs/configToolAllCommands RESPONSE_FILE=/home/grid/Documents/grid_stand_alone.rsp
 
 # RAN MANUALLY THIS WORKS

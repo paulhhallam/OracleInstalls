@@ -6,11 +6,13 @@ ORACLE_BASE=<%= node[:oracle][:grid_base] %>
 ORACLE_HOME=<%= node[:oracle][:grid][:grid_home] %>
 GRID_BASE=<%= node[:oracle][:grid_base] %>
 GRID_HOME=<%= node[:oracle][:grid][:grid_home] %>
+ORA_CRS_HOME=<%= node[:oracle][:grid][:grid_home] %>
+CRS_HOME=<%= node[:oracle][:grid][:grid_home] %>
 ORACLE_SID=+ASM
 ORACLE_UNQNAME=
 ORA_ENV=<%= File.basename node[:oracle][:grid][:grid_home] %>
 ORACLE_HOSTNAME=`hostname -f`
-export EDITOR ORACLE_BASE ORACLE_HOME GRID_BASE GRID_HOME ORACLE_SID ORA_ENV ORACLE_HOSTNAME
+export EDITOR ORACLE_BASE ORACLE_HOME GRID_BASE GRID_HOME ORACLE_SID ORA_ENV ORACLE_HOSTNAME CRS_HOME
 
 
 NLS_DATE_FORMAT='YYYYMMDD.HH24MISS'

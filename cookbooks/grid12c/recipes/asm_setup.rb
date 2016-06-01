@@ -24,7 +24,7 @@ if !node[:oracle][:grid][:asm_installed]
     code <<-EOH2
       /etc/init.d/oracleasm configure << EOF
 grid
-asmdba
+oinstall
 y
 y
 EOF
@@ -32,6 +32,7 @@ EOF
       /etc/init.d/oracleasm scandisks
       /etc/init.d/oracleasm listdisks
     EOH2
+# was using asmdba
   end
   node.default[:oracle][:grid][:asm_installed] = true
 end

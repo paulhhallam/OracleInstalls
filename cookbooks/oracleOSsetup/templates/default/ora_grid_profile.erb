@@ -6,11 +6,13 @@ ORACLE_BASE=<%= node[:oracle][:grid_base] %>
 GRID_BASE=<%= node[:oracle][:grid_base] %>
 ORACLE_HOME=<%= node[:oracle][:grid][:grid_home] %>
 GRID_HOME=<%= node[:oracle][:grid][:grid_home] %>
+CRS_HOME=<%= node[:oracle][:grid][:grid_home] %>
+ORA_CRS_HOME=<%= node[:oracle][:grid][:grid_home] %>
 ORACLE_SID=+ASM
 ORACLE_UNQNAME=
 ORA_ENV=<%= File.basename node[:oracle][:grid][:grid_home] %>
 ORACLE_HOSTNAME=`hostname -f`
-export EDITOR GRID_HOME GRID_BASE ORACLE_BASE ORACLE_HOME ORACLE_SID ORA_ENV ORACLE_HOSTNAME
+export EDITOR GRID_HOME GRID_BASE ORACLE_BASE ORACLE_HOME ORACLE_SID ORA_ENV ORACLE_HOSTNAME CRS_HOME ORA_CRS_HOME
 
 
 NLS_DATE_FORMAT='YYYYMMDD.HH24MISS'
@@ -33,6 +35,6 @@ bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 
 HOSTNAME=`hostname | awk -F. '{print $1}'`
-PS1='[$USER@$HOSTNAME] -->${ORACLE_SID}<-- $ORA_ENV
-$PWD> '
+#PS1='[$USER@$HOSTNAME] -->${ORACLE_SID}<-- $ORA_ENV
+PS1='$PWD> '
 export PS1

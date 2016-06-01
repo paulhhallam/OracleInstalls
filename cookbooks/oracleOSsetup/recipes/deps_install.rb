@@ -45,6 +45,16 @@ package "oracleasm-support" do
 end
 
 #
+rpm_package "cvuqdisk" do
+  source "/media/sf_oracle_kits/12c/28092015/grid/rpm/cvuqdisk-1.0.9-1.rpm"
+  action :install
+end
+
+rpm_package "asmlib" do
+  source "/media/sf_oracle_kits/12c/oracleasmlib-2.0.12-1.el7.x86_64.rpm"
+  action :install
+end
+#
 # Update the OS to ensure all rpm's are compatible
 #
 puts "#### UPDATE OS"
