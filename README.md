@@ -7,11 +7,6 @@ This set of cookbooks are here to provide a method of installing various differe
 I am using a set of 4 Oracle Virtual Box VM's with disks configured for use by ASM.
 These instructions will not (not at the moment anyway) describe the setup of the VM's or the disk volumes.
 
-One important point to note is that due to discrepancies between the different versions of Oracle Virtual Box, Oracle 12c and numerous examples of how to install VBox ASM volumes on linux, any ASM volumes should be mounted as RW, not NOSUID in fstab.
-i.e. 
-	FAILS: LABEL=U01 /u01 auto nosuid,nodev,nofail,x-gvfs-show 0 0
-	WORKS: LABEL=U01 /u01 auto rw                              0 0
-
 Hosts
 =====
 Ambari1 is the Chef client, Git hub and Jenkins host.
@@ -21,6 +16,13 @@ Ambari2 is the Chef Server.
 Ambari5 is one node that will either be a standalone database or part of a RAC cluster (depending upon which recipe you want to use).
 
 Ambari6 is the second node in the oracle RAC cluster.
+
+One important point to note is that due to discrepancies between the different versions of Oracle Virtual Box, Oracle 12c and numerous examples of how to install VBox ASM volumes on linux, any ASM volumes should be mounted as RW, not NOSUID in fstab.
+
+i.e. 
+	FAILS: LABEL=U01 /u01 auto nosuid,nodev,nofail,x-gvfs-show 0 0
+	
+	WORKS: LABEL=U01 /u01 auto rw                              0 0
 
 The cookbooks
 =============
