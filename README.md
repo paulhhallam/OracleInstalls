@@ -74,7 +74,6 @@ COOKBOOK: oracle11gdb
 Prerequisites: oracleOSsetup, oracle11g
 
 RECIPE: createdb
-
 	Checks a database hasn't already been created.
 	Uses DBCA to perform a silent db creation.
 	Sets up the oracle (and grid) users bash profiles from templates.
