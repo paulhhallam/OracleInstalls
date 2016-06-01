@@ -1,6 +1,6 @@
-Oracle 11g database, 12c database
-=================================
-and 12c Grid Installations
+Oracle 11g database, 12c database and 
+=====================================
+12c Grid Installations
 ==========================
 This set of cookbooks are here to provide a method of installing various different oracle database configurations on RedHat Linux 7.
 
