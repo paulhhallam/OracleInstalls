@@ -23,47 +23,32 @@ oracle12c
 oracle12cdb
 
 COOKBOOK: oracleOSsetup
-
+=======================
 A script to complete a basic host setup in preparation for an oracle install. 
 
-This script will 
-
 RECIPE: oracle_user_config
-
-	1) Set up the yum repositories, system, patches etc.
-
-	2) Set up the user accounts and groups regardless of the oracle version to be installed i.e. all accounts and groups for a 12c installation are installed. 
-
-	3) Set all passwords to "Changeme3".
-
-	4) Set the ulimits and limits.d values.
-
-	5) Basic setup of ssh for oracle and grid users.
-
-	6) Create the oracle .
-
-	7) Create the oracle base directories.
+	Set up the yum repositories, system, patches etc.
+	Set up the user accounts and groups regardless of the oracle version to be installed i.e. all accounts and groups for a 12c installation are installed. 
+	Set all passwords to "Changeme3".
+	Set the ulimits and limits.d values.
+	Basic setup of ssh for oracle and grid users.
+	Create the oracle .
+	Create the oracle base directories.
 
 RECIPE: deps_install
-
-	8) Install the oracle-rdbms-server=-12cR1-preinstall package, the oracleasm drivers and the cvuqdisk package.
-
-	9) Update the OS using "yum update -y"
+	Install the oracle-rdbms-server=-12cR1-preinstall package, the oracleasm drivers and the cvuqdisk package.
+	Update the OS using "yum update -y"
 
 RECIPE: kernel_params
-
-	10) Create swapfs
-
-	11) Ensure /u01 with the correct settings is in fstab.
-
-	12) Configure sysctl, ntpd and avhi
+	Create swapfs
+	Ensure /u01 with the correct settings is in fstab.
+	Configure sysctl, ntpd and avhi
 
 COOKBOOK: oracle11g
-
+===================
 A single node Database Enterprise Edition (11.2.0.4.0) software only install.
 
 RECIPE: oracle_users_profile
-
 	Sets up the oracle (and grid) users bash profiles from templates.
 
 RECIPE: dbbin
@@ -75,7 +60,7 @@ RECIPE: dbbin
 	Sets up automatic startup.
 	
 COOKBOOK: oracle11gdb
-
+=====================
 11g Database creation on a single node 11g system.
 
 RECIPE: createdb
@@ -88,9 +73,10 @@ RECIPE: createdb
 	Modify tnsnames and restart the listener.
 	
 COOKBOOK: oracle12c
+===================
+A single node Database Enterprise Edition (12.1.0.2) software only install.
 
 RECIPE: oracle_users_profiles
-
 	Sets up the oracle and grid bash users profiles.
 
 RECIPE: dbbin
@@ -102,6 +88,8 @@ RECIPE: dbbin
 	Sets up automatic startup.
 	
 COOKBOOK: oracle12cdb
+=====================
+12c database creation on a single node 12c system.
 
 RECIPE: createdb
 	Creates oracle directories.
@@ -112,8 +100,22 @@ RECIPE: createdb
 	Configures BCT.
 	
 COOKBOOK: grid12c
+=================
+RECIPE: oracleOSsetup::oracle_user_config
+RECIPE: oracleOSsetup::deps_install
+RECIPE: oracleOSsetup::kernel_params
+RECIPE: oracle12c::oracle_users_profiles
 
-RECIPE:
+RECIPE: asm_setup
+	Configure the ASM drivers.
+	Find sd devices that are not partitioned.
+	Create a single partition on the devices identified.
+	ASM createdisk for each device.
+	
+
+
+RECIPE: gridbin
+
 
 
 MORE TO FOLLOW
