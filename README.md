@@ -20,6 +20,7 @@ Ambari6 is the second node in the oracle RAC cluster.
 One important point to note is that due to discrepancies between the different versions of Oracle Virtual Box, Oracle 12c and numerous examples of how to install VBox ASM volumes on linux, any ASM volumes should be mounted as RW, not NOSUID in fstab.
 
 i.e. 
+
 	FAILS: LABEL=U01 /u01 auto nosuid,nodev,nofail,x-gvfs-show 0 0
 
 	WORKS: LABEL=U01 /u01 auto rw                              0 0
