@@ -13,17 +13,25 @@ i.e.
 Hosts
 =====
 Ambari1 is the Chef client, Git hub and Jenkins host.
+
 Ambari2 is the Chef Server.
+
 Ambari5 is one node that will either be a standalone database or part of a RAC cluster (depending upon which recipe you want to use).
+
 Ambari6 is the second node in the oracle RAC cluster.
 
 The cookbooks
 =============
 oracleOSsetup
+
 grid12c
+
 oracle11g
+
 oracle11gdb
+
 oracle12c
+
 oracle12cdb
 
 COOKBOOK: oracleOSsetup
