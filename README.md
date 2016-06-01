@@ -166,37 +166,39 @@ RECIPE: createdb
 COOKBOOK: grid12c
 =================
 
-Prerequisites: None
+Performm the following on all nodes in the cluster
 
-RECIPE: oracleOSsetup::oracle_user_config
+	Prerequisites: None
 
-RECIPE: oracleOSsetup::deps_install
+	RECIPE: oracleOSsetup::oracle_user_config
 
-RECIPE: oracleOSsetup::kernel_params
+	RECIPE: oracleOSsetup::deps_install
 
-RECIPE: oracle12c::oracle_users_profiles
+	RECIPE: oracleOSsetup::kernel_params
 
-RECIPE: asm_setup
+	RECIPE: oracle12c::oracle_users_profiles
 
-	Configure the ASM drivers.
+	RECIPE: asm_setup
+
+		Configure the ASM drivers.
 	
-	Find sd devices that are not partitioned.
+		Find sd devices that are not partitioned.
 	
-	Create a single partition on the devices identified.
+		Create a single partition on the devices identified.
 	
-	Run oracleasm createdisk for each device.
+		Run oracleasm createdisk for each device.
 
-RECIPE: gridbin
+	RECIPE: gridbin
 
-	Create the oracle base, grid  etc directories
+		Create the oracle base, grid  etc directories
 	
-	Unzip the grid software package.
+		Unzip the grid software package.
 	
-	Run runcluvfy on the system.
+		Run runcluvfy on the system.
 	
-At this point we could stop and check the output from runcluvfy to ensure everything is setup correctly.
+	At this point we could stop and check the output from runcluvfy to ensure everything is setup correctly.
 
-	Install the grid software using a response file from templates.
+		Install the grid software using a response file from templates.
 	
 	
 
