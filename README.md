@@ -1,4 +1,4 @@
-The set of recipes in this cookbook are here to provide a means to install various different oracle database configurations opn RedHat Linux 7.
+The set of recipes in this cookbook are here to provide a means to install various different oracle database configurations on RedHat Linux 7.
 
 I am using a set of Oracle Virtual Box VM's with disks configured for use by ASM.
 These instructions will not (not at the moment anyway) describe the setup of the VM's or the disk volumes.
@@ -26,6 +26,8 @@ COOKBOOK: oracleOSsetup
 =======================
 A script to complete a basic host setup in preparation for an oracle install. 
 
+Prerequisites: None
+
 RECIPE: oracle_user_config
 	Set up the yum repositories, system, patches etc.
 	Set up the user accounts and groups regardless of the oracle version to be installed i.e. all accounts and groups for a 12c installation are installed. 
@@ -48,6 +50,8 @@ COOKBOOK: oracle11g
 ===================
 A single node Database Enterprise Edition (11.2.0.4.0) software only install.
 
+Prerequisites: oracleOSsetup
+
 RECIPE: oracle_users_profile
 	Sets up the oracle (and grid) users bash profiles from templates.
 
@@ -63,6 +67,8 @@ COOKBOOK: oracle11gdb
 =====================
 11g Database creation on a single node 11g system.
 
+Prerequisites: oracleOSsetup, oracle11g
+
 RECIPE: createdb
 
 	Checks a database hasn't already been created.
@@ -75,6 +81,8 @@ RECIPE: createdb
 COOKBOOK: oracle12c
 ===================
 A single node Database Enterprise Edition (12.1.0.2) software only install.
+
+Prerequisites: oracleOSsetup
 
 RECIPE: oracle_users_profiles
 	Sets up the oracle and grid bash users profiles.
@@ -91,6 +99,8 @@ COOKBOOK: oracle12cdb
 =====================
 12c database creation on a single node 12c system.
 
+Prerequisites: oracleOSsetup, oracle12c
+
 RECIPE: createdb
 	Creates oracle directories.
 	Unzips the oracle media files.
@@ -101,6 +111,9 @@ RECIPE: createdb
 	
 COOKBOOK: grid12c
 =================
+
+Prerequisites: None
+
 RECIPE: oracleOSsetup::oracle_user_config
 RECIPE: oracleOSsetup::deps_install
 RECIPE: oracleOSsetup::kernel_params
