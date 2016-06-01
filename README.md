@@ -28,17 +28,17 @@ i.e.
 
 The cookbooks
 =============
-oracleOSsetup	Host configuration
+oracleOSsetup	: Host configuration
 
-grid12c		12c Grid installation.
+grid12c		: 12c Grid installation.
 
-oracle11g	11g Software installation for a standalone node.
+oracle11g	: 11g Software installation for a standalone node.
 
-oracle11gdb	11g database creation on a standalone node.
+oracle11gdb	: 11g database creation on a standalone node.
 
-oracle12c	12c software installation for a standalone node.
+oracle12c	: 12c software installation for a standalone node.
 
-oracle12cdb	12c database creation on a standalone node.
+oracle12cdb	: 12c database creation on a standalone node.
 
 COOKBOOK: oracleOSsetup
 =======================
